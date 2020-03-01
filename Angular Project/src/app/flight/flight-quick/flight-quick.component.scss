@@ -1,0 +1,195 @@
+$grey : #8a93a7;
+* {
+    font-family: sans-serif;
+}
+
+body {
+    width : 100%;
+}
+
+.promotion {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    .leftP {
+        display: flex;
+        align-items: center;
+        font-size: 32px;
+        font-weight: 300;
+        img {
+            border-radius: 100px;
+            border: 1px solid black;
+            background:rgb(0, 154, 255);
+            width: 35px;
+            min-width: 35px;
+            height : auto;
+            padding:10px;
+            margin-right: 10px;
+        }
+    }
+    .rightP {
+        display: flex;
+        align-items: center;
+        * {
+            font-size: 18px;
+        }
+    }
+}
+
+.preferenceTrip {
+    padding: 20px;
+    label {
+        font-size: 20px;
+        font-weight: 200;
+        margin-left: 10px;
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    button {
+        background-color: #fedd00;
+        color: #0064d2;
+        font-size : 16px;
+        padding : 12px 24px;
+        margin:12px;
+        border-radius: 24px;
+    }
+}
+
+@media(max-width: 420px) {
+    .promotion {
+        flex-direction : column;
+    }
+    .rightP {
+        margin: 10px;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+.quickForm {
+    * {
+        font-size: 18px;
+    }
+    
+    display: flex;
+    width:100%;
+    margin-top: 10px; 
+}
+
+.destClass, .fromClass {
+    width:100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: sans-serif;
+    border: 1px solid $grey;
+    div {
+        padding: 10px;
+        color: $grey;
+    }
+    
+}
+
+.destBottom, .fromBottom{
+    display: flex;
+    img {
+        width: 30px;
+        margin-right: 10px;
+    }
+    .inputDest, .inputFrom {
+        input {
+            width: 100%;
+            border: none;        
+        }
+    }
+}
+
+.departureReturn {
+    border: 1px solid $grey;
+    display: flex;
+    color: $grey;
+    .departure {
+        padding: 10px;
+        div {
+            margin: 10px;
+        }
+        .departureInput {
+            width: 100%;
+            margin: 10px;
+            padding-top: 10px;
+            display: flex;
+            img {
+                margin-right: 10px;
+                width: 30px;
+            }
+        }
+    }
+    .return {
+        padding: 10px;
+        div {
+            margin: 10px;
+        }
+        .returnInput {
+            width: 100%;
+            margin: 10px;
+            padding-top: 10px;
+            display: flex;
+            img {
+                margin-right: 10px;
+                width: 30px;
+            }
+        }
+    }
+}
+
+.passengerAndCabin {
+    width:100%;
+    border: 1px solid $grey;
+    color : $grey;
+    padding: 10px;
+    div {
+        margin: 5px;
+    }
+    .pac-input {
+        display: flex;
+        align-items: center;
+        .pac-contents {
+            display: flex;
+            .passengerInput .cabinInput{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        
+        img {
+            width: 30px;
+            padding: 10px;
+        }
+    }
+}
+
+@media(max-width: 1530px) {
+    .quickForm {
+        flex-wrap: wrap;
+    }
+    .destClass, .fromClass {
+        width: 100%;
+    }
+    .departureReturn {
+        width: 100%;
+    }
+    .passengerAndCabin {
+        width: 100%;
+    }
+}
+
+@media(max-width: 650px) {
+    .pac-contents {
+        flex-direction: column;
+    }
+    .departureReturn {
+        flex-wrap: wrap;
+    }
+}

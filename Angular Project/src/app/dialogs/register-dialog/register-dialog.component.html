@@ -1,0 +1,71 @@
+<body>
+    <div class="contents">
+        <div class="title">
+            <img src="../../../assets/account/back-arrow.png" alt="" (click) = "backButton()">
+            <div> Register </div>
+        </div>
+        <div class="txtData">
+            {{header}}
+        </div>
+        <div class="getData">
+            {{myData}}
+        </div>
+        <div class="input-first-name">
+            <input type="text" [(ngModel)]="firstName" placeholder="First Name">
+        </div>
+        <div class="input-last-name">
+            <input type="text" [(ngModel)]="lastName" placeholder="Last Name">
+        </div>
+        <div class="input-phone" *ngIf="!isPhone()">
+            <div class="input-code">
+                <select name="slctNumber" id="">
+                    <option value="+62"> +62 </option>
+                    <option value="+87"> +87 </option>
+                    <option value="+63"> +63</option>
+                    <option value="+90"> +90</option>
+                </select>
+            </div>
+            <div class="input-number">
+                <input type="text" placeholder="Mobile Number" [(ngModel)]="mobileNumber">
+            </div>
+        </div>
+
+        <div class="input-email" *ngIf="isPhone()">
+            <input type="text" [(ngModel)]="email" placeholder="Email">
+        </div>
+
+        <div class="input-password">
+            <input type={{currType}} [(ngModel)]="password" placeholder="Password">
+            <div class="passwordVisibility">
+                <img src={{currImg}} alt="" (click) = "clickVisibility()" id="imgId">
+            </div> 
+        </div>
+
+        <div class="pass-text">
+            Min. 7 characters with combination of number, symbol, & capital letter.
+        </div>
+
+        <div class="errorClass">
+            {{Error}}   
+        </div>
+
+        <div class="loginAccount">
+            <div class="loginGoogle">
+                <app-google-sign-in (click)="checkEmail()">
+
+                </app-google-sign-in>
+            </div>
+            <div class="loginFacebook">
+                <app-facebook-sign-in (click)="checkEmail()">
+                    
+                </app-facebook-sign-in>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button (click) = "register()"> Create Account </button>
+        </div>
+
+    </div>
+
+</body>

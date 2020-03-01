@@ -1,0 +1,50 @@
+<body>
+    <div class="header">
+        Are you sure you want to delete this data?
+    </div>
+    <div class="test">
+        <div class="detail">
+            <div class="details">
+                <div class="left">
+                    Train Name : 
+                </div>
+                <div class="right">
+                    {{trainSchedule.Train.TrainName}}
+                </div>
+            </div>
+            <div class="details">
+                <div class="left">
+                    Departure Time : 
+                </div>
+                <div class="right">
+                    {{trainSchedule.TrainTimeFrom}}
+                </div>
+            </div>
+            <div class="details">
+                <div class="left">
+                    Arrival Time : 
+                </div>
+                <div class="right">
+                    {{trainSchedule.TrainTimeTo}}
+                </div>
+            </div>
+            <div class="details">
+                <div class="left">
+                    Train Type :  
+                </div>
+                <div class="right">
+                    {{trainSchedule.TrainClass.TrainClassName}}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="buttons">
+        <div>
+            <button (click)="yes()"> Yes </button>
+        </div>
+        <div>
+            <button (click)="no()"> No </button>
+        </div>
+    </div>
+</body>

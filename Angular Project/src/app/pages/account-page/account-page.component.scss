@@ -1,0 +1,58 @@
+* {
+    font-family: sans-serif;
+}
+
+.account-page {
+    display: flex;
+    margin: 20px;
+    .left {
+        border: 1px solid black;
+        margin: 10px;
+        width: 30%;
+        .account-name {
+            margin: 10px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .verified {
+            margin: 10px;
+            font-size: 14px;
+            color: #0064d2;
+        }
+        .menus {
+            display: flex;
+            margin: 10px;
+            flex-direction: column;
+            .submenu {
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                .img {
+                    margin: 10px;
+                    img {
+                        width: 40px;
+                    }
+                }
+                .menu-txt {
+                    margin: 10px;
+                    font-size: 16px;
+                }
+            }
+            
+        }
+    }
+    .right {
+        width: 70%;
+        border: 1px solid black;
+        margin: 10px;
+    }
+}
+
+@media (max-width: 700px) {
+    .account-page {
+        flex-wrap: wrap;
+        .left, .right {
+            width: 100%;
+        }
+    }
+}

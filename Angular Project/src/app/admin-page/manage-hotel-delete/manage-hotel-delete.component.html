@@ -1,0 +1,50 @@
+<body>
+    <div class="header">
+        Are you sure you want to delete this data?
+    </div>
+    <div class="test">
+        <div class="detail">
+            <div class="details">
+                <div class="left">
+                    Hotel Name : 
+                </div>
+                <div class="right">
+                    {{hotel.Hotel.HotelName}}
+                </div>
+            </div>
+            <div class="details">
+                <div class="left">
+                    Hotel Area : 
+                </div>
+                <div class="right">
+                    {{hotel.Hotel.HotelArea.HotelAreaName}}
+                </div>
+            </div>
+            <div class="details">
+                <div class="left">
+                    Hotel Address : 
+                </div>
+                <div class="right">
+                    {{hotel.Hotel.HotelAddress}}
+                </div>
+            </div>
+            <div class="details">
+                <div class="left">
+                    Hotel Type : 
+                </div>
+                <div class="right">
+                    {{hotel.Hotel.HotelCategory.HotelCategoryName}}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="buttons">
+        <div>
+            <button (click)="yes()"> Yes </button>
+        </div>
+        <div>
+            <button (click)="no()"> No </button>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,69 @@
+<body>
+    <div class="promotion" *ngIf="checkUrl()">
+        <div class="leftP">
+            <img src="../../../assets/quickCard/hotel-icon.png">
+            <div> Cheap Online Hotel Booking with Promo </div>
+        </div>
+        <div class="rightP">
+            <a [routerLink]="['/']"> Recently searched > </a>
+        </div>    
+    </div>
+    <div class="quickForm">
+        <div class="destClass" *ngIf="checkUrl()">
+            <div> Destination </div>
+            <div class="destBottom">
+                <img src="../../../../assets/quickCard/location.png" alt="">
+                <div class="inputDest">
+                    <input type="text" placeholder="Staying Anywhere?" [(ngModel)]="location">
+                </div>
+            </div>
+        </div>
+        <div class="checkInCheckOut">
+            <div class="checkIn">
+                <div> Check In </div>
+                <div class="checkInInput">
+                    <img src="../../../../assets/quickCard/baggage.png">
+                    <input type="date" [(ngModel)]="dateFrom" (change)="updateNight()">
+                </div>
+            </div>
+            <div class="nights">
+                <div class="night-content">
+                    <img src="../../../../assets/quickCard/moon.png" alt="">
+                    <label name="nightCount"> {{nights}} </label>
+                </div>
+                
+                <div class="night-text"> Night </div>
+            </div>
+            <div class="checkOut">
+                <div> Check Out </div>
+                <div class="checkOutInput">
+                    <img src="../../../../assets/quickCard/baggage.png">
+                    <input type="date" [(ngModel)]="dateTo" (change)="updateNight()">
+                </div>
+            </div>
+        </div>
+        <div class="guestAndRoom">
+            <div class="gar-text"> Guest & Room </div>
+            <div class="guestAndRoomInput">
+                <img src="../../../../assets/quickCard/guest.png">
+                <div class="gar-contents">
+                    <div class="guestInput">
+                        <input type="number" [(ngModel)]="numGuest">
+                        <div> guests </div>
+                    </div>
+                    <div class="roomInput">
+                        <input type="number" [(ngModel)]="numRoom">
+                        <div> rooms </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    <div class="button-container">
+        <button (click)="search()" *ngIf="checkUrl()"> Search Hotel</button>
+        <button (click)="searchAvailability()" *ngIf="!checkUrl()"> Search Availability</button>
+    </div>
+</body>
+

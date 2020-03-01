@@ -1,0 +1,97 @@
+$grey : #8a93a7;
+* {
+    font-family: sans-serif;
+    color: black;
+}
+body {
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.inputs{
+    width: 100%;
+    input {
+        font-size: 18px;
+        padding: 10px;
+        width: 100%;
+    }
+    margin-bottom: 20px;
+}
+
+.inputPhoneOrEmail {
+    @extend .inputs;
+    display: flex;
+    
+}
+
+#inputPassword {
+    display: none;
+    width: 100%;
+    input {
+        font-size: 20px;
+        padding: 10px;
+        width: 100%;
+    }
+    #passwordVisibility {
+        img {
+            width: 40px;
+            cursor: pointer;
+        }
+    }
+    margin-bottom: 20px;
+}
+
+#inputError {
+    display: none;
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: red;
+}
+
+.btnContinue {
+    width:100%;
+    button {
+        width: 100%;
+        font-size : 26px;
+        padding: 10px;
+        background-color: #fedd00;
+        color: #0064d2;
+        border-radius: 24px;
+    }
+    margin-bottom: 20px;
+}
+
+.orWith {
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.loginAccount {
+    img {
+        width: 20px;
+        padding: 20px;
+    }
+    .loginGoogle, .loginFacebook {
+        width: 100%;
+        border: 1px solid $grey;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    margin-bottom: 20px;
+}

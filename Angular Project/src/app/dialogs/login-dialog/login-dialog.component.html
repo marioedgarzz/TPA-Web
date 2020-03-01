@@ -1,0 +1,49 @@
+<body>
+    <div>
+        <div class="title">
+            Log In / Register
+        </div>
+        <div class="subtitle">
+            Your amazing trip starts here.
+        </div>
+        <div class="inputPhoneOrEmail">
+            <input [(ngModel)]="txtPhoneOrEmail" type="text" name="phoneOrEmail" placeholder="{{plcHolder}}">
+            
+        </div>
+        <!-- <div *ngFor="let iUser of users" style="border: 1px solid black">
+            yayyy {{iUser.Username}}
+        </div> -->
+        <div id="inputPassword">
+            <input type={{currType}} [(ngModel)]="txtPassword" placeholder="Password">
+            <div id="passwordVisibility">
+                <img src={{currImg}} alt="" (click) = "clickVisibility()" id="imgId">
+            </div> 
+        </div>
+        <div id="inputError">
+
+        </div>
+        <div class="btnContinue" (click) ="redirect()">
+            <button> Continue </button>
+        </div>
+        <div class="orWith">
+            Or With
+        </div>
+        <div class="loginAccount">
+            <div class="loginGoogle">
+                <app-google-sign-in (click)="checkEmail()">
+                    
+                </app-google-sign-in>
+            </div>
+            <div class="loginFacebook">
+                <app-facebook-sign-in (click)="checkEmail()">
+                    
+                </app-facebook-sign-in>
+            </div>
+        </div>
+        <div class="agreement">
+            By registering you have agreed to our <a href=""> Privacy Policy </a>
+            and <a href=""> Terms & Conditions. </a>
+        </div>
+    </div>
+    
+</body>

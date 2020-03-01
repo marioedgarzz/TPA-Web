@@ -1,0 +1,70 @@
+<body>
+    <div class="promotion">
+        <div class="leftP">
+            <img src="../../../../assets/quickCard/train-logo.png">
+            <div> Reservation And Book Online Train Ticket </div>
+        </div>
+        <div class="rightP">
+            <a [routerLink]="['/']"> Recently searched > </a>
+        </div>    
+    </div>
+    <div class="quickForm">
+        <div class="fromClass">
+            <div> From </div>
+            <div class="fromBottom">
+                <img src="../../../../assets/quickCard/train-logo.png" alt="">
+                <div class="inputFrom">
+                    <input type="text" placeholder="City or Station" [(ngModel)]="cityFrom">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="destClass">
+            <div> To </div>
+            <div class="destBottom">
+                <img src="../../../../assets/quickCard/train-logo.png" alt="">
+                <div class="inputDest">
+                    <input type="text" placeholder="Going Anywhere?" [(ngModel)]="cityDest">
+                </div>
+            </div>
+        </div>
+        <div class="departureReturn">
+            <div class="departure">
+                <div> Departure </div>
+                <div class="departureInput">
+                    <img src="../../../../assets/quickCard/baggage.png">
+                    <input type="date" name="departureDate" [(ngModel)]="dateFrom">
+                </div>
+            </div>
+            <div class="return">
+                <div>
+                    Return 
+                </div>
+                <div class="returnInput">
+                    <img src="../../../../assets/quickCard/baggage.png">
+                    <input type="date" name="returnDate" [(ngModel)]="dateTo">
+                </div>
+            </div>
+        </div>
+        <div class="passenger">
+            <div class="pass-text"> Passenger </div>
+            <div class="pass-input">
+                <img src="../../../../assets/quickCard/guest.png">
+                <div class="pass-contents">
+                    <div>
+                        <input type="number" [(ngModel)]="numAdults">
+                        <div> adults </div>
+                    </div>
+                    <div>
+                        <input type="number" [(ngModel)]="numInfants">
+                        <div> infants </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button-container">
+        <button (click)="search()"> Search Train </button>
+    </div>
+</body>
+

@@ -1,0 +1,16 @@
+version
+
+Angular CLI: 8.0.3
+Node: 10.16.0
+OS: win32 x64
+Angular:
+...
+
+Package                      Version
+------------------------------------------------------
+@angular-devkit/architect    0.800.3
+@angular-devkit/core         8.0.3
+@angular-devkit/schematics   8.0.3
+@schematics/angular          8.0.3
+@schematics/update           0.800.3
+rxjs                         6.4.0

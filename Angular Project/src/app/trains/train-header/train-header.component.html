@@ -1,0 +1,240 @@
+<app-overlay-component *ngIf="onFocus" (click)="getClicked()"></app-overlay-component>
+<body>
+    <div *ngIf="!onFocus" class="trainInfo">
+        <div class="headerLeft">
+            <div class="imgLeft">
+                <img src="../../../assets/quickCard/train-logo.png" alt="">
+            </div>
+            <div class="contentRight">
+                <div class="txtContent">
+                    Select Departure Train
+                </div>
+                <div class="headerContent">
+                    {{fromCity}} -> {{destCity}} - {{DateFrom}} - {{nPassenger}} Passenger
+                </div>
+            </div>
+        </div>
+        <div class="btnRight">
+            <button (click) = "btnChangeClick()"> CHANGE SEARCH </button>
+        </div>
+    </div>
+    <app-quick-card *ngIf="onFocus"></app-quick-card>
+    
+    <div class="contents">
+        <div class="left-content">
+            <div class="filter-header">
+                <div>
+                    Filter
+                </div>
+                <div>
+                    <a (click)="reset()"> RESET </a>
+                </div>
+            </div> 
+            <mat-expansion-panel> 
+                <mat-expansion-panel-header >
+                    <mat-panel-title >
+                        Class
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="train-category" *ngFor="let item of trainClasses; let i = index">
+                    <div class="txt-category"> {{item.TrainClassName}} </div>
+                    <input type="checkbox" (click)= "filterTrainClass(i)">
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel> 
+                <mat-expansion-panel-header >
+                    <mat-panel-title >
+                        Time
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="train-category">
+                    <div class="txt-category">00:00 - 06:00</div>
+                    <input type="checkbox" (click)="filterTrainTime(0)">
+                </div>
+                <div class="train-category">
+                    <div class="txt-category">06:00 - 12:00</div>
+                    <input type="checkbox" (click)="filterTrainTime(1)">
+                </div>
+                <div class="train-category">
+                    <div class="txt-category">12:00 - 18:00</div>
+                    <input type="checkbox" (click)="filterTrainTime(2)">
+                </div>
+                <div class="train-category">
+                    <div class="txt-category">18:00 - 24:00</div>
+                    <input type="checkbox" (click)="filterTrainTime(3)">
+                </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel> 
+                <mat-expansion-panel-header >
+                    <mat-panel-title >
+                        Train Name
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="train-category" *ngFor="let item of trainNames; let i = index">
+                    <div class="txt-category" *ngIf="i < 3 || readMore == true">{{item.TrainName}}</div>
+                    <input type="checkbox" (click)="filterTrainName(i)" *ngIf="i < 3 || readMore == true">
+                    <div style="cursor: pointer; color : grey" *ngIf="getReadMore(item)" (click)="clickReadMore()" > Read More </div>
+                </div>
+            </mat-expansion-panel>
+        </div>
+    
+        <div class="right-content">
+            <div *ngIf="trainSchedules == undefined" class="proxy">
+                <img src="../../../assets/utility/loadingScreen.gif">
+            </div>
+            <div class="header-content" *ngIf="trainSchedules != undefined">
+                <div class="left-header"> Showing all trains to your destination </div>
+                <div class="right-header">
+                    <div>
+                        Sort By
+                    </div>
+                    <div>
+                        <img src="../../../assets/utility/dropdown-icon.png" alt="SORT">
+                    </div>
+                    <div class="sorts">
+                        <div class="sort-detail" *ngFor="let item of sortList; let i = index">
+                            <div (click)="sort(i)">{{item}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="notifyMessage"> {{notifyMessage}}</div>
+            <div class="detail-content" *ngFor="let i = index; let item of (trainSchedules | trainPipe : filterTrainTimes : 
+                trainNames : filterTrainNames : trainClasses : filterTrainClasses : sortList : filterSort : nAdult : nInfant)">
+                <div class="contents">
+                    <div class="train-content">
+                        <div class="bold-text"> {{item.Train.TrainName}} </div>
+                        <div> {{item.TrainClass.TrainClassName}} ({{item.TrainClass.TrainSubclassName}})</div>
+                    </div>
+                    <div class="from-dest">
+                        <div class="train-from">
+                            <div class="upper-train">
+                                <div class="left">
+                                    <div class="time-from"> {{item.TrainTimeFrom}}</div>
+                                    <div class="place-from"> {{item.TrainPlaceFrom.TrainPlaceName}}</div>
+                                </div>
+                                <div class="right">
+                                    <div class="time-diff">4h 5m</div>
+                                    <hr>
+                                </div>
+                            </div>
+                            <div class="trip-detail-option" (click)="showTripDetail(i)"> Trip Details </div>
+                        </div>
+                        <div class="train-dest">
+                            <div class="upper">
+                                <div class="time-dest"> {{item.TrainTimeTo}}</div>
+                                <div class="place-dest"> {{item.TrainPlaceTo.TrainPlaceName}} </div>
+                            </div>
+                            <div class="price-detail-option" (click)="showPriceDetail(i)"> Price Details</div>
+                        </div>
+                    </div>
+                    <div class="train-selection">
+                        <div class="price-ticket"> IDR {{getPrice(item)}}</div>
+                        <div class="btnSelect"> 
+                            <button (click)="sendItem(item)"> 
+                                SELECT 
+                                <div class="tooltip">
+                                    Select
+                                </div>
+                            </button>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="trip-detail" *ngIf="tripDetail[i]">
+                    <div class="trips">
+                        <div class="trip-date-time">
+                            <div class="trip-time">
+                                {{item.TrainTimeFrom}}
+                            </div>
+                            <div class="trip-date">
+                                {{item.TrainDate}}
+                            </div>
+                        </div>
+                        <div class="right">
+                            Cimahi (CMI)
+                        </div>
+                    </div>
+                    <div class="trip-content">
+                        <div class="time"> 4h 15m </div>
+                        <div class="trip">
+                            <div class="first"> {{item.Train.TrainName}}</div>
+                            <div class="second"> {{item.TrainClass.TrainClassName}} ({{item.TrainClass.TrainSubclassName}})</div>
+                        </div>
+                    </div>
+                    <div class="trips">
+                        <div class="trip-date-time">
+                            <div class="trip-time">
+                                {{item.TrainTimeFrom}}
+                            </div>
+                            <div class="trip-date">
+                                {{item.TrainDate}}
+                            </div>
+                        </div>
+                        <div class="right">
+                            {{item.TrainPlaceFrom.TrainPlaceName}}
+                        </div>
+                    </div>
+                </div>
+                <div class="price-detail" *ngIf="priceDetail[i]" >
+                    <div class="price-header">
+                        <div class="first">
+                            Fare
+                        </div>
+                        <div class="second">
+                            {{item.Train.TrainName}} - {{item.TrainClass.TrainClassName}}
+                            ({{item.TrainClass.TrainSubclassName}})
+                        </div>
+                    </div>
+                    <div class="passengers">
+                        <div class="item-detail">
+                            <div class="left">
+                                - Adult (x {{nAdult}})
+                            </div>
+                            <div class="right">
+                                IDR {{getAdultPrice(item)}}
+                            </div>
+                        </div>
+                        <div class="item-detail" *ngIf="nInfant > 0">
+                            <div class="left">
+                                - Infant (x {{nInfant}})
+                            </div>
+                            <div class="right">
+                                IDR {{getInfantPrice(item)}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="other-fees">
+                        <div class="other-txt">
+                            Other Fees
+                        </div>
+                        <div class="item-detail">
+                            <div class="left">
+                                - Tax
+                            </div>
+                            <div class="right">
+                                Included
+                            </div>
+                        </div>
+                        <div class="item-detail">
+                            <div class="left">
+                                - Passenger Service Charge
+                            </div>
+                            <div class="right">
+                                FREE
+                            </div>
+                        </div>
+                    </div>
+                    <div class="total-price">
+                        <div class="total-text">
+                            Total
+                        </div>
+                        <div class="total">
+                            IDR {{getPrice(item)}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

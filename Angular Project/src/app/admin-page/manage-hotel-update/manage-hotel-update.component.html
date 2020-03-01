@@ -1,0 +1,90 @@
+<body style="overflow: scroll;">
+    <div class="header"> Update Train </div>
+    <label> Before : </label>
+    <div class="before">
+        <div> Hotel Name : {{hotel.Hotel.HotelName}}</div>
+        <div> Hotel Area : {{hotel.Hotel.HotelArea.HotelAreaName}}</div>
+        <div> Hotel Address : {{hotel.Hotel.HotelAddress}}</div>
+        <div> Hotel Type :  {{hotel.Hotel.HotelCategory.HotelCategoryName}} </div>
+    </div>
+    <label> After : </label>
+    <div class="updateForm">
+        <div class="header-update"> Update Form </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Name
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="htlName">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Image
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="htlImage">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Location
+            </div>
+            <div class="right">
+                <select [(ngModel)]="slctLocation">
+                    <option *ngFor="let item of hotelArea" value="{{item.HotelAreaName}}"> {{item.HotelAreaName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Rating
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="htlRating">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Address
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="htlAddress">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Facilities
+            </div>
+            <div class="right">
+                <div *ngFor="let item of hotelFacilities; let i = index">
+                    <input type="checkbox" (click)="chckHotelFacility(i)" value="{{item.HotelFacilityName}}"> {{item.HotelFacilityName}}
+                </div> 
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Room Type
+            </div>
+            <div class="right">
+                <select [(ngModel)]="slctRoomType">
+                    <option *ngFor="let item of hotelCategories" value="{{item.HotelCategoryName}}">{{item.HotelCategoryName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Information
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="htlInfo">
+            </div>
+        </div>
+        <div class="error-msg">
+            {{errorMsg}}
+        </div>
+        <div class="insert-button">
+            <button (click)="update()"> Update </button>
+        </div>
+    </div>
+</body>

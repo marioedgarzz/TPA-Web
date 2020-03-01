@@ -1,0 +1,137 @@
+$grey : #8a93a7;
+* {
+    font-family: sans-serif;
+    color: black;
+}
+
+body {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contents {
+    padding: 10px;
+}
+
+.title {
+    display: flex;
+    img {
+        width: 30px;
+        margin: 10px;
+        padding-right: 10px;
+        cursor: pointer;
+    }
+    div {
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+    }
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.txtData {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.getData {
+    font-size: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.input-first-name , .input-last-name, .input-email{
+    display: flex;
+    width: 100%;
+    input {
+        padding: 10px;
+        width: 100%;
+        font-size: 20px;
+    }
+    margin-bottom: 20px;
+}
+
+.input-phone {
+    display: flex;
+    * {
+        font-size: 20px;
+    }
+    margin-bottom: 20px;
+    .input-code {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        select {
+            padding: 10px;
+        }
+    }
+    .input-number {
+        margin-left: 10px;
+        display: flex;
+        width: 100%;
+        input {
+            padding: 10px;
+            width: 100%;
+        }
+    }
+}
+
+.input-password {
+    display: flex;
+    width: 100%;
+    input {
+        font-size: 20px;
+        padding: 10px;
+        width: 100%;
+    }
+    .passwordVisibility {
+        img {
+            width: 40px;
+            cursor: pointer;
+        }
+    }
+    margin-bottom: 20px;
+}
+
+.errorClass {
+    display: flex;
+    width : 100%;
+    font-size : 20px;
+    color: red;
+    
+}
+
+.loginAccount {
+    img {
+        width: 20px;
+        padding: 20px;
+    }
+    .loginGoogle, .loginFacebook {
+        width: 100%;
+        border: 1px solid $grey;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    margin-bottom: 20px;
+}
+
+.pass-text {
+    font-size : 20px;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    width:100%;
+    button {
+        width: 100%;
+        font-size : 26px;
+        padding: 10px;
+        background-color: #fedd00;
+        color: #0064d2;
+        border-radius: 24px;
+    }
+}

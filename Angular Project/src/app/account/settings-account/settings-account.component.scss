@@ -1,0 +1,61 @@
+mat-form-field {
+    background-color: rgb(206, 209, 216);
+    padding: 10px;
+}
+
+.subscribe-newsletter {
+    display: flex;
+    justify-content: space-between;
+    .left {
+        margin-left: 20px;
+        div {
+            font-size: 16px;
+        }
+    }
+    .right {
+        margin: 20px;
+    }
+}
+
+.datas {
+    margin-bottom: 10px;
+    .header, .content {
+        color : #58627a;
+    }
+    .header {
+        font-size: 16px;
+    }
+    .content {
+        font-size: 14px;
+    }
+}
+
+.button-apply {
+    display: flex;
+    justify-content: flex-end;
+    button {
+        padding: 10px 30px;
+        font-size: 16px;
+        font-weight: bolder;
+        background-color: #dee2ee;
+        color: #8a93a7;
+        border-radius: 20px;
+    }
+}
+
+.pass {
+    display: flex;
+    align-items: center;
+    // padding: 10px;
+    .input-pass {
+        input {
+            padding: 10px;
+        }
+    }
+    .image {
+        margin: 10px;
+        img {
+            width: 30px;
+        }
+    }
+}

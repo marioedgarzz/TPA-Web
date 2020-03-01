@@ -1,0 +1,71 @@
+* {
+    font-family: sans-serif;;
+}
+
+.account-header {
+    margin: 10px;
+}
+
+.manage-account {
+    display: flex;
+    .left {
+        width: 50%;
+        margin-right: 20px;
+        .data {
+            margin: 10px;
+            .header {
+                margin: 5px;
+                color : #58627A;
+            }
+            .content {
+                margin: 5px;
+                color : #35405a;
+            }
+        }
+        .setting {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 20px;
+            a {
+                font-size: 16px;
+                color: #0064d2;
+                cursor: pointer;
+            }
+        }
+    }
+    .right {
+        background-color: rgb(206, 209, 216);
+        width: 50%;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        div {
+            display: flex;
+            padding-left: 10px;
+            margin: 4px;
+        }
+        .text-form {
+            color: #FFF;
+        }
+        .button-save {
+            display: flex;
+            justify-content: flex-end;
+            button {
+                background-color: #0064D2;
+                color: #FFFFFF;
+                padding: 10px 30px 10px 30px;
+                margin: 10px;
+                border-radius: 20px;
+                font-size: 12px;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .manage-account {
+        flex-wrap: wrap;
+        .left, .right {
+            width: 100%;
+        }
+    }
+}

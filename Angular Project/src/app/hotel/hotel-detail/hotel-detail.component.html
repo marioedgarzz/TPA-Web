@@ -1,0 +1,50 @@
+<div *ngIf="currHotel == undefined">
+    Loading..
+</div>
+
+<div *ngIf="currHotel != undefined">
+
+    <div class="image">
+        <img src="{{currHotel.Hotel.HotelPicture}}" alt="">
+    </div>
+    
+    <div class="hotel-desc">
+        Indonesia > {{currHotel.Hotel.HotelArea.HotelPlace.HotelPlaceName}}  > {{currHotel.Hotel.HotelArea.HotelAreaName}}
+    </div>
+    
+    <div class="hotel-name">
+        {{currHotel.Hotel.HotelName}}
+    </div>
+    
+    <div class="hotel-address">
+        {{currHotel.Hotel.HotelAddress}}
+    </div>
+
+    <div class="facility">
+        Facilities
+    </div>
+    
+    <div class="hotelFacilities">
+        <div class="hotel-facility" *ngFor="let item of currHotelList">
+            <img src="{{item.HotelFacility.HotelFacilityPicture}}" alt="">
+            <div> {{item.HotelFacility.HotelFacilityName}} </div>
+        </div>
+    </div>
+
+    <div class="hotel-address">
+        {{currHotel.Hotel.HotelCategory.HotelCategoryName}}
+    </div>
+
+</div>
+
+<app-hotel-quick></app-hotel-quick>
+
+<div id="share">
+   
+</div>
+<div style="margin:10px"> Share promo via this link : </div>
+<div style="margin: 10px">
+    <input type="text" value="{{url}}" id="myInput" readonly style="margin: 10px;">
+    <button id="btnCopy" data-clipboard-target="#myInput"> Copy Link </button>
+</div>
+<button (click)="sendThroughEmail()"> Share Via Email </button>

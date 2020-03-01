@@ -1,0 +1,33 @@
+
+
+.parts {
+    .header {
+        font-size: 30px;
+        color: #000000;
+        display : flex;
+        justify-content: center;
+        margin: 20px;
+    }
+    .subheader {
+        font-size: 20px;
+        color: #888888;
+        display : flex;
+        justify-content: center;
+        margin: 20px;
+    }
+}
+
+.contents {
+    display: flex;
+    flex-wrap: wrap;
+    .content-detail {
+        margin: 20px;
+        width: 350px;
+        div {
+            margin: 20px;
+        }
+        img {
+            width: 100%;
+        }
+    }
+}

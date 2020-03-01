@@ -1,0 +1,79 @@
+<div *ngIf="!settings">
+    <div class="account-header">
+        <div>
+            <h2>Account Details</h2>
+        </div>
+        <div>
+            Here's your account details. Tap to make changes
+        </div>
+    </div>
+    <div class="manage-account">
+        <div class="left">
+            <div class="data">
+                <div class="header"> Email </div>
+                <div class="content"> {{user && user.UserEmail}} </div>
+            </div>
+            <div class="data">
+                <div class="header"> Mobile Number </div>
+                <div class="content"> {{user && user.UserPhoneNumber}}</div>
+            </div>
+            <div class="setting">
+                <a (click)="openSettings()"> ACCOUNT SETTINGS</a>
+            </div>
+        </div>
+        <div class="right">
+            <div>
+                <mat-form-field>
+                    <mat-label> Title </mat-label>
+                    <mat-select [(value)]="slctTitle">
+                        <mat-option value="Mr."> Mr. </mat-option>
+                        <mat-option value="Mrs."> Mrs. </mat-option>
+                        <mat-option value="Miss"> Miss </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label> First Name </mat-label>
+                    <input type="text" matInput [(ngModel)]="firstName">
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label> Last Name </mat-label>
+                    <input type="text" matInput [(ngModel)]="lastName">
+                </mat-form-field>
+            </div>
+            <div class="text-form"> TIX Rewards Delivery Address (Optional) </div>
+            <div>
+                <mat-form-field>
+                    <mat-label>  City </mat-label>
+                    <mat-select [(value)]="selectedCity">
+                        <mat-option value="Kab. Aceh"> Kab. Aceh </mat-option>
+                        <mat-option value="Kab. Dairi"> Kab. Dairi </mat-option>
+                        <mat-option value="Kab. Langkat"> Kab. Langkat </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label> Address </mat-label>
+                    <input type="text" (keyup)="validateAddress()" matInput [(ngModel)]="address">
+                </mat-form-field>
+            </div>
+            <div style="color: red" *ngIf="showError">
+                Address must be 10 characters long
+            </div>
+            <div>
+                <mat-form-field>
+                    <mat-label> Zip Code </mat-label>
+                    <input type="text" matInput [(ngModel)]="postalCode">
+                </mat-form-field>
+            </div>
+            <div class="button-save">
+                <button (click)="saveData()"> Save </button>
+            </div>
+        </div>
+    </div>
+</div>
+<app-settings-account *ngIf="settings"></app-settings-account>

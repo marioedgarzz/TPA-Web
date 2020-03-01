@@ -1,0 +1,78 @@
+<body>
+    <div class="promotion">
+        <div class="leftP">
+            <img src="../../../../assets/quickCard/airplane.png">
+            <div> Find Cheap Flight Tickets Price </div>
+        </div>
+        <div class="rightP">
+            <a [routerLink]="['/']"> Recently searched > </a>
+        </div>    
+    </div>
+    <div class="preferenceTrip">
+        <input type="radio" name="radPreference"> <label>One Way </label>
+        <input type="radio" name="radPreference"> <label>Round Trip</label>  
+    </div>
+    <div class="quickForm">
+        <div class="fromClass">
+            <div> From </div>
+            <div class="fromBottom">
+                <img src="../../../../assets/quickCard/airplane.png" alt="">
+                <div class="inputFrom">
+                    <input type="text" placeholder="Going Anywhere?">
+                </div>
+            </div>
+        </div>
+        <div class="destClass">
+            <div> To </div>
+            <div class="destBottom">
+                <img src="../../../../assets/quickCard/airplane.png" alt="">
+                <div class="inputDest">
+                    <input type="text" placeholder="Going Anywhere?">
+                </div>
+            </div>
+        </div>
+        <div class="departureReturn">
+            <div class="departure">
+                <div> Departure </div>
+                <div class="departureInput">
+                    <img src="../../../../assets/quickCard/baggage.png">
+                    <input type="date" name="departureDate">
+                </div>
+            </div>
+            <div class="return">
+                <div> Return </div>
+                <div class="returnInput">
+                    <img src="../../../../assets/quickCard/baggage.png">
+                    <input type="date" name="returnDate">
+                </div>
+            </div>
+        </div>
+        <div class="passengerAndCabin">
+            <div class="pac-text"> Passenger & Cabin </div>
+            <div class="pac-input">
+                <img src="../../../../assets/quickCard/guest.png">
+                <div class="pac-contents">
+                    <div class="passengerInput">
+                        <input type="number" name="numPassenger">
+                        <div> passengers </div>
+                    </div>
+                    <div class="cabinInput">
+                        <select name="slctCabin" id="">
+                            <option value="economy">Economy</option>
+                            <option value="premiumEconomy"> Premium Economy</option>
+                            <option value="Business"> Business</option>
+                            <option value="First"> First </option>
+                        </select>
+                        <div> class </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    <div class="button-container">
+        <button> Search Flight</button>
+    </div>
+</body>
+

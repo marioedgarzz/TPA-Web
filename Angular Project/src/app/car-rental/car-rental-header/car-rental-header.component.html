@@ -1,0 +1,163 @@
+<app-quick-card *ngIf="onFocus"></app-quick-card>
+
+<app-overlay-component *ngIf="onFocus" (click) = "getClicked()"></app-overlay-component>
+
+<div *ngIf="!onFocus" class="car-info">
+    <div class="headerLeft">
+        <div class="imgLeft">
+            <img src="../../../assets/quickCard/car-logo.png" alt="">
+        </div>
+        <div class="contentRight">
+            <div class="txtContent">
+                {{location}}
+            </div>
+            <div class="headerContent">
+                {{dateFrom}} -> {{dateTo}} - {{dateDiff}} Days
+            </div>
+        </div>
+    </div>
+    <div class="btnRight">
+        <button (click) = "btnChangeClick()"> CHANGE SEARCH </button>
+    </div>
+</div>
+
+<div class="navigation">
+    <label> {{location}} </label> / Search Result
+</div>
+
+<div class="contents">
+    <div class="left-content">
+        <div class="header-left">
+            <div>Filter</div>
+            <div><a (click)="reset()">RESET</a></div>
+        </div>
+        <hr>
+        <div class="search">
+            <input type="text" placeholder="Search Car">
+        </div>
+        <hr>
+        <div class="filter-price">
+            <div class="filter-text"> Filter by</div>
+            <div class="txt-filter"> Price range per day</div>
+            <div class="price">  
+                <div class="min-price">
+                    IDR
+                    <input type="number" [(ngModel)]="minPrice" (change)="changeMin()">
+                </div>
+                <div class="max-price">
+                    IDR
+                    <input type="number" [(ngModel)]="maxPrice" (change)="changeMax()">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <mat-expansion-panel> 
+            <mat-expansion-panel-header >
+                <mat-panel-title >
+                    Passenger Capability
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="filter-class">
+                <div class="txt-category">All</div>
+                <input type="checkbox" (click)="filterPassengers(3)" name="checkPassenger">
+            </div>
+            <div class="filter-class">
+                <div class="txt-category"> < 5 passengers</div>
+                <input type="checkbox" (click)="filterPassengers(0)" name="checkPassenger">
+            </div>
+            <div class="filter-class">
+                <div class="txt-category"> 5 - 6 Passengers </div>
+                <input type="checkbox" (click)="filterPassengers(1)" name="checkPassenger">
+            </div>
+            <div class="filter-class">
+                <div class="txt-category"> > 6 Passengers </div>
+                <input type="checkbox" (click)="filterPassengers(2)" name="checkPassenger">
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel> 
+            <mat-expansion-panel-header >
+                <mat-panel-title >
+                    Car Brand
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="filter-class" *ngFor="let item of carBrandList; let i = index">
+                <div class="txt-category"> {{item.CarBrandName}} </div>
+                <input type="checkbox" value="{{item.CarBrandName}}" (click)="filterCarBrands(i)">
+            </div>
+        </mat-expansion-panel>
+        <mat-expansion-panel> 
+            <mat-expansion-panel-header >
+                <mat-panel-title >
+                    Model
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="filter-class" *ngFor="let item of carModelList; let i = index">
+                <div class="txt-category"> {{item.CarModelName}} </div>
+                <input type="checkbox" value="{{item.CarModelName}}" (click)="filterCarModels(i)">
+            </div>
+        </mat-expansion-panel>
+
+    </div>
+
+    <div class="right-content">
+        <div class="header">
+            <div class="right-header"> Choose car rental in {{location}}</div>
+            <div class="right-date"> {{dateFrom}} </div>
+            <div class="showing-header">
+                <div class="show-text"> Showing {{getSize()}} car types </div>
+                <div class="sort-text">
+                    <div> Sort By </div>
+                    <div> <img src="../../../assets/navigation/logo.png"> </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div *ngIf="carList == undefined" class="proxy">
+            <img src="../../../assets/utility/loadingScreen.gif">
+        </div>
+        <div id="car-container" *ngIf="carList != undefined">
+            <div class="car-content" *ngFor="let i = index;let item of (carList | carPipe : filterPassenger : carModelList : filterCarModel : carBrandList : filterCarBrand : minPrice : maxPrice)">
+                <div class="temp" *ngIf="i < currShown">
+                    <div class="left-car">
+                        <div class="img-car">
+                            <img src="{{item.Car.CarPicture}}" alt="">
+                        </div>
+                        <div class="car-detail">
+                            <div class="car-name">
+                                {{item.Car.CarBrand.CarBrandName}} {{item.Car.CarModel.CarModelName}}
+                            </div>
+                            <div class="car-load">
+                                <div class="passenger">
+                                    <div><img src="../../../assets/car-rental/profile-icon.png" alt=""> </div>
+                                    <div> {{item.Car.CarPassengerCapacity}} </div>
+                                </div>
+                                <div> - </div>
+                                <div class="baggage">
+                                    <div><img src="../../../assets/quickCard/baggage.png" alt=""></div>
+                                    <div> {{item.Car.CarBaggageCapacity}} </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-car">
+                        <div class="car-price">
+                            <div class="txt-start"> Starts From </div>
+                            <div class="txt-price">
+                                <div class="price"> IDR {{item.CarPrice}}</div>
+                                <div class="per-day"> /day </div>
+                            </div>
+                        </div>
+                        <div class="btn-select" style="position: relative;">
+                            <button (click)="selectItem(item)">
+                                SELECT
+                                <div class="tooltip">
+                                    Select
+                                </div>
+                            </button>        
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

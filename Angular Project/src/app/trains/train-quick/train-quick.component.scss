@@ -1,0 +1,185 @@
+$grey : #8a93a7;
+* {
+    font-family: sans-serif;
+}
+
+body {
+    width : 100%;
+}
+
+.promotion {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    .leftP {
+        display: flex;
+        align-items: center;
+        font-size: 32px;
+        font-weight: 300;
+        img {
+            border-radius: 100%;
+            border: 1px solid black;
+            background:#ff7200;
+            width: 25px;
+            min-width: 25px;
+            height : auto;
+            padding:10px 15px 10px 15px;
+            margin-right: 10px;
+        }
+    }
+    .rightP {
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        font-family: sans-serif;
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    button {
+        background-color: #fedd00;
+        color: #0064d2;
+        font-size : 16px;
+        padding : 12px 24px;
+        margin:12px;
+        border-radius: 24px;
+    }
+}
+
+@media(max-width: 420px) {
+    .promotion {
+        flex-direction : column;
+    }
+    .rightP {
+        margin: 10px;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+.quickForm {
+    * {
+        font-size: 18px;
+    }
+    
+    display: flex;
+    width:100%;
+    margin-top: 10px; 
+}
+
+.destClass, .fromClass {
+    width:100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: sans-serif;
+    border: 1px solid $grey;
+    div {
+        padding: 10px;
+        color: $grey;
+    }
+    
+}
+
+.destBottom, .fromBottom{
+    display: flex;
+    img {
+        width: 30px;
+        margin-right: 10px;
+    }
+    .inputDest, .inputFrom {
+        input {
+            width: 100%;
+            border: none;        
+        }
+    }
+}
+
+.departureReturn {
+    border: 1px solid $grey;
+    display: flex;
+    color: $grey;
+    .departure {
+        padding: 10px;
+        div {
+            margin: 10px;
+        }
+        .departureInput {
+            width: 100%;
+            margin: 10px;
+            padding-top: 10px;
+            display: flex;
+            img {
+                margin-right: 10px;
+                width: 30px;
+            }
+        }
+    }
+    .return {
+        padding: 10px;
+        div {
+            margin: 10px;
+        }
+        .returnInput {
+            width: 100%;
+            margin: 10px;
+            padding-top: 10px;
+            display: flex;
+            img {
+                margin-right: 10px;
+                width: 30px;
+            }
+        }
+    }
+}
+
+.passenger {
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $grey;
+    color : $grey;
+    padding: 10px;
+    div {
+        margin: 5px;
+    }
+    .pass-input {
+        display: flex;
+        align-items: center;
+        .pass-contents {
+            display: flex;
+            flex-direction: column;
+            div {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+        
+        img {
+            width: 30px;
+            padding: 10px;
+        }
+    }
+}
+
+@media(max-width: 1530px) {
+    .quickForm {
+        flex-wrap: wrap;
+    }
+    .destClass, .fromClass {
+        width: 100%;
+    }
+    .departureReturn {
+        width: 100%;
+    }
+    .passenger {
+        width: 100%;
+    }
+}
+
+@media(max-width: 650px) {
+    .departureReturn {
+        flex-wrap: wrap;
+    }
+}

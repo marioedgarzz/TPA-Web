@@ -1,0 +1,80 @@
+<div *ngIf="carDetails == undefined" class="proxy">
+    <img src="../../../assets/utility/loadingScreen.gif">
+</div>
+
+<div *ngIf="carDetails != undefined">
+    <div class="my-header">
+        <label>Bali</label> / <label> Toyota Agya</label> / List of Vendors
+    </div>
+    <div class="contents">
+        <div class="left-content">
+            <div class="header-left">
+                <div class="left">
+                    <div class="image">
+                        <img src="../../../assets/quickCard/car-logo.png" alt="">
+                    </div>
+                </div>
+                <div class="right-container">
+                    <div class="right">
+                        <div class="header-txt"> {{carTransfer.CarRentalPlace}} </div>
+                        <div class="content-txt"> {{carTransfer.CarStartDate}} - {{carTransfer.CarEndDate}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="image">
+                <img src="../../../assets/car-rental/car-rental-toyota-agya.jpg" alt="">
+            </div>
+            <div class="car-name">
+                {{carDetails[0].Car.CarBrand.CarBrandName}} {{carDetails[0].Car.CarModel.CarModelName}}
+            </div>
+            <div class="car-passenger-baggage">
+                <div>
+                    <img src="../../../assets/car-rental/profile-icon.png" alt="">
+                    <label> {{carDetails[0].Car.CarPassengerCapacity}} passengers </label>
+                </div>
+                <div>
+                    <img src="../../../assets/car-rental/suitcase.png" alt="">
+                    <label> {{carDetails[0].Car.CarBaggageCapacity}} baggage</label>
+                </div>
+            </div>
+        </div> 
+        <div class="right-content">
+            <div class="header">
+                <div class="left">
+                    Showing {{getSize()}} vendor lists
+                </div>
+                <div class="right">
+                    Sort By
+                    <img src="../../../assets/utility/dropdown-icon.png" alt="">
+                </div>
+            </div>
+            <div class="contentss">
+                <div class="content-detail" *ngFor="let item of carDetails">
+                    <div class="left">
+                        <div class="image">
+                            <img src="{{item.CarVendor.CarVendorPicture}}" alt="">
+                        </div>
+                        <div class="car-name">
+                            {{item.CarVendor.CarVendorName}}
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div class="container">
+                            <div class="price">
+                                <div class="price-header">
+                                    IDR {{item.CarPrice}}
+                                </div>
+                                <div class="per-day">
+                                    /day
+                                </div>
+                            </div>
+                            <div class="btn">
+                                <button (click)="orderItem(item)"> SELECT </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

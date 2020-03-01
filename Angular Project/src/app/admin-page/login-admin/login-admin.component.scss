@@ -1,0 +1,15 @@
+.outer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    .form {
+        .detail{
+            display: flex;
+            justify-content: center;
+            input {
+                margin-left : 10px;
+            }
+            margin : 20px;
+        }
+    }
+}

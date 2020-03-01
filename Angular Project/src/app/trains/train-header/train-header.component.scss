@@ -1,0 +1,381 @@
+$grey : #8a93a7;
+* {
+    font-family : sans-serif;
+}
+
+.proxy {
+    position: relative;
+    background-color: white;
+    z-index: 200; 
+    width: 100%;
+    height: 100%;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.notifyMessage {
+    color : red;
+    font-size : 18px;
+    margin: 10px;
+}
+
+.trainInfo {
+    display: flex;
+    justify-content: space-between;
+    position : relative;
+    z-index: 2;
+    margin: 20px;
+    .headerLeft {
+        border: 1px solid grey;
+        display: flex;
+        width: 100%;
+        .imgLeft {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-right: 20px;
+            padding-left: 20px;
+            img {
+                padding: 10px;
+                width: 20px;
+                background-color: #FFDF00;
+                border-radius: 20px;
+            }
+        }
+        .contentRight {
+            display: flex;
+            flex-direction: column;
+            .txtContent {
+                padding: 10px;
+                font-size : 20px;
+                color : #35405a;
+            }
+            .headerContent {
+                padding: 10px;
+                font-size : 18px;
+                color : #58627a;
+            }
+        }
+    }
+    .btnRight {
+        border-right: 1px solid grey;
+        border-top: 1px solid grey;
+        border-bottom: 1px solid grey;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        button {
+            margin: 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            background-color: #F7F7F7;
+            color : #0064D2;
+        }
+    }
+}
+
+.link {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.contents {
+    display: flex;
+    margin: 10px;
+    .left-content {
+        width: 30%;
+        .filter-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            div {
+                font-size: 20px;
+                a {
+                    @extend .link
+                }
+            }
+        }
+        .train-category {
+            padding: 5px;
+            display: flex;
+            justify-content: space-between;
+            .txt-category {
+                font-size: 14px;
+            }
+            
+        }
+    }
+    .right-content {
+        width: 70%;
+        .header-content {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            .left-header {
+                display: flex;
+                align-items: center;
+                font-size : 18px;
+            }
+            .right-header {
+                position: relative;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                cursor: pointer;
+                img {
+                    padding: 10px;
+                    width: 30px;
+                }
+                &:hover {
+                    .sorts {
+                        display: block;
+                    }
+                }
+                .sorts {
+                    display: none;
+                    position: absolute;
+                    border: 1px solid black;
+                    bottom: -150px;
+                    left : -20px;
+                    .sort-detail {
+                        margin: 10px;
+                        font-size: 12px;
+                    }
+                }
+            }
+        }
+        .contents {
+            border: 1px solid $grey;
+            padding: 20px;
+            margin-bottom: 20px;
+            display: flex;
+            .train-content {
+                width: 25%;
+                min-width: 100px;
+                height: 100px;
+                div {
+                    padding-bottom: 3px;
+                }
+            }
+            .from-dest {
+                width: 50%;
+                display: flex;
+                .train-from {
+                    width: 50%;
+                    min-width: 100px;
+                    height: 100px;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    .upper-train {
+                        display: flex;
+                        justify-content: space-between;
+                        .left {
+                            div {
+                                padding-bottom: 5px;
+                            }
+                        }
+                    }
+                    .trip-detail-option {
+                        padding-top: 10px;
+                        @extend .link
+                    }
+                }
+                .train-dest {
+                    width: 50%;
+                    min-width: 100px;
+                    height: 100px;
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    .upper {
+                        div {
+                            padding-bottom: 5px;
+                        }
+                    }
+                    .price-detail-option {
+                        padding-top: 10px;
+                        @extend .link
+                    }
+                    
+                }
+            }  
+            .train-selection {
+                width: 25%;
+                min-width: 100px;
+                height: 100px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                .price-ticket {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color : #0064D2;
+                    font-size : 20px;
+                }
+                .btnSelect {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    position : relative;
+                    button {
+                        padding: 10px ;
+                        color: #0064D2;
+                        background-color: #FEDD00;
+                        border-radius: 20px;
+                        .tooltip {
+                            display: none;
+                            background-color: rgb(250, 232, 232);
+                            color: black;
+                            padding: 10px;
+                            position: absolute;
+                            bottom: -40px;
+                            // right: 10px;
+                        }
+                        &:hover {
+                            opacity: 80%;
+                            .tooltip {
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+@media (max-width: 800px) {
+    .trainInfo {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        .btnRight {
+            border-left: 1px solid grey;
+            border-top: 0px;
+        }
+    }
+    .contents {
+        .right-content {
+            .contents {
+                .train-content{
+                    width: 100%;
+                }
+                .train-selection{
+                    width: 100%;
+                    flex-direction: row;
+                }
+                .from-dest {
+                    width: 100%;
+                }
+                flex-wrap: wrap;
+         
+            }
+        }
+    }
+}
+
+.trip-detail {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 20px;
+    .trips {
+        display: flex;
+        .trip-date-time {
+            width: 30%;
+            margin: 20px;
+            font-size: 14px;
+            .trip-time {
+                display: flex;
+                align-items: center;
+                color : #35405a;
+            }
+            .trip-date {
+                color : #58627a;
+            }
+        }
+        .right {
+            width: 70%;
+            margin: 20px;
+            color: #35405a;
+        }
+    }
+    .trip-content {
+        display: flex;
+        .time {
+            display: flex;
+            align-items: center;
+            width: 30%;
+            margin: 20px;
+            color: #58627a;
+        }
+        .trip {
+            width: 70%;
+            margin: 20px;
+            .first {
+                color: #35405a;
+            }
+            .second {
+                color: #58627a;
+            }
+        }
+    }
+}
+
+.price-detail {
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid black;
+    .price-header {
+        .first, .second {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #35405a;
+        }
+    }
+    .item-detail {
+        display: flex;
+        justify-content: space-between;
+        .left , .right{
+            margin-bottom: 10px;
+            color : #8a93a7
+        }
+    }
+    .other-fees {
+        .other-txt {
+            color : #35405a;
+            margin-bottom : 10px;
+        }
+    }
+
+    .total-price {
+        display: flex;
+        justify-content: space-between;
+        .total-text {
+            font-size: 16px;
+            color : #35405a;
+        }
+        .total {
+            margin-top : 10px;
+            font-size : 16px;
+            color: #0064d2;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+    .contents {
+        .left-content {
+            width: 100%;
+        }
+        .right-content {
+            width: 100%;
+        }
+        flex-wrap: wrap;
+    }
+}

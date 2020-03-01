@@ -1,0 +1,23 @@
+#whatsapp {
+    position: fixed;
+    bottom : 20px;
+    right: 20px;
+    z-index: 10000;
+    padding: 10px;
+    display: flex;
+    border-radius: 20px;
+    background-color: #4CAF50;
+    img {
+        width: 30px;
+        padding: 5px;
+    }
+    div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        a{
+            color: white;
+            text-decoration : none;
+        }
+    }
+}

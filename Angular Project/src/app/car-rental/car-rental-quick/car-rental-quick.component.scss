@@ -1,0 +1,209 @@
+$grey : #8a93a7;
+* {
+    font-family: sans-serif;
+}
+
+body {
+    width : 100%;
+}
+
+.promotion {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    .leftP {
+        display: flex;
+        align-items: center;
+        font-size: 32px;
+        font-family: sans-serif;
+        font-weight: 500;
+        img {
+            border-radius: 100%;
+            border: 1px solid black;
+            background:rgb(0, 164, 116);
+            width: 35px;
+            min-width: 35px;
+            height : auto;
+            padding:15px 10px 15px 10px;
+            margin-right: 10px;
+        }
+    }
+    .rightP {
+        display: flex;
+        align-items: center;
+        * {
+            font-size : 18px;
+        }
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    button {
+        background-color: #fedd00;
+        color: #0064d2;
+        font-size : 16px;
+        padding : 12px 24px;
+        margin:12px;
+        border-radius: 24px;
+    }
+}
+
+@media(max-width: 420px) {
+    .promotion {
+        flex-direction : column;
+    }
+    .rightP {
+        margin: 10px;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+.quickForm {
+    display: flex;
+    width:100%;
+    margin-top: 10px; 
+    * {
+        font-size : 18px;
+    }
+}
+
+.rentLocation {
+    width:100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: sans-serif;
+    border: 1px solid $grey;
+    div {
+        padding: 10px;
+        color: $grey;
+    }
+}
+
+.rentBottom {
+    display: flex;
+    img {
+        width: 40px;
+        margin-right: 10px;
+    }
+    .inputLocation {
+        width: 100%;
+        input {
+            width: 100%;
+            border: none;        
+        }
+    }
+}
+
+.startEndDate {
+    border: 1px solid $grey;
+    display: flex;
+    color: $grey;
+    .startDate {
+        padding: 10px;
+        div {
+            margin: 10px;
+        }
+        .startDateInput {
+            width: 100%;
+            margin: 10px;
+            padding-top: 10px;
+            display: flex;
+            img {
+                margin-right: 10px;
+                width: 30px;
+            }
+        }
+    }
+    .days {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .day-content {
+            padding: 10px;
+            display: flex;
+            label {
+                display: flex;
+                align-items: center;
+            }
+        }
+        .day-text {
+            display: flex;
+            justify-content: center;
+            padding: 5px;
+        }
+    }
+    .endDate {
+        padding: 10px;
+        div {
+            margin: 10px;
+        }
+        .endDateInput {
+            width: 100%;
+            margin: 10px;
+            padding-top: 10px;
+            display: flex;
+            img {
+                margin-right: 10px;
+                width: 30px;
+            }
+        }
+    }
+}
+
+.numberOfCar {
+    display: flex;
+    width:100%;
+    flex-direction: column;
+    border: 1px solid $grey;
+    color : $grey;
+    padding: 10px;
+    .noc-text {
+        margin: 5px;
+    }
+    .noc-input {
+        display: flex;
+        align-items: center;
+        .noc-input-contents {
+            display: flex;
+            flex-direction: row;
+            div {
+                padding-left: 10px;
+            }
+        }
+        
+        img {
+            width: 30px;
+            padding: 10px;
+        }
+    }
+}
+
+.rentNoDriver {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 1px solid $grey;
+    color : $grey;
+    padding: 10px;
+    .rnd-text {
+        margin: 5px;
+    }
+}
+
+@media(max-width: 1630px) {
+    .quickForm {
+        flex-wrap: wrap;
+    }
+    .rentLocation, .startEndDate, .numberOfCar, .rentNoDriver {
+        width: 100%;
+    }
+}
+
+@media(max-width: 650px) {
+    .startEndDate {
+        flex-wrap: wrap;
+    }
+}

@@ -1,0 +1,44 @@
+<app-overlay-component *ngIf="onFocus" (click) = "getClicked()">
+    
+</app-overlay-component>
+<div class="body" (click)="getFocus()">
+    <div class="contents">
+        <div class="headerCard" *ngIf="showAllAvailables">
+            <div class="firstHeader">
+                <div class="headerText1"> Hey, you! </div>
+                <div class="headerText2"> Going anywhere? </div>
+            </div>
+            <div class="navigationHeader">
+                <div class="navigationCard" (click)="changeQuickCard(1)">
+                    <img src="../../../assets/quickCard/flight.png" >
+                    <div> Flight </div>
+                </div>
+                <div class="navigationCard" (click)="changeQuickCard(2)">
+                    <img src="../../../assets/quickCard/hotel.png" >
+                    <div> Hotel </div>
+                </div>
+                <div class="navigationCard" (click)="changeQuickCard(3)">
+                    <img src="../../../assets/quickCard/train.png" >
+                    <div> Train </div>
+                </div>
+                <div class="navigationCard" (click)="changeQuickCard(4)">
+                    <img src="../../../assets/quickCard/carRental.png" >
+                    <div> Car Rental </div>
+                </div>
+                <div class="navigationCard" (click)="changeQuickCard(5)">
+                    <img src="../../../assets/quickCard/entertainment.png" >
+                    <div> Entertainment </div>
+                </div>
+            </div>
+        </div>
+    
+        <div id="quickCardChanging">
+            <app-flight-quick *ngIf="quickCardShow[0]"></app-flight-quick>
+            <app-hotel-quick *ngIf="quickCardShow[1]"></app-hotel-quick>
+            <app-train-quick *ngIf="quickCardShow[2]"></app-train-quick>
+            <app-car-rental-quick *ngIf="quickCardShow[3]"></app-car-rental-quick>
+            <app-event-header *ngIf="quickCardShow[4]"></app-event-header>
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,140 @@
+<app-header-admin></app-header-admin>
+
+<div class="header">
+    Manage Hotel
+</div>
+
+<div class="proxy" *ngIf="hotelList == undefined">
+    <img src="../../../assets/utility/loadingScreen.gif" alt="">
+</div>
+
+<div class="container" *ngIf="hotelList != undefined">
+    <div class="datas">
+        <div class="filter">
+            <select [(ngModel)]="filters">
+                <option value="All"> All </option>
+                <option *ngFor="let item of hotelCategories" value="{{item.HotelCategoryName}}"> {{item.HotelCategoryName}}</option>
+            </select>
+        </div>
+        <table>
+            <tr>
+                <th> Hotel Image</th>
+                <th> Hotel Location </th>
+                <th> Hotel rating</th>
+                <th> Hotel Address</th>
+                <th> Hotel Facilities</th>
+                <th> Hotel Room Type </th>
+                <th> Hotel Information </th>
+                <th> Update</th>
+                <th> Delete </th>
+            </tr>
+            <tr *ngFor="let item of (hotelList | manageHotel : filters); let i = index">
+                <td *ngIf="getCan(i)" > <img src="{{item.Hotel.HotelPicture}}" class="hotelPict">  </td>
+                <td *ngIf="getCan(i)"> {{item.Hotel.HotelArea.HotelAreaName}}</td>
+                <td *ngIf="getCan(i)"> {{item.Hotel.HotelRating}}</td>
+                <td *ngIf="getCan(i)"> {{item.Hotel.HotelAddress}}</td>
+                <td *ngIf="getCan(i)"> 
+                    <div *ngFor="let facilities of item.HotelFacilityList">
+                        <img src="{{facilities.HotelFacilityPicture}}" alt="" class="imgFacility">
+                    </div>
+                </td>
+                <td *ngIf="getCan(i)"> {{item.Hotel.HotelCategory.HotelCategoryName}}</td>
+                <td *ngIf="getCan(i)"> {{item.Hotel.HotelInformation}}</td>
+                <td *ngIf="getCan(i)"> 
+                    <button (click) = "update(item)"> Update </button>
+                </td>
+                <td *ngIf="getCan(i)">
+                    <button (click) = "delete(item)"> Delete </button>
+                </td>
+            </tr>
+        </table>
+        <div class="prev-next">
+            <div>
+                <button (click)="previous()"> Previous </button>
+            </div>
+            <div>
+                <button (click)="next()"> Next </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="insertForm">
+        <div class="header-insert"> Insert Form </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Name
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="htlName">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Image
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="htlImage">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Location
+            </div>
+            <div class="right">
+                <select [(ngModel)]="slctLocation">
+                    <option *ngFor="let item of hotelArea" value="{{item.HotelAreaName}}"> {{item.HotelAreaName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Rating
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="htlRating">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Address
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="htlAddress">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Facilities
+            </div>
+            <div class="right">
+                <div *ngFor="let item of hotelFacilities; let i = index">
+                    <input type="checkbox" (click)="chckHotelFacility(i)" value="{{item.HotelFacilityName}}"> {{item.HotelFacilityName}}
+                </div> 
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Room Type
+            </div>
+            <div class="right">
+                <select [(ngModel)]="slctRoomType">
+                    <option *ngFor="let item of hotelCategories" value="{{item.HotelCategoryName}}">{{item.HotelCategoryName}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Hotel Information
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="htlInfo">
+            </div>
+        </div>
+        <div class="error-msg">
+            {{errorMsg}}
+        </div>
+        <div class="insert-button">
+            <button (click)="insert()"> Insert </button>
+        </div>
+    </div>
+</div>

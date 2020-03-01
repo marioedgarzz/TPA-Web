@@ -1,0 +1,34 @@
+<div id="slider">
+    <figure>
+        <img src="../../../../assets/slider/slider1.jpg" alt="">
+        <img src="../../../../assets/slider/slider2.jpg" alt="">
+        <img src="../../../../assets/slider/slider3.jpg" alt="">
+        <img src="../../../../assets/slider/slider4.jpg" alt="">
+        <img src="../../../../assets/slider/slider1.jpg" alt="">
+    </figure>
+</div>
+
+<body>
+    <div class="promotion">
+        <img src="../../../../assets/quickCard/event-logo.png">
+        <div> Your unforgettable experience starts here </div>
+    </div>
+
+    <div class="searchs">
+        <div class="searchCategory">
+            <select name="slctCategory" id="">
+                <option value="all"> All </option>
+                <option value="activities"> Activities</option>
+                <option value="attractions"> Attractions</option>
+                <option value="event"> Event</option>
+            </select>
+        </div>
+        <div class="search-input">
+            <input type="text" [(ngModel)]="txtSearch"
+                placeholder="Search by destinations, events, attractions, etc.">
+        </div>
+    </div>
+    <div class="button-container">
+        <button (click)="searchEvent()"> Search Events </button>
+    </div>
+</body>

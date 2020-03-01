@@ -1,0 +1,207 @@
+$grey : #8a93a7;
+* {
+    font-family: sans-serif;
+}
+
+body {
+    width : 100%;
+}
+
+.promotion {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    .leftP {
+        display: flex;
+        align-items: center;
+        font-size: 32px;
+        font-weight: 500;
+        img {
+            border-radius: 100px;
+            border: 1px solid black;
+            background: rgb(251, 56, 126);
+            width: 35px;
+            min-width: 35px;
+            height : auto;
+            padding:10px;
+            margin-right: 10px;
+        }
+    }
+    .rightP {
+        display: flex;
+        align-items: center; 
+        * {
+            font-size: 18px;
+        }
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    button {
+        background-color: #fedd00;
+        color: #0064d2;
+        font-size : 16px;
+        padding : 12px 24px;
+        margin:12px;
+        border-radius: 24px;
+    }
+}
+
+@media(max-width: 420px) {
+    .promotion {
+        flex-direction : column;
+    }
+    .rightP {
+        margin: 10px;
+        width: 100%;
+        justify-content: flex-end;
+    }
+}
+
+.quickForm {
+    display: flex;
+    width:100%;
+    margin-top: 10px; 
+    * {
+        font-size: 18px;
+    }
+}
+
+.destClass {
+    width:100%;
+    padding: 10px;
+    font-size: 16px;
+    font-family: sans-serif;
+    border: 1px solid $grey;
+    div {
+        padding: 10px;
+        color: $grey;
+    }
+    
+}
+
+.destBottom {
+    display: flex;
+    img {
+        width: 40px;
+        margin-right: 10px;
+    }
+    .inputDest {
+        input {
+            width: 100%;
+            border: none;        
+        }
+    }
+}
+
+.checkInCheckOut {
+    border: 1px solid $grey;
+    display: flex;
+    color: $grey;
+    .checkIn {
+        padding: 10px;
+        div {
+            margin: 10px;
+        }
+        .checkInInput {
+            width: 100%;
+            margin: 10px;
+            padding-top: 10px;
+            display: flex;
+            img {
+                margin-right: 10px;
+                width: 30px;
+            }
+        }
+    }
+    .nights {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        .night-content {
+            padding: 10px;
+            display: flex;
+            img {
+                width: 30px;
+                margin-right: 10px;
+            }
+            label {
+                display: flex;
+                align-items: center;
+            }
+        }
+        .night-text {
+            display: flex;
+            justify-content: center;
+            padding: 5px;
+        }
+    }
+    .checkOut {
+        padding: 10px;
+        div {
+            margin: 10px;
+        }
+        .checkOutInput {
+            width: 100%;
+            margin: 10px;
+            padding-top: 10px;
+            display: flex;
+            img {
+                margin-right: 10px;
+                width: 30px;
+            }
+        }
+    }
+}
+
+.guestAndRoom {
+    width:100%;
+    border: 1px solid $grey;
+    color : $grey;
+    padding: 10px;
+    div {
+        margin: 5px;
+    }
+    .guestAndRoomInput {
+        display: flex;
+        align-items: center;
+        .gar-contents {
+            display: flex;
+            .guestInput .roomInput{
+                display: flex;
+                flex-direction: column;
+            }
+        }
+        
+        img {
+            width: 30px;
+            padding: 10px;
+        }
+    }
+}
+
+@media(max-width: 1400px) {
+    .quickForm {
+        flex-wrap: wrap;
+    }
+    .destClass {
+        width: 100%;
+    }
+    .checkInCheckOut {
+        width: 100%;
+    }
+    .guestAndRoom {
+        width: 100%;
+    }
+}
+
+@media(max-width: 650px) {
+    .gar-contents {
+        flex-direction: column;
+    }
+    .checkInCheckOut {
+        flex-wrap: wrap;
+    }
+}

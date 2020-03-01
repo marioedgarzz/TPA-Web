@@ -1,0 +1,43 @@
+<body>
+    <div class="header"> Update Train </div>
+    <label> Before : </label>
+    <div class="before">
+        <div> Train Name : {{trainSchedule.Train.TrainName}}</div>
+        <div> Depart Time : {{trainSchedule.TrainTimeFrom}}</div>
+        <div> Arrive Time : {{trainSchedule.TrainTimeTo}}</div>
+        <div> Train Type : {{trainSchedule.TrainClass.TrainClassName}} </div>
+    </div>
+    <label> After : </label>
+    <div class="after">
+        <div class="input-detail">
+            <div> Train Name </div>
+            <div class="input-name"> 
+                <select [(ngModel)]="slctName">
+                    <option *ngFor="let item of trainNameList" value="{{item.TrainName}}"> {{item.TrainName}}</option>
+                </select> 
+            </div>
+        </div>
+        <div class="input-detail">
+            <div> Depart Time </div>
+            <div> <input type="text" [(ngModel)]="trainTimeFrom"> </div>
+        </div>
+        <div class="input-detail">
+            <div> Arrive Time </div>
+            <div> <input type="text" [(ngModel)]="trainTimeTo"> </div>
+        </div>
+        <div class="input-detail">
+            <div> Train Type </div>
+            <div> 
+                <select [(ngModel)]="slctType">
+                    <option *ngFor="let item of trainClassList" value="{{item.TrainClassName}}"> {{item.TrainClassName}} </option>
+                </select>
+            </div>
+        </div>
+        <div class="error-msg">
+            {{errorMsg}}
+        </div>
+        <div class="update-button">
+            <button (click)="update()"> Update </button>
+        </div>
+    </div>
+</body>

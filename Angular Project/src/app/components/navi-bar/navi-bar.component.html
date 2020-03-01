@@ -1,0 +1,106 @@
+<div id="google_translate_element"></div>
+
+<div class="firstHeaderDisplay">
+    <div class="firstHeaderLeft">
+        <a href="https://en.tiket.com/mobile-apps"> Download tiket.com App </a>
+        <a [routerLink]="['/promo/1']"> Promos </a>
+        <a href="https://en.tiket.com/help-center"> Help Center </a>
+    </div>
+    <div class="headerRight">
+        <div class="language">
+            <div class="language-header" (click)="showLanguage()">
+                <div class="imgFlag">
+                    <img src="../../../assets/navigation/us-flag.webp" *ngIf="language == 'English'">
+                    <img src="../../../assets/navigation/id-flag.webp" *ngIf="language == 'Indonesia'">
+                </div>
+                <div class="dropdown-symbol"> 
+                    <img src="../../../assets/utility/dropdown-icon.png" alt=""> 
+                </div>
+            </div>
+            <div class="language-dropdown" *ngIf="showDropdownLanguage">
+                <div class="language-detail">
+                    <div class="imgFlag">
+                        <img src="../../../assets/navigation/us-flag.webp" >
+                    </div>
+                    <div class="txtFlag">
+                        English
+                    </div>
+                </div>
+                <div class="language-detail">
+                    <div class="imgFlag">
+                        <img src="../../../assets/navigation/id-flag.webp" alt="">
+                    </div>
+                    <div class="txtFlag">
+                        Indonesia
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="currency">
+            <div class="currency-header" (click)="showCurrency()">
+                <div class="txtCurrency"> {{currency}} </div>
+                <div class="dropdown-symbol"> 
+                    <img src="../../../assets/utility/dropdown-icon.png" alt=""> 
+                </div>
+            </div>
+            <div class="currency-detail" *ngIf="showDropdownCurrency">
+                <div class="detail" (click) = "changeCurrency('IDR')">
+                    IDR - Indonesia Rupiah
+                </div>
+                <hr>
+                <div class="detail" (click) = "changeCurrency('USD')">
+                    USD - US Dollars
+                </div>
+                <hr>
+                <div class="detail" (click) = "changeCurrency('SGD')">
+                    SGD - Singapore Dollars
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-transparent-overlay *ngIf="makeTransparent" (click)="disposeTransparent()"></app-transparent-overlay>
+<div class="headerDisplay">
+    <div class="headerLeft">
+        <img src="../../../assets/navigation/logo.png" class="imgClass" [routerLink]="['/']">
+        <a [routerLink]="['/flight']"> Flight </a>         
+        <a [routerLink]="['/hotel']"> Hotel </a>
+        <a [routerLink]="['/train']"> Train </a>
+        <a [routerLink]="['/car-rental']"> Car Rental </a>
+        <a [routerLink]="['/event']"> Entertainment </a>
+    </div>
+    
+    <div class="headerRight">
+        <a [routerLink]="['/']"> Tix Point </a>
+        <a [routerLink]="['/']"> Check Order </a>
+        <a (click)="openDialog()" style="cursor:pointer" *ngIf="!loggedIn"> Login </a>
+        <div class="centerize" *ngIf="!loggedIn">
+            <button class="regButStyle" (click)="openDialog()"> Register </button>
+        </div>
+        <div *ngIf="loggedIn" class="toColumn">
+            <div id="loggedInId" (click)="showProfile()">
+                <div class="user-initial-init">
+                    {{UserInitial}}
+                </div>
+                <div class="menu-profile" *ngIf="showPrf">
+                    <div class="user-data">
+                        <div class="user-initial">
+                            {{UserInitial}}
+                        </div>
+                        <div class="username">
+                            {{username}}
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="selection">
+                        <a [routerLink]="['/profile']" > My Account </a> 
+                    </div>
+                </div>
+            </div>
+            <div class="centerizeButton">
+                <button class="regButStyle" (click)="logout()"> Logout </button>
+            </div>
+        </div>
+        
+    </div>
+</div>  

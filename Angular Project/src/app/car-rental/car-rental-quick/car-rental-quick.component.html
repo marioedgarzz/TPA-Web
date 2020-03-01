@@ -1,0 +1,64 @@
+<body>
+    <div class="promotion">
+        <div class="leftP">
+            <img src="../../../../assets/quickCard/car-logo.png">
+            <div> Find Car Rentals Deals Here </div>
+        </div>
+        <div class="rightP">
+            <a [routerLink]="['/']"> Recently searched > </a>
+        </div>    
+    </div>
+    <div class="quickForm">
+        <div class="rentLocation">
+            <div> Rental Location </div>
+            <div class="rentBottom">
+                <img src="../../../../assets/quickCard/location.png" alt="">
+                <div class="inputLocation">
+                    <input type="text" placeholder="Where do you want to rent?" [(ngModel)]="txtPlace">
+                </div>
+            </div>
+        </div>
+        <div class="startEndDate">
+            <div class="startDate">
+                <div> Start Date </div>
+                <div class="startDateInput">
+                    <img src="../../../../assets/quickCard/baggage.png">
+                    <input type="date" name="startRentDate" [(ngModel)]="dateFrom">
+                </div>
+            </div>
+            <div class="days">
+                <div class="day-content">
+                    <label name="dayCount"> 1 </label>
+                </div>
+                
+                <div class="day-text"> Days </div>
+            </div>
+            <div class="endDate">
+                <div> End Date </div>
+                <div class="endDateInput">
+                    <img src="../../../../assets/quickCard/baggage.png">
+                    <input type="date" name="endRentDate" [(ngModel)]="dateTo">
+                </div>
+            </div>
+        </div>
+        <div class="numberOfCar">
+            <div class="noc-text"> Number of Car </div>
+            <div class="noc-input">
+                <img src="../../../../assets/quickCard/car-logo.png">
+                <div class="noc-input-contents">
+                    <input type="number" [(ngModel)]="numCars">
+                    <div> cars </div>
+                </div>
+            </div>
+        </div>
+        <div class="rentNoDriver">
+            <div class="rnd-text"> Rent Car Without Driver </div>
+            <input type="checkbox" name="chckRentNoDriver">
+        </div>
+    </div>
+    <div class="button-container">
+        <button (click)="search()"> Search Cars </button>
+    </div>
+</body>
+
+

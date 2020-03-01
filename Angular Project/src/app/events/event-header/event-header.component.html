@@ -1,0 +1,66 @@
+<app-event-quick></app-event-quick>
+<div class="parts">
+    <div class="header">
+        Best Offer
+    </div>
+    <div class="subheader">
+        Find best offer available
+    </div>
+    <div class="contents">
+        <div class="content-detail" *ngFor="let item of allEventList; let i = index" >
+            <div *ngIf="i < 3">
+                <div> {{item.EventName }}</div>
+                <img src="{{item.EventPicture}}" alt="">
+                <div> Price : {{item.EventPrice }}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="parts">
+    <div class="header">
+        Trending Activities
+    </div>
+    <div class="subheader">
+        Find the most loved and enjoyed activities
+    </div>
+    <div class="contents">
+        <div class="content-detail" *ngFor="let item of activitiesList" >
+            <div> {{item.EventName }}</div>
+            <img src="{{item.EventPicture}}" alt="">
+            <div> Price : {{item.EventPrice }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="parts">
+    <div class="header">
+        Trending Attractions
+    </div>
+    <div class="subheader">
+        Find the most loved and enjoyed attractions
+    </div>
+    <div class="contents">
+        <div class="content-detail" *ngFor="let item of attractionList">
+            <div> {{item.EventName }}</div>
+            <img src="{{item.EventPicture}}" alt="">
+            <div> Price : {{item.EventPrice }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="parts">
+    <div class="header">
+        Trending Events
+    </div>
+    <div class="subheader">
+        Find the most loved and enjoyed events
+    </div>
+    <div class="contents">
+        <div class="content-detail" *ngFor="let item of eventsList">
+            <div> {{item.EventName }}</div>
+            <img src="{{item.EventPicture}}" alt="">
+            <div> Price : {{item.EventPrice }}</div>
+        </div>
+    </div>
+</div>

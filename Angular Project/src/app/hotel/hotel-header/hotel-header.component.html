@@ -1,0 +1,289 @@
+<app-quick-card></app-quick-card>
+<app-transparent-overlay *ngIf="show_overlay" (click) = "hide_overlay()"></app-transparent-overlay>
+<div class="proxy" *ngIf="hotelList == undefined">
+    <img src="../../../assets/utility/loadingScreen.gif" alt="">
+</div>
+
+<div *ngIf="hotelList != undefined">
+    <div class="filter-class">
+        <div class="txt-filter"> Filters </div>
+        <div class="expansion"> 
+            <div class="header-dropdown" (click) = "clickDropDown(1)">
+                <div class="left-header">
+                    <div><img src="../../../assets/hotel/price-tag.png" alt=""></div>
+                    <div> Price </div>
+                </div>
+                <div class="right-header">
+                    <img src="../../../assets/utility/dropdown-icon.png" alt="">
+                </div>
+            </div>
+            <div class="dropdown-detail" *ngIf="dropDown[0]">
+                <div class="price-header">
+                    <div class="left-header"> Price Range Per Night </div>
+                    <div class="right-header"> Reset </div>
+                </div>
+                <div class="price-range">
+                    <div class="range">
+                        <div class="low-range">
+                            Low : IDR {{minValue}}
+                        </div>
+                        <div class="mat-container">
+                            <mat-slider (input)="onInputChangeMin($event)" 
+                                min="0" max="15000000" step="10000" value="10000" class="mat-slide"></mat-slider>
+                        </div>
+                    </div>
+                    <div class="range">
+                        <div class="high-range">
+                            High : IDR {{maxValue}}
+                        </div>
+                        <div class="mat-container">
+                            <mat-slider (input)="onInputChangeMax($event)" 
+                                min="0" max="15000000" step="10000" value="15000000" class="mat-slide"></mat-slider>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="expansion">
+            <div class="header-dropdown" (click) = "clickDropDown(2)">
+                <div class="left-header">
+                    <div><img src="../../../assets/hotel/location.png" alt=""></div>
+                    <div> Area </div>
+                </div>
+                <div class="right-header">
+                    <img src="../../../assets/utility/dropdown-icon.png" alt="">
+                </div>
+            </div>
+            <div class="dropdown-detail" *ngIf="dropDown[1]">
+                <div class="area-header">
+                    <div class="left-header"> Places in {{location}}</div>
+                    <div class="right-header" (click)="resetArea()"> Reset </div>
+                </div>
+                <div class="location-container">
+                    <div class="location-list" *ngFor="let area of hotelAreaByPlace ; let i = index">
+                        <div class="checkbox-container"> 
+                            <input type="checkbox" (change)="changeArea(i)" name="chkBoxArea">
+                        </div>
+                        <div class="place-container">
+                            {{area.HotelAreaName}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="expansion"> 
+            <div class="header-dropdown" (click) = "clickDropDown(3)">
+                <div class="left-header">
+                    <div><img src="../../../assets/hotel/star-black.png" alt=""></div>
+                    <div> Hotel Star </div>
+                </div>
+                <div class="right-header">
+                    <img src="../../../assets/utility/dropdown-icon.png" alt="">
+                </div>
+            </div>
+            <div class="dropdown-detail" *ngIf="dropDown[2]">
+                <div class="star-header">
+                    <div class="left-header"> Hotel Rating </div>
+                    <div class="right-header"> Reset </div>
+                </div>
+                <div class="star-container">
+                    <div class="star-content">
+                        <div class="checkbox-container">
+                            <input type="checkbox" (click)="filterRate(0)">
+                        </div>
+                        <div>
+                            1 - 4
+                        </div>
+                    </div>
+                    <div class="star-content">
+                        <div class="checkbox-container">
+                            <input type="checkbox" (click)="filterRate(1)">
+                        </div>
+                        <div>
+                            5 - 7
+                        </div>
+                    </div>
+                    <div class="star-content">
+                        <div class="checkbox-container">
+                            <input type="checkbox" (click)="filterRate(2)">
+                        </div>
+                        <div>
+                            8 - 10
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="expansion"> 
+            <div class="header-dropdown" (click) = "clickDropDown(4)">
+                <div class="left-header">
+                    <div> More Filters </div>
+                </div>
+                <div class="right-header">
+                    <img src="../../../assets/utility/dropdown-icon.png" alt="">
+                </div>
+            </div>
+            <div class="dropdown-detail" *ngIf="dropDown[3]" style="width: 400px">
+                <div class="more-container">
+                    <div class="more-filters">
+                        <div class="more-detail">
+                            <div class="more-detail-header">
+                                Hotel Name
+                            </div>
+                            <div *ngFor="let item of hotelNameListByLocation; let i = index" class="more-content">
+                                <div class="no-facility" *ngIf="i < 3 || canShow == true">
+                                    <div class="checkbox-container">
+                                        <input type="checkbox" (change)="changeHotelNameFilter(i)">
+                                    </div>
+                                    <div class="checkbox-content">
+                                        {{item.HotelName}}    
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="canShow == false" style="color: blue; text-decoration: underline; cursor: pointer;"
+                                (click)="showMore()">
+                                Read More
+                            </div>
+                        </div>
+                        <div class="more-detail">
+                            <div class="more-detail-header">
+                                Hotel Area
+                            </div>
+                            <div *ngFor="let item of hotelAreaByPlace; let i = index" class="more-content">
+                                <div class="no-facility">
+                                    <div class="checkbox-container">
+                                        <input type="checkbox" (change)="changeArea(i)">
+                                    </div>
+                                    <div class="checkbox-content">
+                                        {{item.HotelAreaName}}    
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="more-detail">
+                            <div class="more-detail-header">
+                                Hotel Facility
+                            </div>
+                            <div *ngFor="let item of hotelFacilities; let i = index" class="more-content">
+                                <div class="facility-class">
+                                    <input type="checkbox" (change)="facilityFilter(i)">
+                                    <img src="{{item.HotelFacilityPicture}}" alt="">
+                                    <div> {{item.HotelFacilityName}} </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="static-bottom">
+                        <button class="reset"> Reset </button>
+                        <button class="apply"> Apply </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    <div class="main-content">
+        <div class="left-content">
+            <div class="img-map">
+                <div class="center-map" (click) = "redirectMap()">
+                    <div><img src="../../../assets/hotel/location.png" alt=""></div>
+                    <div> Map View </div>
+                </div>
+            </div>
+            <mat-expansion-panel> 
+                <mat-expansion-panel-header >
+                    <mat-panel-title >
+                        Sort By
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="select-search" *ngFor="let item of sortList">
+                    <div class="input-radio">
+                        <input type="radio" name="rdSort" (change)="changeSort(item)">
+                    </div>
+                    <div class="txt-radio">
+                        {{item}}
+                    </div>
+                </div>
+                
+            </mat-expansion-panel>
+        </div>
+        <div class="right-content">
+            <div class="right-header">
+                <div class="left"> 
+                    Showing 10.000+ best accomodation with best deals
+                </div>
+                <div class="right">
+                    <div class="txt-price"> Price Display: </div>
+                    <div class="filter">
+                        <div class="header-filter" (click)="filterPrice()">
+                            <div> Per Room Per Night </div>
+                            <div>
+                                <img src="../../../assets/utility/dropdown-icon.png" alt="">
+                            </div>
+                        </div>
+                        <div class="detail-filter" *ngIf="showPrice">
+                            <div class="filter-class">
+                                <div>
+                                    <input type="radio" name="filter-price-radio" (click)="changePriceBasedOn(0)">
+                                </div>
+                                Per Room Per Night
+                            </div>
+                            <div class="filter-class">
+                                <div>
+                                    <input type="radio" name="filter-price-radio" (click)="changePriceBasedOn(1)">
+                                </div>
+                                Total Price
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="notifyMessage"> {{notifyMessage}}</div>
+
+            <div class="hotel-detail" *ngFor="let item of (hotelList | hotelPipe : minValue :  maxValue : 
+            hotelNameListByLocation : filterHotelName :  filterRating :  hotelAreaByPlace :
+             filterHotelArea : hotelFacilities : filterHotelFacilities : filterPriceBasedOn : sortList : filterSort)">
+                <div class="image">
+                    <img src="{{item.Hotel.HotelPicture}}" alt="">
+                </div>
+                <div class="hotel-content">
+                    <div class="hotel-name"> {{item.Hotel.HotelName}} </div>
+                    <div class="star-and-place">
+                        <div class="star-rating">
+                            Rating : {{item.Hotel.HotelRating}}
+                        </div>
+                        <div class="place"> 
+                            {{item.Hotel.HotelArea.HotelAreaName}}
+                        </div>
+                    </div>
+                    <div class="hotel-facilities">
+                        <div class="hotel-facility"  *ngFor="let facility of item.HotelFacilityList">
+                            <div>
+                                <img src="{{facility.HotelFacilityPicture}}" alt="">
+                            </div> 
+                        </div>
+                    </div>
+                    <div style="margin: 10px; color: #F15C59;">
+                        {{item.Hotel.HotelLeft}} Hotels Left
+                    </div>
+                    <div class="hotel-header-price">
+                        <div class="hotel-detail-price">
+                            <div class="hotel-currency">
+                                IDR 
+                            </div>
+                            <div class="hotel-price">
+                                {{item.Hotel.HotelPrice}} -> {{item.Hotel.HotelDiscountPrice}}
+                            </div>
+                        </div>
+                        <div class="mini-text">
+                            {{item.Hotel.HotelPriceBasedOn}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

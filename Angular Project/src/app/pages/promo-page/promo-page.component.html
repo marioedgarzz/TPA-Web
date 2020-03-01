@@ -1,0 +1,75 @@
+<div class="image">
+    <img src="{{currPromo.PromoPicture}}" alt="">
+</div>
+
+<div class="promo">
+    <div class="header-promo">
+        {{currPromo.PromoHeader}}
+    </div>
+    <div class="detail-promo"> 
+        {{currPromo.PromoDescription}}
+    </div>
+    <div class="promo-component">
+        <div class="left">
+            Promo Period 
+        </div>
+        <div class="right">
+            {{currPromo.PromoTripPeriod}}
+        </div>
+    </div>
+    <div class="promo-component">
+        <div class="left">
+            Trip Period 
+        </div>
+        <div class="right">
+            {{currPromo.PromoTrip}}
+        </div>
+    </div>
+    <div class="promo-component">
+        <div class="left">
+            Platform
+        </div>
+        <div class="right">
+            {{currPromo.PromoPlatform}}
+        </div>
+    </div>
+
+    <div class="promo-component">
+        <div class="left">
+            Promo Code
+        </div>
+        <div class="right">
+            {{currPromo.PromoCode}}
+        </div>
+    </div>
+    <div class="promo-component">
+        <div class="left">
+            Promo Description
+        </div>
+        <div class="right">
+            {{currPromo.PromoCodeDescription}}
+        </div>
+    </div>
+    <div id="share">
+   
+    </div>
+    <div> Share promo via this link : </div>
+    <input type="text" value="{{url}}" id="myInput" readonly style="margin: 10px;">
+    <button id="btnCopy" data-clipboard-target="#myInput"> Copy Link </button>
+</div>
+
+<div class="other-header"> Other Promo </div>
+
+<div class="others">
+    <div class="other-promos" *ngFor="let item of promos" (click)="redirect(item)">
+        <div class="image-other">
+            <img src="{{item.PromoPicture}}" alt="">
+        </div>
+        <div class="other-name">
+            {{item.PromoHeader}}
+        </div>
+    </div>
+</div>
+
+
+

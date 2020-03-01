@@ -1,0 +1,73 @@
+<div>
+<mat-expansion-panel> 
+    <mat-expansion-panel-header >
+        <mat-panel-title >
+            <h3>Language</h3>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <mat-form-field>
+        <mat-label> Language </mat-label>
+        <mat-select [(value)]="slctLanguage" >
+            <mat-option value="English"> English</mat-option>
+            <mat-option value="Indonesia"> Indonesia</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class="btnUpdate">
+        <button (click)="updateLanguage()"> Update </button>
+    </div>
+</mat-expansion-panel>
+<div class="subscribe-newsletter">
+    <div class="left">
+        <h3> Subscribe Newsletter </h3>
+        <div> Be the first to know tiket.com promos, best deals and offers </div>
+    </div>
+    <div class="right">
+        <input type="checkbox">
+    </div>
+</div>
+<hr>
+<mat-expansion-panel> 
+    <mat-expansion-panel-header >
+        <mat-panel-title >
+            <h3> Email and Phone Number </h3>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="datas">
+        <div class="header"> Mobile Number </div>
+        <div class="content"> {{user.UserPhoneNumber}} </div>
+        <div id="validatePhone"> 
+            {{isValidPhone}}
+        </div>
+    </div>
+    <div class="datas">
+        <div class="header"> Email </div>
+        <div class="content"> {{user.UserEmail}} </div>
+    </div>
+</mat-expansion-panel>
+<mat-expansion-panel> 
+    <mat-expansion-panel-header >
+        <mat-panel-title >
+            <h3>Change Password</h3>
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="pass">
+        <div class="input-pass">
+            <input type="password" placeholder="Current Password">
+        </div>
+        <div class="image">
+            <img src="../../../assets/account/hide-password.png" alt="">
+        </div>
+    </div>
+    <div class="pass">
+        <div class="input-pass">
+            <input type="password" placeholder="New Password">
+        </div>
+        <div class="image">
+            <img src="../../../assets/account/hide-password.png" alt="">
+        </div>
+    </div>
+    <div class="button-apply">
+        <button (click)="changePassword()">Apply</button>
+    </div>
+</mat-expansion-panel>
+</div>

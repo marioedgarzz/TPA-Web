@@ -1,0 +1,50 @@
+<div class="account-page">
+    <div class="left">
+        <div class="account-name">
+            {{Username}}
+        </div>
+        <div class="verified">
+            Verified
+        </div>
+        <div class="menus">
+            <div class="submenu" (click)="account()">
+                <div class="img">
+                    <img src="../../../assets/profile/profile.png" alt="">
+                </div>
+                <div class="menu-txt">
+                    Account
+                </div>
+            </div>
+            <div class="submenu" (click)="myOrder()">
+                <div class="img">
+                    <img src="../../../assets/profile/myOrder.png" alt="">
+                </div>
+                <div class="menu-txt">
+                    My Order
+                </div>
+            </div>
+            <div class="submenu" (click)="settings()">
+                <div class="img">
+                    <img src="../../../assets/profile/settings.png" alt="">
+                </div>
+                <div class="menu-txt">
+                    Settings
+                </div>
+            </div>
+            <div class="submenu" (click)="logout()">
+                <div class="img">
+                    <img src="../../../assets/profile/logout.webp" alt="">
+                </div>
+                <div class="menu-txt">
+                    Logout
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="right">
+        <app-manage-account *ngIf="showManage">
+        </app-manage-account>
+        <app-settings-account *ngIf="showSetting"></app-settings-account>
+    </div>
+</div>
