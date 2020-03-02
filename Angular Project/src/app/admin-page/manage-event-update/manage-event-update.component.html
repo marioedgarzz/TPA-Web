@@ -1,0 +1,80 @@
+<body style="overflow: scroll;">
+    <div class="header"> Update Event </div>
+    <label> Before : </label>
+    <div class="before">
+        <div> Event Name : {{event.EventName}}</div>
+        <div> Event Location : {{event.EventLocation}}</div>
+        <div> Event Type : {{event.EventType}}</div>
+        <div> Event Price :  {{event.EventPrice}} </div>
+    </div>
+    <label> After : </label>
+    <div class="updateForm">
+        <div class="header-update"> Update Form </div>
+        <div class="form-detail">
+            <div class="left">
+                Event Name
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="evtName">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Event Location
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="evtLocation">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Event Category
+            </div>
+            <div class="right">
+                <select [(ngModel)]="slctType">
+                    <option value="Activities"> Activities </option>
+                    <option value="Attractions"> Attractions </option>
+                    <option value="Events"> Events </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Event Start Date
+            </div>
+            <div class="right">
+                <input type="date" [(ngModel)]="evtDateFrom">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Event Picture
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="evtPicture">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Event Description
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="evtDescription">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Event Terms & Condition
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="evtTermsAndCondition">
+            </div>
+        </div>
+        <div class="error-msg">
+            {{errorMsg}}
+        </div>
+        <div class="update-button">
+            <button (click)="update()"> Update </button>
+        </div>
+    </div>
+</body>

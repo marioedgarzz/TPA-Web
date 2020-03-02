@@ -5,6 +5,7 @@ import (
 	"github.com/marioedgarzz/backend-tpa/myGraphql/mutations/mutationResolvers/adminResolvers"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/mutations/mutationResolvers/transactionResolvers"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/mutations/mutationResolvers/userResolvers"
+	"github.com/marioedgarzz/backend-tpa/myGraphql/types/events"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/types/hotels"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/types/trains"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/types/transactions"
@@ -242,6 +243,78 @@ func GetRoot() *graphql.Object {
 				},
 				Resolve:           adminResolvers.DeleteHotel,
 				Description:       "Delete Hotel",
+			},
+			"insertNewEvent" : {
+				Type:              events.GetTypes(),
+				Args:              graphql.FieldConfigArgument{
+					"EventName" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"EventLocation" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"EventType" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"EventDateFrom" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"EventPicture" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"EventDescription" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"EventTermsAndCondition" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+				},
+				Resolve:           adminResolvers.InsertNewEvent,
+				Description:       "Insert New Event",
+			},
+			"updateEvent" : {
+				Type:              events.GetTypes(),
+				Args:              graphql.FieldConfigArgument{
+					"EventId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+					"EventName" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"EventLocation" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"EventType" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"EventCategory" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"EventDateFrom" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"EventPicture" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"EventDescription" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"EventTermsAndCondition" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+				},
+				Resolve:           adminResolvers.UpdateEvent,
+				Description:       "Update Event",
+			},
+			"deleteEvent" : {
+				Type:              events.GetTypes(),
+				Args:              graphql.FieldConfigArgument{
+					"EventId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+				},
+				Resolve:           adminResolvers.DeleteEvent,
+				Description:       "Delete Event",
 			},
 		},
 

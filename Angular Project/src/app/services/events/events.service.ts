@@ -27,6 +27,7 @@ export class EventsService {
             EventPicture
             EventPrice
             EventType
+            EventTermsAndCondition
           }
         }`
     }).valueChanges.pipe(
@@ -55,4 +56,76 @@ export class EventsService {
   public static setDateTransfer(date : string) {
     sessionStorage.setItem("event-date-transfer",date);
   }
+
+  insertNewEvent(EventName : string,EventLocation : string, EventCategory : string, EventDateFrom : string,
+    EventPicture : string, EventDescription : string, EventTermsAndCondition : string): Observable<any> {
+      return this.apollo.mutate<any>({
+        mutation : gql `
+        mutation insertNewEvent($eventName : String, $eventLocation : String,
+          $eventType : String, $eventDateFrom : String, $eventPicture : String,
+          $eventDescription : String, $eventTermsAndCondition : String) {
+            insertNewEvent(EventName : $eventName,EventLocation : $eventLocation,
+              EventType : $eventType,EventDateFrom : $eventDateFrom,
+              EventPicture : $eventPicture,EventDescription : $eventDescription,
+              EventTermsAndCondition: $eventTermsAndCondition) {
+              EventAddress
+            }
+          }
+        `,
+        variables : {
+          "eventName": EventName,
+          "eventLocation": EventLocation,
+          "eventType": EventCategory,
+          "eventDateFrom": EventDateFrom,
+          "eventPicture": EventPicture,
+          "eventDescription": EventDescription,
+          "eventTermsAndCondition": EventTermsAndCondition
+        }
+      })
+    }
+
+    UpdateEvent(EventId : number,EventName : string,EventLocation : string, EventCategory : string, EventDateFrom : string,
+      EventPicture : string, EventDescription : string, EventTermsAndCondition : string) : Observable<any>{
+        return this.apollo.mutate<any>({
+          mutation: gql `
+            mutation updateEvent($eventId : Int,$eventName : String, $eventLocation : String,
+              $eventType : String, $eventDateFrom : String, $eventPicture : String,
+              $eventDescription : String, $eventTermsAndCondition : String) {
+                updateEvent(EventId : $eventId ,EventName : $eventName,EventLocation : $eventLocation,
+                  EventType : $eventType,EventDateFrom : $eventDateFrom,
+                  EventPicture : $eventPicture,EventDescription : $eventDescription,
+                  EventTermsAndCondition: $eventTermsAndCondition) {
+                  EventAddress
+                }
+              }
+          `,
+          variables : {
+            "eventId" : EventId,
+            "eventName": EventName,
+            "eventLocation": EventLocation,
+            "eventType": EventCategory,
+            "eventDateFrom": EventDateFrom,
+            "eventPicture": EventPicture,
+            "eventDescription": EventDescription,
+            "eventTermsAndCondition": EventTermsAndCondition
+          }
+        })
+      }
+
+    deleteEvent(EventId : number) : Observable<any> {
+      return this.apollo.mutate<any>({
+        mutation : gql`
+          mutation deleteEvent($eventId : Int) {
+            deleteEvent(EventId : $eventId) {
+              EventAddress
+            }
+          }
+        `,
+        variables : {
+          "eventId" : EventId
+        }
+      })
+    }
+
+  
 }

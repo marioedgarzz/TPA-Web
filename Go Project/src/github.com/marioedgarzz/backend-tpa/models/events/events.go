@@ -3,6 +3,7 @@ package events
 import (
 	"github.com/jinzhu/gorm"
 	"github.com/marioedgarzz/backend-tpa/database"
+	"time"
 )
 
 type Events struct {
@@ -21,7 +22,6 @@ type Events struct {
 
 func InitEvents(db *gorm.DB) {
 	db.AutoMigrate(&Events{})
-
 }
 
 
@@ -41,8 +41,8 @@ func GetAllEvents() ([]Events, error){
 	return events, nil
 }
 
-func InsertNewEvent(EventName string,EventLocation string, EventCategory string, EventDateFrom string, EventCode string,
-	EventCodeDescription string, EventPicture string, EventDescription string, EventTermsAndCondition string) (interface{}, error){
+func InsertNewEvent(EventName string,EventLocation string, EventCategory string, EventDateFrom string,
+	EventPicture string, EventDescription string, EventTermsAndCondition string) (*Events, error){
 
 	db, err := database.Connect()
 
@@ -59,10 +59,56 @@ func InsertNewEvent(EventName string,EventLocation string, EventCategory string,
 		EventPrice:             100000,
 		EventDateFrom:          EventDateFrom,
 		EventDateTo:            EventDateFrom,
-		EventType:              "",
-		EventAddress:           "",
-		EventDescription:       "",
-		EventTermsAndCondition: "",
+		EventType:              EventCategory,
+		EventAddress:           "Jl. Insert",
+		EventDescription:       EventDescription,
+		EventTermsAndCondition: EventTermsAndCondition,
 	}
 
+	db.Create(&event)
+
+	return &event,nil
+}
+
+func UpdateEvent(EventId int,EventName string,EventLocation string, EventCategory string, EventDateFrom string,
+	EventPicture string, EventDescription string, EventTermsAndCondition string) ([]Events, error) {
+
+	db, err := database.Connect()
+
+	if err != nil {
+		return nil, err
+	}
+
+	defer db.Close()
+
+	var events []Events
+
+	db.Model(&events).Where("event_id = ?", EventId).UpdateColumns(Events{
+		EventName:              EventName,
+		EventPicture:           EventPicture,
+		EventLocation:          EventLocation,
+		EventPrice:             100000,
+		EventDateFrom:          EventDateFrom,
+		EventDateTo:            time.Now().AddDate(0,0,1).String(),
+		EventType:              EventCategory,
+		EventAddress:           "Jl. Insert",
+		EventDescription:       EventDescription,
+		EventTermsAndCondition: EventTermsAndCondition,
+	})
+
+	return events, nil
+}
+
+func DeleteEvent(EventId int) (interface{}, error) {
+	db, err := database.Connect()
+
+	if err != nil {
+		return nil, err
+	}
+
+	defer db.Close()
+
+	db.Where("event_id = ?",EventId).Delete(Events{})
+
+	return Events{}, nil
 }

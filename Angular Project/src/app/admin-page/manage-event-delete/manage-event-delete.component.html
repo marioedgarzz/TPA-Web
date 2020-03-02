@@ -1,0 +1,50 @@
+<body>
+    <div class="header">
+        Are you sure you want to delete this data?
+    </div>
+    <div class="test">
+        <div class="detail">
+            <div class="details">
+                <div class="left">
+                    Event Name : 
+                </div>
+                <div class="right">
+                    {{event.EventName}}
+                </div>
+            </div>
+            <div class="details">
+                <div class="left">
+                    Event Location : 
+                </div>
+                <div class="right">
+                    {{event.EventLocation}}
+                </div>
+            </div>
+            <div class="details">
+                <div class="left">
+                    Event Type : 
+                </div>
+                <div class="right">
+                    {{event.EventType}}
+                </div>
+            </div>
+            <div class="details">
+                <div class="left">
+                    Event Price : 
+                </div>
+                <div class="right">
+                    {{event.EventPrice}}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="buttons">
+        <div>
+            <button (click)="yes()"> Yes </button>
+        </div>
+        <div>
+            <button (click)="no()"> No </button>
+        </div>
+    </div>
+</body>

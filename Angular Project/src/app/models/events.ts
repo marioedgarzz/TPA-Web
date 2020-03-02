@@ -9,5 +9,6 @@ export class Events {
 	EventDateFrom : string;
     EventAddress : string;
 	EventDateTo : string;
-	EventDescription : string;
+    EventDescription : string;
+    EventTermsAndDescription : string;
 }

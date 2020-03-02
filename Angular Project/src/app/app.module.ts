@@ -68,6 +68,9 @@ import * as $ from 'jquery';
 import { EventSearchPipe } from './pipes/event-search.pipe';
 import { EventDetailComponent } from './events/event-detail/event-detail.component';
 import { EventOrderComponent } from './events/event-order/event-order.component';
+import { ManageEventPipe } from './pipes/manage-event.pipe';
+import { ManageEventUpdateComponent } from './admin-page/manage-event-update/manage-event-update.component';
+import { ManageEventDeleteComponent } from './admin-page/manage-event-delete/manage-event-delete.component';
 
 @NgModule({
   declarations: [
@@ -122,7 +125,10 @@ import { EventOrderComponent } from './events/event-order/event-order.component'
     EventSearchComponent,
     EventSearchPipe,
     EventDetailComponent,
-    EventOrderComponent
+    EventOrderComponent,
+    ManageEventPipe,
+    ManageEventUpdateComponent,
+    ManageEventDeleteComponent
   ],
   entryComponents: [
     LoginDialogComponent,
@@ -130,7 +136,9 @@ import { EventOrderComponent } from './events/event-order/event-order.component'
     ManageTrainUpdateComponent,
     ManageTrainDeleteComponent,
     ManageHotelDeleteComponent,
-    ManageHotelUpdateComponent
+    ManageHotelUpdateComponent,
+    ManageEventDeleteComponent,
+    ManageEventUpdateComponent
   ],
   imports: [
     BrowserModule,
