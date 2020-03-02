@@ -51,6 +51,9 @@ func GetTypes() *graphql.Object {
 				"EventDescription" : &graphql.Field{
 					Type: graphql.String,
 				},
+				"EventTermsAndCondition" : &graphql.Field{
+					Type: graphql.String,
+				},
 			},
 			Description: "Get Event Types",
 		})

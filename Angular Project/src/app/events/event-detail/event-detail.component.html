@@ -1,0 +1,89 @@
+<div class="breadcrumbs">
+    <a [routerLink]="['/']"> Home </a>
+    >
+    <a [routerLink]="['/event']" > Entertainment </a>
+    >
+    {{currEvent.EventName}}
+</div>
+
+<div class="contents">
+    <div class="header-img">
+        <div class="image">
+            <img src="{{currEvent.EventPicture}}" alt="">
+        </div>
+        <div class="buy-class">
+            <div> IDR {{currEvent.EventPrice}}</div>
+            <div> <button (click)="redirect()"> Find Tickets </button></div>
+        </div>
+    </div>
+    <div class="details">
+        <div class="detail-hotel">
+            <div style="font-size: 18px;"> {{currEvent.EventName}}</div>
+            <div style="font-size: 14px; color: #888888"> {{currEvent.EventAddress}}</div>
+        </div>
+    </div>
+</div>
+<div class="map-container">
+    <div class="map-frame">
+        <div id="map"></div>
+    </div>
+</div>
+
+<div class="event-detail">
+    <div class="desc">
+        {{currEvent.EventDescription}}
+    </div>
+    <div class="price-and-btn">
+        <div class="price">
+            IDR {{currEvent.EventPrice}}
+        </div>
+        <div class="btn">
+            <button (click)="redirect()"> Buy Event </button>
+        </div>
+    </div>
+</div>
+
+<div>
+    <input type="date" [(ngModel)]="dateTransfer">
+</div>
+
+<div class="tab-pane">
+    <div class="header-tab">
+        <div (click)="open(1)"> Description </div>
+        <div (click)="open(2)"> Terms & Conditions </div>
+        <div (click)="open(3)"> Venue </div>
+    </div>
+    <div class="content-tab">
+        <div class="tabs" *ngIf="currOpened == 1">
+            {{currEvent.EventDescription}}
+        </div>
+        <div class="tabs" *ngIf="currOpened == 2">
+            <div class="tab-det">
+                Exchange time: - Monday - Sunday: 11.00 - 21.00 WIB
+            </div>
+            <div class="tab-det">
+                · Vouchers are valid on national holidays
+            </div>
+            <div class="tab-det">
+                · Vouchers include taxes and services
+            </div>
+            <div class="tab-det">
+                · Vouchers cannot be cashed
+            </div>
+            <div class="tab-det">
+                · Vouchers cannot be combined with other promotions
+            </div>
+            <div class="tab-det">
+                · Please reserve before arrival to number 022-205-36362
+            </div>
+        </div>
+        <div class="tabs" *ngIf="currOpened == 3">
+            <div class="tab-1">
+                {{currEvent.EventLocation}}
+            </div>
+            <div class="tab-2">
+                {{currEvent.EventAddress}}
+            </div>
+        </div>
+    </div>
+</div>

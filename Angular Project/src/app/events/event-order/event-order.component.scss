@@ -1,0 +1,64 @@
+* {
+    font-family: sans-serif;
+}
+
+.ticket-summary {
+    margin: 20px;
+    .header-ticket {
+        border: 1px solid black;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        font-size: 18px;
+        .right {
+            color : blue;
+            cursor: pointer;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    .ticket-detail {
+        width: 100%;
+        border: 1px solid black;
+        .detail-content {
+            .header {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                color : #888888
+            }
+            .contents {
+                color: #222222;
+            }
+        }
+    }
+}
+
+.person-data {
+    margin: 20px;
+    .header {
+        color : #222222;
+        font-size: 20px;
+        font-weight: 300;
+    }
+    .datas {
+        .content {
+            margin: 20px;
+        }
+    }
+
+}
+
+.proxy {
+    position: fixed;
+    background-color: white;
+    z-index: 200; 
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    img {
+        width: 100%;
+        height: 100%;
+    }
+}

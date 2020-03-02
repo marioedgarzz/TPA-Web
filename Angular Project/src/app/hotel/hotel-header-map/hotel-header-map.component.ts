@@ -52,17 +52,12 @@ export class HotelHeaderMapComponent implements OnInit {
       maxZoom : 19,
       attribution: '&copy; <a href="http://www.openstreetmap.org/copyright>OpenStreetMap</a>'
     });
-    console.log("yay")
     tiles.addTo(this.map)
     console.log(this.map)
-    console.log("di atas map")
     
   }
   ngAfterViewInit() {
     this.initMap();
-    console.log("init klr")
-    
-    console.log("mapservce")
     this.reload();
   }
 

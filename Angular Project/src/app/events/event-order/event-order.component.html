@@ -1,0 +1,97 @@
+<div class="ticket-summary">
+    <div class="header-ticket" (click)="showDetail()">
+        <div class="left">
+            {{currEvent.EventName}}
+        </div>
+        <div class="right">
+            View Detail
+        </div>
+    </div>
+    <div class="ticket-detail" *ngIf="isShowDetail">
+        <div class="detail-content">
+            <div class="header">
+                Ticket Type
+            </div>
+            <div class="contents">
+                {{currEvent.EventDescription}}
+            </div>
+        </div>
+        <div class="detail-content">
+            <div class="header">
+                Date
+            </div>
+            <div class="contents">
+                {{dateTransfer}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="person-data">
+    <div class="header">
+        Contact Person Details
+    </div>
+    <div class="datas">
+        <div class="content">
+            <div> Title </div>
+            <div>
+                <select [(ngModel)]="slctTitle">
+                    <option value="Mr."> Mr. </option>
+                    <option value="Mrs."> Mrs. </option>
+                    <option value="Ms."> Ms. </option>
+                </select>
+            </div>
+        </div>
+        <div class="content">
+            <input type="text" placeholder="First Name" [(ngModel)]="firstName">
+        </div>
+        <div class="content">
+            <input type="text" placeholder="Last Name" [(ngModel)]="lastName">
+        </div>
+        <div class="content">
+            <input type="text" placeholder="Phone Number" [(ngModel)]="phoneNumber">
+        </div>
+        <div class="content">
+            <input type="text" placeholder="Email" [(ngModel)]="email">
+        </div>
+    </div>
+</div>
+
+<div class="person-data">
+    <div class="header">
+        Data for person who will take the ticket
+    </div>
+    <button (click)="makeSame()" style="margin: 10px;"> Same as contact detail </button>
+    <div class="datas">
+        <div class="content">
+            <div> Title </div>
+            <div>
+                <select [(ngModel)]="slctTitle2">
+                    <option value="Mr."> Mr. </option>
+                    <option value="Mrs."> Mrs. </option>
+                    <option value="Ms."> Ms. </option>
+                </select>
+            </div>
+        </div>
+        <div class="content">
+            <input type="text" placeholder="First Name" [(ngModel)]="firstName2">
+        </div>
+        <div class="content">
+            <input type="text" placeholder="Last Name" [(ngModel)]="lastName2">
+        </div>
+        <div class="content">
+            <input type="text" placeholder="Phone Number" [(ngModel)]="phoneNumber2">
+        </div>
+        <div class="content">
+            <input type="text" placeholder="Email" [(ngModel)]="email2">
+        </div>
+    </div>
+</div>
+
+<div class="btn" style="margin: 20px;">
+    <button (click)="toPayment()"> Continue Payment </button>
+</div>
+
+<div class="proxy" *ngIf="showLoading">
+    <img src="../../../assets/utility/loadingScreen.gif" alt="">
+</div>

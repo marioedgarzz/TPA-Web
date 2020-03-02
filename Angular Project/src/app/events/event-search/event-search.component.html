@@ -1,6 +1,106 @@
-<div class="events">
-    <div class="loop" *ngFor="let item of eventList">
-        {{item.EventName}}
+<app-event-quick></app-event-quick>
+
+<div style="color : blue; margin: 20px;" class="loc"> {{currLocation}}</div>
+
+<div class="main">
+    <div class="filter">
+        <div class="header-filter">
+            <div class="left">
+                Filter
+            </div>
+            <div class="right">
+                <button (click)="reset()"> Reset </button>
+            </div>
+        </div>
+        <div class="ipt">
+            <input type="text" [(ngModel)]="searchEvent">
+        </div>
+        <div class="header-text">
+            Price Range
+        </div>
+        <div class="filter-content">
+            <div class="detail">
+                <div class="left"> Min Price </div>
+                <div class="right"> <input type="number" [(ngModel)]="minPrice"></div>
+            </div>
+            <div class="detail">
+                <div class="left"> Max Price </div>
+                <div class="right"> <input type="number" [(ngModel)]="maxPrice"></div>
+            </div>
+        </div>
+        <div class="header-text">
+            Travel Date
+        </div>
+        <div class="filter-content">
+            <div class="detail">
+                <div class="left">
+                    From
+                </div>
+                <div class="right">
+                    <input type="date" [(ngModel)]="dateFrom">
+                </div>
+            </div>
+            <div class="detail">
+                <div class="left">
+                    To
+                </div>
+                <div class="right">
+                    <input type="date" [(ngModel)]="dateTo">
+                </div>
+            </div>
+        </div>
+        <div class="header-text">
+            Category
+        </div>
+        <div class="filter-content">
+            <div class="det">
+                <input type="checkbox" (change)="chngFilterType(0)">
+                Activities
+            </div>
+            <div class="det">
+                <input type="checkbox" (change)="chngFilterType(1)">
+                Attractions
+            </div>
+            <div class="det">
+                <input type="checkbox" (change)="chngFilterType(2)">
+                Events
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="header-sort">
+            Sort By
+            <select [(ngModel)]="selectedModel">
+                <option value="Newest"> Newest</option>
+                <option value="High To Low Price"> High To Low Price</option>
+                <option value="Low To High Price"> Low To High Price</option>
+                <option value="Recommended"> Recommended</option>
+            </select>
+        </div>
+        <div id="main-event">
+            <div class="loop" *ngFor="let item of (eventList | eventSearch : 
+            minPrice : maxPrice : dateFrom : dateTo : filterType: searchEvent : selectedModel); let i = index" (click)="clickItem(item)">
+                <div *ngIf="i < currShown">
+                    <div class="image">
+                        <img src="{{item.EventPicture}}" alt="">
+                    </div>
+                    <div class="ev-name">
+                        {{item.EventName}}
+                    </div>
+                    <div class="ev-loc">
+                        {{item.EventLocation}}
+                    </div>
+                    <div class="ev-date">
+                        {{item.EventDateFrom}} - {{item.EventDateTo}}
+                    </div>
+                    <div class="price">
+                        <div class="left"> starts from </div>
+                        <div class="right"> IDR {{item.EventPrice}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 

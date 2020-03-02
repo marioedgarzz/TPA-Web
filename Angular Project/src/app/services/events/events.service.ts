@@ -47,4 +47,12 @@ export class EventsService {
     }
     else sessionStorage.setItem("event-place",place);
   }
+
+  public static getDateTransfer() {
+    return sessionStorage.getItem("event-date-transfer")
+  }
+
+  public static setDateTransfer(date : string) {
+    sessionStorage.setItem("event-date-transfer",date);
+  }
 }

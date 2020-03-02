@@ -2,142 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="09dd184e-40bf-4597-a2ae-5b006460d653" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Go Project.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/car_rental/carBrand.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/car_rental/carFromVendor.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/car_rental/carModel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/car_rental/carRentalPlace.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/car_rental/carVendor.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/car_rental/cars.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/events/events.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/flight/flightModel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/hotels/HotelArea.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/hotels/HotelCategories.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/hotels/HotelFacilities.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/hotels/HotelFacilitiesLists.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/hotels/HotelPlace.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/hotels/Hotels.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/promo/Promo.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/train/trainClassModel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/train/trainModel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/train/trainPlacesModel.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/train/trainSchedule.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/transactions/CarTransactions.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/transactions/TrainTransactions.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/mutations/mutationResolvers/adminResolvers/hotelAdmin.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/mutations/mutationResolvers/adminResolvers/trainAdmin.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/mutations/mutationResolvers/transactionResolvers/transactionResolvers.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/carResolvers/carResolver.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/eventResolvers/eventResolvers.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/hotelResolvers/hotelResolver.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/promoResolvers/promoResolvers.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/trainResolvers/trainResolver.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/car_rentals/carBrands.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/car_rentals/carFromVendors.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/car_rentals/carModels.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/car_rentals/carRentalPlaces.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/car_rentals/carVendors.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/car_rentals/cars.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/events/events.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/hotels/hotelAreas.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/hotels/hotelCategories.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/hotels/hotelFacilities.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/hotels/hotelFacilitiesLists.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/hotels/hotelPlaces.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/hotels/hotels.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/promos/promo.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/trains/trainClasses.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/trains/trainPlace.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/trains/trainSchedules.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/trains/trains.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/transactions/CarTransactions.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/transactions/TrainTransactions.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/users/admins.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/angular.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/angular.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/app-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/app-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/app.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/app.component.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/navi-bar/navi-bar.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/components/navi-bar/navi-bar.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/navi-bar/navi-bar.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/components/navi-bar/navi-bar.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/navi-bar/navi-bar.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/components/navi-bar/navi-bar.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quick-card/quick-card.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/components/quick-card/quick-card.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quick-card/quick-card.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/components/quick-card/quick-card.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quick-card/quick-card.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/components/quick-card/quick-card.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/car-rental-quick/car-rental-quick.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/car-rental-quick/car-rental-quick.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/car-rental-quick/car-rental-quick.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/car-rental-quick/car-rental-quick.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/event-quick/event-quick.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/event-quick/event-quick.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/event-quick/event-quick.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/event-quick/event-quick.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/flight-quick/flight-quick.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/flight-quick/flight-quick.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/flight-quick/flight-quick.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/flight-quick/flight-quick.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/hotel-quick/hotel-quick.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/hotel-quick/hotel-quick.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/hotel-quick/hotel-quick.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/hotel-quick/hotel-quick.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/train-quick/train-quick.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/train-quick/train-quick.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/train-quick/train-quick.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/components/quickCardClick/train-quick/train-quick.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/dialogs/facebook-sign-in/facebook-sign-in.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/dialogs/facebook-sign-in/facebook-sign-in.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/dialogs/google-sign-in/google-sign-in.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/dialogs/google-sign-in/google-sign-in.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/dialogs/login-dialog/login-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/dialogs/login-dialog/login-dialog.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/dialogs/login-dialog/login-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/dialogs/login-dialog/login-dialog.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/dialogs/register-dialog/register-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/dialogs/register-dialog/register-dialog.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/dialogs/register-dialog/register-dialog.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/dialogs/register-dialog/register-dialog.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/flight/flight-header/flight-header.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/flight/flight-header/flight-header.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/flight/flight-page/flight-page.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/flight/flight-page/flight-page.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/flight/flight-page/flight-page.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/flight/flight-page/flight-page.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/models/train.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/models/train.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/models/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/models/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/pages/car-page/car-page.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/pages/car-page/car-page.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/pages/car-page/car-page.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/pages/car-page/car-page.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/pages/event-page/event-page.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/pages/event-page/event-page.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/pages/event-page/event-page.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/pages/event-page/event-page.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/pages/home-page/home-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/pages/home-page/home-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/pages/home-page/home-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/pages/home-page/home-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/pages/hotel-page/hotel-page.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/pages/hotel-page/hotel-page.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/pages/hotel-page/hotel-page.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/pages/hotel-page/hotel-page.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/services/graphql-users.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/services/graphql-users.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/trains/train-header/train-header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/trains/train-header/train-header.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/trains/train-header/train-header.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/trains/train-header/train-header.component.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/trains/train-header/train-header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/trains/train-header/train-header.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/trains/train-page/train-page.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/trains/train-page/train-page.component.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/trains/train-page/train-page.component.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/trains/train-page/train-page.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/polyfills.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/polyfills.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Angular Project/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/styles.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Go-Project.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/events/event-search/event-search.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/events/event-search/event-search.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/events/event-search/event-search.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/events/event-search/event-search.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/events/event-search/event-search.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/events/event-search/event-search.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/hotel/hotel-header-map/hotel-header-map.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/hotel/hotel-header-map/hotel-header-map.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Angular Project/src/app/services/maps/map.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Angular Project/src/app/services/maps/map.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/windows_amd64/github.com/jinzhu/gorm.a" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/windows_amd64/github.com/jinzhu/gorm.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/database/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/database/database.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/userModel.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/user/userModel.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/mutations/mutationResolvers/mutationResolver.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/mutations/mutationResolvers/userResolvers/mutationResolver.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/mutations/root.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/mutations/root.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/queryResolver.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/userResolvers/queryResolver.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/queries/root.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/queries/root.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/users.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/users/users.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../graphQL.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../graphQL.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/events/events.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/models/events/events.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/events/events.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/github.com/marioedgarzz/backend-tpa/myGraphql/types/events/events.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,22 +119,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="425" y="49" key="#com.intellij.ide.util.MemberChooser/0.0.1280.680@0.0.1280.680" timestamp="1582460919762" />
-    <state width="1235" height="190" key="GridCell.Tab.0.bottom" timestamp="1583090125996">
+    <state width="1235" height="190" key="GridCell.Tab.0.bottom" timestamp="1583118375681">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1235" height="190" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583090125996" />
-    <state width="1235" height="190" key="GridCell.Tab.0.center" timestamp="1583090125996">
+    <state width="1235" height="190" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1583118375681" />
+    <state width="1235" height="190" key="GridCell.Tab.0.center" timestamp="1583118375680">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1235" height="190" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583090125996" />
-    <state width="1235" height="190" key="GridCell.Tab.0.left" timestamp="1583090125996">
+    <state width="1235" height="190" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1583118375680" />
+    <state width="1235" height="190" key="GridCell.Tab.0.left" timestamp="1583118375680">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1235" height="190" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583090125996" />
-    <state width="1235" height="190" key="GridCell.Tab.0.right" timestamp="1583090125996">
+    <state width="1235" height="190" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1583118375680" />
+    <state width="1235" height="190" key="GridCell.Tab.0.right" timestamp="1583118375681">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1235" height="190" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583090125996" />
+    <state width="1235" height="190" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1583118375681" />
     <state x="73" y="0" key="SettingsEditor" timestamp="1582278494346">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

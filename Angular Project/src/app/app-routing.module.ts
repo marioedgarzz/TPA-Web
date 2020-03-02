@@ -21,6 +21,8 @@ import { BlogDetailComponent } from './pages/blog-detail/blog-detail.component';
 import { BlogPageComponent } from './pages/blog-page/blog-page.component';
 import { PromoPageComponent } from './pages/promo-page/promo-page.component';
 import { EventSearchComponent } from './events/event-search/event-search.component';
+import { EventDetailComponent } from './events/event-detail/event-detail.component';
+import { EventOrderComponent } from './events/event-order/event-order.component';
 
 const routes: Routes = [
   {
@@ -122,6 +124,14 @@ const routes: Routes = [
   {
     path: "event-search",
     component : EventSearchComponent
+  },
+  {
+    path :"event-detail/:id",
+    component : EventDetailComponent
+  },
+  {
+    path : "event-order/:id",
+    component : EventOrderComponent
   }
 ];
 

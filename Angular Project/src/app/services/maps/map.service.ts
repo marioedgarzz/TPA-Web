@@ -19,6 +19,14 @@ export class MapService {
 
   isUpdating = false;
 
+  assign2(map : L.map, latitude : number, longitude : number) {   
+    const circle = L.circleMarker([longitude,latitude], {
+      radius : 10
+    })
+
+    circle.addTo(map)
+  }
+
   assign(result : HotelFacilitiesLists[], map : L.map) {
 
     for(let i = 0 ; i < result.length ; i++) {

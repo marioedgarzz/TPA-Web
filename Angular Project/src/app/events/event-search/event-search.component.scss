@@ -1,5 +1,96 @@
-.events {
-    .loop {
-        display: flex;
+* {
+    font-family: sans-serif;
+}
+.loc {
+    cursor: pointer;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.main {
+    display: flex;
+    .filter {
+        width: 30%;
+        .header-filter, .filter-content .detail{
+            margin: 10px;
+            display: flex;
+            justify-content: space-between;
+            .left, .right {
+                color : #888888;
+                width: 50%;
+            }
+            .right {
+                display: flex;
+                justify-content: flex-end;
+            }
+        }
+        .filter-content .det {
+            margin: 10px;
+        }
+        .header-text {
+            margin: 10px;
+            font-size: 18px;
+            color: #222222
+        }
+    }
+    .main-content {
+        width: 70%;
+        .header-sort {
+            margin: 20px;
+        }
+        #main-event {
+            display: flex;
+            flex-wrap: wrap;
+            .loop {
+                cursor: pointer;
+                width: 300px;
+                margin: 10px;
+                .image {
+                    img {
+                        width: 100%;
+                    }
+                }
+                .ev-name {
+                    color : #000000;
+                    font-size: 16px;
+                }
+                .ev-loc {
+                    color : #888888;
+                }
+                .ev-date {
+                    color: #888888;
+                }
+                .price {
+                    display: flex;
+                    justify-content: space-between;
+                    .left {
+                        color : #BBBBBB
+                    }
+                    .right {
+                        color : #FF7200;
+                        font-size : 18px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 850px) {
+    .main .filter .filter-content .detail {
+        flex-direction: column;
+        .left , .right {
+            width : 100%;
+        }
+    }
+}
+
+@media (max-width : 600px) {
+    .main {
+        flex-direction: column;
+        .filter, .main-content {
+            width: 100%;
+        }
     }
 }

@@ -64,8 +64,10 @@ import { PromoPageComponent } from './pages/promo-page/promo-page.component';
 import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 import { EventHeaderComponent } from './events/event-header/event-header.component';
 import { EventSearchComponent } from './events/event-search/event-search.component';
-
 import * as $ from 'jquery';
+import { EventSearchPipe } from './pipes/event-search.pipe';
+import { EventDetailComponent } from './events/event-detail/event-detail.component';
+import { EventOrderComponent } from './events/event-order/event-order.component';
 
 @NgModule({
   declarations: [
@@ -117,7 +119,10 @@ import * as $ from 'jquery';
     PromoPageComponent,
     CheckoutPageComponent,
     EventHeaderComponent,
-    EventSearchComponent
+    EventSearchComponent,
+    EventSearchPipe,
+    EventDetailComponent,
+    EventOrderComponent
   ],
   entryComponents: [
     LoginDialogComponent,
