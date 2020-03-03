@@ -13,5 +13,8 @@ io.on('connection', function(socket) {
     socket.on('hotel',function(msg) {
         io.emit('hotel',msg);
     });
+    socket.on('event',function(msg) {
+        io.emit('event',msg);
+    });
 });
 

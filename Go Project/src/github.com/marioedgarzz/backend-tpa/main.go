@@ -7,6 +7,7 @@ import (
 	"github.com/marioedgarzz/backend-tpa/api"
 	"github.com/marioedgarzz/backend-tpa/database"
 	"github.com/marioedgarzz/backend-tpa/middleware"
+	"github.com/marioedgarzz/backend-tpa/models/blogs"
 	"github.com/marioedgarzz/backend-tpa/models/car_rental"
 	"github.com/marioedgarzz/backend-tpa/models/events"
 	"github.com/marioedgarzz/backend-tpa/models/hotels"
@@ -45,6 +46,8 @@ func initAllDatabase() {
 	promo.InitPromos(db)
 
 	events.InitEvents(db)
+
+	blogs.InitBlogs(db)
 }
 
 func main() {

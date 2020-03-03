@@ -13,7 +13,7 @@ import { ChatPageComponent } from './pages/chat-page/chat-page.component';
 import { LoginAdminComponent } from './admin-page/login-admin/login-admin.component';
 import { ManageBlogComponent } from './admin-page/manage-blog/manage-blog.component';
 import { ManageFlightComponent } from './admin-page/manage-flight/manage-flight.component';
-import { ManageEventComponent } from './admin-page/manage-event/manage-event.component';
+import { ManageEventComponent } from './admin-page/event/manage-event/manage-event.component';
 import { ManageHotelComponent } from './admin-page/manage-hotel/manage-hotel.component';
 import { HotelHeaderMapComponent } from './hotel/hotel-header-map/hotel-header-map.component';
 import { HotelDetailComponent } from './hotel/hotel-detail/hotel-detail.component';

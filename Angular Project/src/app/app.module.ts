@@ -46,7 +46,7 @@ import { ChatPageComponent } from './pages/chat-page/chat-page.component';
 import { LoginAdminComponent } from './admin-page/login-admin/login-admin.component';
 import { HeaderAdminComponent } from './admin-page/header-admin/header-admin.component';
 import { ManageBlogComponent } from './admin-page/manage-blog/manage-blog.component';
-import { ManageEventComponent } from './admin-page/manage-event/manage-event.component';
+import { ManageEventComponent } from './admin-page/event/manage-event/manage-event.component';
 import { ManageHotelComponent } from './admin-page/manage-hotel/manage-hotel.component';
 import { ManageFlightComponent } from './admin-page/manage-flight/manage-flight.component';
 import { ManageTrainFilterPipe } from './pipes/manage-train-filter.pipe';
@@ -69,8 +69,8 @@ import { EventSearchPipe } from './pipes/event-search.pipe';
 import { EventDetailComponent } from './events/event-detail/event-detail.component';
 import { EventOrderComponent } from './events/event-order/event-order.component';
 import { ManageEventPipe } from './pipes/manage-event.pipe';
-import { ManageEventUpdateComponent } from './admin-page/manage-event-update/manage-event-update.component';
-import { ManageEventDeleteComponent } from './admin-page/manage-event-delete/manage-event-delete.component';
+import { ManageEventUpdateComponent } from './admin-page/event/manage-event-update/manage-event-update.component';
+import { ManageEventDeleteComponent } from './admin-page/event/manage-event-delete/manage-event-delete.component';
 
 @NgModule({
   declarations: [

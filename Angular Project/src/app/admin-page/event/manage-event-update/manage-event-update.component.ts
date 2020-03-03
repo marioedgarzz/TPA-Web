@@ -19,34 +19,42 @@ export class ManageEventUpdateComponent implements OnInit {
   
   errorMsg : string = "";
   
-  evtName : string;
-  evtLocation : string;
+  evtName : string = "";
+  evtLocation : string = "";
   slctType : string = "";
-  evtDateFrom : string;
-  evtPicture : string;
-  evtDescription : string;
-  evtTermsAndCondition : string;
+  evtDateFrom : string = "";
+  evtPicture : string = "";
+  evtDescription : string = "";
+  evtTermsAndCondition : string = "";
 
+  execCommand(cmd : any) {
+    if(cmd === 'createlink') {
+      let url = prompt("Enter the link here: ", "http:\/\/");
+      document.execCommand(cmd, false, url);
+    } else {
+      document.execCommand(cmd, false, null);
+    }
+  }
   ngOnInit() {
     this.event = JSON.parse(this.data.event)
-
-
+    document.getElementById("eventDesc").innerHTML = this.event.EventDescription
   }
 
   update() {
-    if(this.evtName == "") {
+    console.log(this.evtDescription)
+    if(this.evtName == "" || this.evtName == undefined) {
       this.errorMsg = "Event Name must be filled"
     }
-    else if(this.evtLocation == "") {
+    else if(this.evtLocation == "" || this.evtLocation == undefined) {
       this.errorMsg = "Location Name must be filled"
     }
-    else if(this.slctType == "") {
+    else if(this.slctType == "" || this.slctType == undefined) {
       this.errorMsg = "Choose a filter"
     }
-    else if(this.evtDateFrom == "") {
+    else if(this.evtDateFrom == "" || this.evtDateFrom == undefined) {
       this.errorMsg = "Date From must be filled"
     }
-    else if(this.evtPicture == "") {
+    else if(this.evtPicture == "" || this.evtPicture == undefined) {
       this.errorMsg = "Picture must be filled"
     }
     else {
@@ -54,7 +62,8 @@ export class ManageEventUpdateComponent implements OnInit {
         this.evtDateFrom, this.evtPicture, this.evtDescription,this.evtTermsAndCondition).subscribe(
           async result => {
             await (
-              alert("Update Success!")
+              alert("Update Success!"),
+              location.reload()
             )
           }
         )

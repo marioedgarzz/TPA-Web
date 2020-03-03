@@ -87,11 +87,9 @@ func UpdateEvent(EventId int,EventName string,EventLocation string, EventCategor
 		EventName:              EventName,
 		EventPicture:           EventPicture,
 		EventLocation:          EventLocation,
-		EventPrice:             100000,
 		EventDateFrom:          EventDateFrom,
-		EventDateTo:            time.Now().AddDate(0,0,1).String(),
+		EventDateTo:            time.Now().AddDate(0,0,5).String(),
 		EventType:              EventCategory,
-		EventAddress:           "Jl. Insert",
 		EventDescription:       EventDescription,
 		EventTermsAndCondition: EventTermsAndCondition,
 	})

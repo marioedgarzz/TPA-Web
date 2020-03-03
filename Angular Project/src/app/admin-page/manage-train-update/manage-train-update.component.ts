@@ -16,6 +16,7 @@ export class ManageTrainUpdateComponent implements OnInit {
     private trainTransactionService : TrainTransactionService,
     @Inject(MAT_DIALOG_DATA) public data:any) { }
 
+    
   trainSchedule : TrainSchedule;
   trainNameList : Train[];
   trainClassList : TrainClass[];

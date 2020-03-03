@@ -104,13 +104,80 @@
                 <input type="text" [(ngModel)]="evtPicture">
             </div>
         </div>
-        <div class="form-detail">
-            <div class="left">
+        <div class="txt-editor">
+            <div class="header">
                 Event Description
             </div>
-            <div class="right">
-                <input type="text" [(ngModel)]="evtDescription">
+            <div class="toolbar">
+                <ul class="tool-list">
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)='execCommand("justifyLeft")'
+                            class="tool--btn">
+                            <i class=' fas fa-align-left'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)="execCommand('justifyCenter')"
+                            class="tool--btn">
+                            <i class=' fas fa-align-center'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)="execCommand('bold')" 
+                            class="tool--btn">
+                            <i class=' fas fa-bold'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)="execCommand('italic')"
+                            class="tool--btn">
+                            <i class=' fas fa-italic'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)="execCommand('underline')"
+                            class="tool--btn">
+                            <i class=' fas fa-underline'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)="execCommand('insertOrderedList')"
+                            class="tool--btn">
+                            <i class=' fas fa-list-ol'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)="execCommand('insertUnorderedList')"
+                            class="tool--btn">
+                            <i class=' fas fa-list-ul'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)="execCommand('createlink')"
+                            class="tool--btn">
+                            <i class=' fas fa-link'></i>
+                        </button>
+                    </li>
+                </ul>
             </div>
+            
+            <div id="output" contenteditable="true"></div>
         </div>
         <div class="form-detail">
             <div class="left">
@@ -129,73 +196,3 @@
     </div>
 </div>
 <!-- TEXT EDITOR -->
-<div class="toolbar">
-	<ul class="tool-list">
-		<li class="tool">
-			<button 
-				type="button" 
-				(click)='execCommand("justifyLeft")'
-				class="tool--btn">
-				<i class=' fas fa-align-left'></i>
-			</button>
-		</li>
-		<li class="tool">
-			<button 
-				type="button" 
-				(click)="execCommand('justifyCenter')"
-				class="tool--btn">
-				<i class=' fas fa-align-center'></i>
-			</button>
-		</li>
-		<li class="tool">
-			<button 
-				type="button" 
-				(click)="execCommand('bold')" 
-				class="tool--btn">
-				<i class=' fas fa-bold'></i>
-			</button>
-		</li>
-		<li class="tool">
-			<button 
-				type="button" 
-				(click)="execCommand('italic')"
-				class="tool--btn">
-				<i class=' fas fa-italic'></i>
-			</button>
-		</li>
-		<li class="tool">
-			<button 
-				type="button" 
-				(click)="execCommand('underline')"
-				class="tool--btn">
-				<i class=' fas fa-underline'></i>
-			</button>
-		</li>
-		<li class="tool">
-			<button 
-				type="button" 
-				(click)="execCommand('insertOrderedList')"
-				class="tool--btn">
-				<i class=' fas fa-list-ol'></i>
-			</button>
-		</li>
-		<li class="tool">
-			<button 
-				type="button" 
-				(click)="execCommand('insertUnorderedList')"
-				class="tool--btn">
-				<i class=' fas fa-list-ul'></i>
-			</button>
-		</li>
-		<li class="tool">
-			<button 
-				type="button" 
-				(click)="execCommand('createlink')"
-				class="tool--btn">
-				<i class=' fas fa-link'></i>
-			</button>
-		</li>
-	</ul>
-</div>
-
-<div id="output" contenteditable="true"></div>

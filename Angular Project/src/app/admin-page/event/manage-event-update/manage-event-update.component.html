@@ -1,0 +1,148 @@
+<body style="overflow: scroll;">
+    <div class="header"> Update Event </div>
+    <label> Before : </label>
+    <div class="before">
+        <div> Event Name : {{event.EventName}}</div>
+        <div> Event Location : {{event.EventLocation}}</div>
+        <div> Event Type : {{event.EventType}}</div>
+        <div> Event Price :  {{event.EventPrice}} </div>
+        <div> Event Description : <span id="eventDesc"></span></div>
+    </div>
+    <label> After : </label>
+    <div class="updateForm">
+        <div class="header-update"> Update Form </div>
+        <div class="form-detail">
+            <div class="left">
+                Event Name
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="evtName">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Event Location
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="evtLocation">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Event Category
+            </div>
+            <div class="right">
+                <select [(ngModel)]="slctType">
+                    <option value="Activities"> Activities </option>
+                    <option value="Attractions"> Attractions </option>
+                    <option value="Events"> Events </option>
+                </select>
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Event Start Date
+            </div>
+            <div class="right">
+                <input type="date" [(ngModel)]="evtDateFrom">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Event Picture
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="evtPicture">
+            </div>
+        </div>
+        <div class="txt-editor">
+            <div class="header">
+                Event Description
+            </div>
+            <div class="toolbar">
+                <ul class="tool-list">
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)='execCommand("justifyLeft")'
+                            class="tool--btn">
+                            <i class=' fas fa-align-left'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)="execCommand('justifyCenter')"
+                            class="tool--btn">
+                            <i class=' fas fa-align-center'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)="execCommand('bold')" 
+                            class="tool--btn">
+                            <i class=' fas fa-bold'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)="execCommand('italic')"
+                            class="tool--btn">
+                            <i class=' fas fa-italic'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)="execCommand('underline')"
+                            class="tool--btn">
+                            <i class=' fas fa-underline'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)="execCommand('insertOrderedList')"
+                            class="tool--btn">
+                            <i class=' fas fa-list-ol'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)="execCommand('insertUnorderedList')"
+                            class="tool--btn">
+                            <i class=' fas fa-list-ul'></i>
+                        </button>
+                    </li>
+                    <li class="tool">
+                        <button 
+                            type="button" 
+                            (click)="execCommand('createlink')"
+                            class="tool--btn">
+                            <i class=' fas fa-link'></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            
+            <div id="output" contenteditable="true"></div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Event Terms & Condition
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="evtTermsAndCondition">
+            </div>
+        </div>
+        <div class="error-msg">
+            {{errorMsg}}
+        </div>
+        <div class="update-button">
+            <button (click)="update()"> Update </button>
+        </div>
+    </div>
+</body>
