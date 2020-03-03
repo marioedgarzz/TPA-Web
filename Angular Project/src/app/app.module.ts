@@ -71,6 +71,8 @@ import { EventOrderComponent } from './events/event-order/event-order.component'
 import { ManageEventPipe } from './pipes/manage-event.pipe';
 import { ManageEventUpdateComponent } from './admin-page/event/manage-event-update/manage-event-update.component';
 import { ManageEventDeleteComponent } from './admin-page/event/manage-event-delete/manage-event-delete.component';
+import { ManageBlogUpdateComponent } from './admin-page/manage-blog-update/manage-blog-update.component';
+import { ManageBlogDeleteComponent } from './admin-page/manage-blog-delete/manage-blog-delete.component';
 
 @NgModule({
   declarations: [
@@ -128,7 +130,9 @@ import { ManageEventDeleteComponent } from './admin-page/event/manage-event-dele
     EventOrderComponent,
     ManageEventPipe,
     ManageEventUpdateComponent,
-    ManageEventDeleteComponent
+    ManageEventDeleteComponent,
+    ManageBlogUpdateComponent,
+    ManageBlogDeleteComponent
   ],
   entryComponents: [
     LoginDialogComponent,
@@ -138,7 +142,9 @@ import { ManageEventDeleteComponent } from './admin-page/event/manage-event-dele
     ManageHotelDeleteComponent,
     ManageHotelUpdateComponent,
     ManageEventDeleteComponent,
-    ManageEventUpdateComponent
+    ManageEventUpdateComponent,
+    ManageBlogUpdateComponent,
+    ManageBlogDeleteComponent
   ],
   imports: [
     BrowserModule,

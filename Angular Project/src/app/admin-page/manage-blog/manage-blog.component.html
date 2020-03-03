@@ -1,1 +1,96 @@
-<p>BLOG PAGE WORKS</p>
+<app-header-admin></app-header-admin>
+
+<div class="header">
+    Manage Blog
+</div>
+
+<div class="proxy" *ngIf="blogs == undefined">
+    <img src="../../../assets/utility/loadingScreen.gif" alt="">
+</div>
+
+<div class="container" *ngIf="blogs != undefined">
+    <div class="datas">
+        <div class="filter" style="margin: 20px;">
+            <select [(ngModel)]="filters">
+                <option value="All"> All </option>
+                <option *ngFor="let item of blogCategories" value="{{item.BlogCategoryName}}"> {{item.BlogCategoryName}}</option>
+            </select>
+        </div>
+        <table>
+            <tr>
+                <th> Blog Title </th>
+                <th> Blog Category</th>
+                <th> Blog Count View </th>
+                <th> Blog Thumbnail </th>
+                <th> Update</th>
+                <th> Delete</th>
+            </tr>
+            <tr *ngFor="let item of blogs; let i = index">
+                <td *ngIf="getCan(i)" > {{item.BlogTitle}} </td>
+                <td *ngIf="getCan(i)"> {{item.BlogCategory.BlogCategoryName}}</td>
+                <td *ngIf="getCan(i)"> {{item.BlogViewCount}}</td>
+                <td *ngIf="getCan(i)"> 
+                    <img src="{{item.BlogThumbnail}}" alt="">
+                </td>
+                <td *ngIf="getCan(i)"> <button (click)="update(item)"> Update </button></td>
+                <td *ngIf="getCan(i)"> <button (click)="delete(item)"> Delete </button></td>
+            </tr>
+        </table>
+        <div class="prev-next">
+            <div>
+                <button (click)="previous()"> Previous </button>
+            </div>
+            <div>
+                <button (click)="next()"> Next </button>
+            </div>
+        </div>
+    </div>
+    
+    
+</div>
+<div class="insert-container">
+
+    <div class="insertForm">
+        <div class="header-insert"> Insert Form </div>
+        <div class="form-detail">
+            <div class="left">
+                Blog Title
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="blgTitle">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                BlogCategory
+            </div>
+            <div class="right">
+                <select [(ngModel)]="slctBlogCategory">
+                    <option *ngFor="let item of blogCategories" value="{{item.BlogCategoryName}}"> {{item.BlogCategoryName}}</option>
+                </select> 
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Blog Thumbnail
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="blgThumbnail">
+            </div>
+        </div>
+        <div class="form-detail">
+            <div class="left">
+                Blog Description
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="blgDescription">
+            </div>
+        </div>
+        <div class="error-msg">
+            {{errorMsg}}
+        </div>
+        <div class="insert-button">
+            <button (click)="insert()"> Insert </button>
+        </div>
+    </div>
+</div>

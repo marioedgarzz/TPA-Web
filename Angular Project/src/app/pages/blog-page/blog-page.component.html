@@ -1,74 +1,119 @@
-<app-header-admin></app-header-admin>
 <!-- TEXT EDITOR -->
-<div class="txt-editor">
-	<div class="toolbar">
-		<ul class="tool-list">
-			<li class="tool">
-				<button 
-					type="button" 
-					(click)='execCommand("justifyLeft")'
-					class="tool--btn">
-					<i class=' fas fa-align-left'></i>
-				</button>
-			</li>
-			<li class="tool">
-				<button 
-					type="button" 
-					(click)="execCommand('justifyCenter')"
-					class="tool--btn">
-					<i class=' fas fa-align-center'></i>
-				</button>
-			</li>
-			<li class="tool">
-				<button 
-					type="button" 
-					(click)="execCommand('bold')" 
-					class="tool--btn">
-					<i class=' fas fa-bold'></i>
-				</button>
-			</li>
-			<li class="tool">
-				<button 
-					type="button" 
-					(click)="execCommand('italic')"
-					class="tool--btn">
-					<i class=' fas fa-italic'></i>
-				</button>
-			</li>
-			<li class="tool">
-				<button 
-					type="button" 
-					(click)="execCommand('underline')"
-					class="tool--btn">
-					<i class=' fas fa-underline'></i>
-				</button>
-			</li>
-			<li class="tool">
-				<button 
-					type="button" 
-					(click)="execCommand('insertOrderedList')"
-					class="tool--btn">
-					<i class=' fas fa-list-ol'></i>
-				</button>
-			</li>
-			<li class="tool">
-				<button 
-					type="button" 
-					(click)="execCommand('insertUnorderedList')"
-					class="tool--btn">
-					<i class=' fas fa-list-ul'></i>
-				</button>
-			</li>
-			<li class="tool">
-				<button 
-					type="button" 
-					(click)="execCommand('createlink')"
-					class="tool--btn">
-					<i class=' fas fa-link'></i>
-				</button>
-			</li>
-		</ul>
+<div class="notify-msg">
+	{{notifyMsg}}
+</div>
+<div class="create-new-container">
+	<div class="create-new">
+		<div class="header"> Create New Blog</div>
+		<div class="txt-editor-container">
+			<div class="txt-editor">
+				<div class="toolbar">
+					<ul class="tool-list">
+						<li class="tool">
+							<button 
+								type="button" 
+								(click)='execCommand("justifyLeft")'
+								class="tool--btn">
+								<i class=' fas fa-align-left'></i>
+							</button>
+						</li>
+						<li class="tool">
+							<button 
+								type="button" 
+								(click)="execCommand('justifyCenter')"
+								class="tool--btn">
+								<i class=' fas fa-align-center'></i>
+							</button>
+						</li>
+						<li class="tool">
+							<button 
+								type="button" 
+								(click)="execCommand('bold')" 
+								class="tool--btn">
+								<i class=' fas fa-bold'></i>
+							</button>
+						</li>
+						<li class="tool">
+							<button 
+								type="button" 
+								(click)="execCommand('italic')"
+								class="tool--btn">
+								<i class=' fas fa-italic'></i>
+							</button>
+						</li>
+						<li class="tool">
+							<button 
+								type="button" 
+								(click)="execCommand('underline')"
+								class="tool--btn">
+								<i class=' fas fa-underline'></i>
+							</button>
+						</li>
+						<li class="tool">
+							<button 
+								type="button" 
+								(click)="execCommand('insertOrderedList')"
+								class="tool--btn">
+								<i class=' fas fa-list-ol'></i>
+							</button>
+						</li>
+						<li class="tool">
+							<button 
+								type="button" 
+								(click)="execCommand('insertUnorderedList')"
+								class="tool--btn">
+								<i class=' fas fa-list-ul'></i>
+							</button>
+						</li>
+						<li class="tool">
+							<button 
+								type="button" 
+								(click)="execCommand('createlink')"
+								class="tool--btn">
+								<i class=' fas fa-link'></i>
+							</button>
+						</li>
+					</ul>
+				</div>
+				
+				<div id="output" contenteditable="true"></div>
+			</div>
+		</div>
+		<div class="thumbnail">
+			<input type="text" placeholder="Input Thumbnail Picture link" [(ngModel)]="evtThumbnail">
+		</div>
+		<div class="thumbnail">
+			<input type="text" placeholder="Input Blog Title" [(ngModel)]="evtTitle">
+		</div>
+		<div style="display: flex; justify-content: center;">
+			<div>
+				Blog Category : 
+				<select [(ngModel)]="slctCategory" style="padding: 10px; margin: 10px;">
+					<option *ngFor="let item of blogCategories" value="{{item.BlogCategoryName}}">
+						{{item.BlogCategoryName}}
+					</option>
+				</select>
+			</div>
+		</div>
+		<div class="button-container">
+			<button (click)="insert()"> Insert </button>
+		</div>
+		<div class="error-msg">
+			{{errorMsg}}
+		</div>
 	</div>
-	
-	<div id="output" contenteditable="true"></div>
+</div>
+
+
+<div id="all-events">
+	<div class="events" *ngFor="let item of blogs; let i = index" (click)="redirect(item)">
+		<div [style.background-image]="'url(' + item.BlogThumbnail + ')'" class="configure-background"
+			*ngIf="i < currShown">
+			<div class="inner">
+				<div class="inner-inner">
+					{{item.BlogTitle}}
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

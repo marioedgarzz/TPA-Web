@@ -1,0 +1,44 @@
+<body>
+    <div class="header"> Update Train </div>
+    <label> Before : </label>
+    <div class="before">
+        <div> Blog Title : {{blog.BlogTitle}}</div>
+        <div> Blog Category : {{blog.BlogCategory.BlogCategoryName}}</div>
+        <div> Blog View Count : {{blog.BlogViewCount}}</div>
+    </div>
+    <label> After : </label>
+    <div class="after">
+        <div class="input-detail">
+            <div> Blog Title </div>
+            <div> 
+                <input type="text" [(ngModel)]="blgTitle">
+            </div>
+        </div>
+        <div class="input-detail">
+            <div> Blog Category </div>
+            <div> 
+                <select [(ngModel)]="slctCategoryType">
+                    <option *ngFor="let item of blogCategories" value="{{item.BlogCategoryName}}"> {{item.BlogCategoryName}} </option>
+                </select>
+            </div>
+        </div>
+        <div class="input-detail">
+            <div> Blog Content </div>
+            <div> 
+                <input type="text" [(ngModel)]="blgContent">
+            </div>
+        </div>
+        <div class="input-detail">
+            <div> Blog Thumbnail </div>
+            <div> 
+                <input type="text" [(ngModel)]="blgThumbnail">
+            </div>
+        </div>
+        <div class="error-msg">
+            {{errorMsg}}
+        </div>
+        <div class="update-button">
+            <button (click)="update()"> Update </button>
+        </div>
+    </div>
+</body>

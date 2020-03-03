@@ -16,5 +16,8 @@ io.on('connection', function(socket) {
     socket.on('event',function(msg) {
         io.emit('event',msg);
     });
+    socket.on('blog',function(msg) {
+        io.emit('blog',msg);
+    });
 });
 

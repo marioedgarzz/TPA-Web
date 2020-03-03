@@ -1,0 +1,42 @@
+<body>
+    <div class="header">
+        Are you sure you want to delete this data?
+    </div>
+    <div class="test">
+        <div class="detail">
+            <div class="details">
+                <div class="left">
+                    Blog Title : 
+                </div>
+                <div class="right">
+                    {{blog.BlogTitle}}
+                </div>
+            </div>
+            <div class="details">
+                <div class="left">
+                    Blog Category : 
+                </div>
+                <div class="right">
+                    {{blog.BlogCategory.BlogCategoryName}}
+                </div>
+            </div>
+            <div class="details">
+                <div class="left">
+                    Blog Count View :  
+                </div>
+                <div class="right">
+                    {{blog.BlogViewCount}}
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="buttons">
+        <div>
+            <button (click)="yes()"> Yes </button>
+        </div>
+        <div>
+            <button (click)="no()"> No </button>
+        </div>
+    </div>
+</body>
