@@ -83,6 +83,7 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { FlightCalendarComponent } from './flight/flight-calendar/flight-calendar.component';
 import { ZoomPageComponent } from './pages/zoom-page/zoom-page.component';
+import { OrderPageComponent } from './pages/order-page/order-page.component';
 
 @NgModule({
   declarations: [
@@ -148,7 +149,8 @@ import { ZoomPageComponent } from './pages/zoom-page/zoom-page.component';
     ChatDetailComponent,
     ChatPipePipe,
     FlightCalendarComponent,
-    ZoomPageComponent
+    ZoomPageComponent,
+    OrderPageComponent
   ],
   entryComponents: [
     LoginDialogComponent,
