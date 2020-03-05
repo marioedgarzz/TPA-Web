@@ -287,3 +287,76 @@ func GetAllArea() ([]HotelAreas, error) {
 
 	return findArea, nil
 }
+
+/*
+.filterPrice(hotelList,minPrice, maxPrice);
+
+      // hotelList = this.filterLocation(hotelList,hotelNameListByLocation,filterHotelName);
+      // hotelList = this.filterRate(hotelList,filterRating)
+      // hotelList = this.filterByArea(hotelList, hotelAreaByPlace, filterHotelArea)
+      // hotelList = this.filterByFacility(hotelList, hotelFacilities, filterHotel
+ */
+
+func Filters(hotelLocation string,minPrice int, maxPrice int, hotelName string, hotelRating [3]bool,
+	hotelArea string, hotelFacilities []int) (interface{}, error) {
+	db, err:= database.Connect()
+
+	if err != nil {
+		return nil, err
+	}
+
+	defer db.Close()
+
+	var hotels []HotelFacilitiesLists
+
+	print("Hotel Area : ")
+	print(hotelArea)
+	print(hotelName)
+
+	db.Joins("JOIN hotel_facilities hf ON hf.hotel_facility_id = hotel_facilities_lists.hotel_facility_id").
+		Joins("JOIN hotels ht ON ht.hotel_id = hotel_facilities_lists.hotel_id").
+		Joins("JOIN hotel_areas ha ON ha.hotel_area_id = ht.hotel_area_id").
+		Joins("JOIN hotel_places hp ON hp.hotel_place_id = ha.hotel_place_id").Where(
+			"hotel_place_name = ? AND hotel_price > ? AND hotel_price < ? AND (hotel_name = ? OR ? = '') AND " +
+		"(((? = true AND hotel_rating >= 1 AND hotel_rating <= 4) OR (? = true AND hotel_rating >= 5 AND hotel_rating <= 7)" +
+		"OR (? = true AND hotel_rating >= 8)) OR (? = false AND ? = false AND ? = false)) AND (hotel_area_name = ? OR ? = '') ",
+		hotelLocation,minPrice, maxPrice, hotelName, hotelName, hotelRating[0], hotelRating[1], hotelRating[2], hotelRating[0],
+		hotelRating[1],hotelRating[2],hotelArea,hotelArea).Find(&hotels)
+
+	for i,_ := range hotels {
+		db.Model(&hotels[i]).Related(&hotels[i].Hotel,"hotel_id").
+			Related(&hotels[i].HotelFacility,"hotel_facility_id")
+
+		db.Model(&hotels[i].Hotel).Related(&hotels[i].Hotel.HotelArea,"hotel_area_id").
+			Related(&hotels[i].Hotel.HotelCategory,"hotel_category_id")
+
+		db.Model(&hotels[i].Hotel.HotelArea).Related(&hotels[i].Hotel.HotelArea.HotelPlace,"hotel_place_id")
+	}
+
+	var newHotels [200]HotelFacilitiesLists
+	var idx = 0
+
+	if len(hotelFacilities) == 0 {
+		return hotels, nil
+	}
+
+	for i,_ := range hotels {
+		if contains(hotelFacilities,hotels[i].HotelFacilityId) {
+			newHotels[idx] = hotels[i]
+			idx++
+		}
+	}
+
+	var hotelBaru = newHotels[:idx]
+
+	return hotelBaru, nil
+}
+
+func contains(arr []int, num int) bool{
+	for _, a := range arr {
+		if a == num {
+			return true
+		}
+	}
+	return false
+}

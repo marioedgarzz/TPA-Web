@@ -7,6 +7,9 @@ io.on('connection', function(socket) {
     socket.on('chat', function(msg) {
         io.emit('chat', msg);
     });
+    socket.on('chat-detail',function(msg) {
+        io.emit('chat-detail',msg);
+    });
     socket.on('train',function(msg) {
         io.emit('train',msg);
     });

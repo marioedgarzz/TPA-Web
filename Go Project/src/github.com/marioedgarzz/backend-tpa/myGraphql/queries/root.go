@@ -2,13 +2,18 @@ package queries
 
 import (
 	"github.com/graphql-go/graphql"
+	"github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/blogResolvers"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/carResolvers"
+	"github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/chatResolvers"
+	"github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/emailResolvers"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/eventResolvers"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/hotelResolvers"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/promoResolvers"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/trainResolvers"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/queries/queryResolvers/userResolvers"
+	blogs2 "github.com/marioedgarzz/backend-tpa/myGraphql/types/blogs"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/types/car_rentals"
+	"github.com/marioedgarzz/backend-tpa/myGraphql/types/chats"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/types/events"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/types/hotels"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/types/promos"
@@ -195,6 +200,119 @@ func GetRoot() *graphql.Object{
 				Type:              graphql.NewList(events.GetTypes()),
 				Resolve:           eventResolvers.GetAllEvents,
 				Description:       "Get All Events",
+			},
+			"getAllBlogs" : {
+				Type:              graphql.NewList(blogs2.GetBlogsType()),
+				Resolve:           blogResolvers.GetAllBlogs,
+				Description:       "Get All Blogs",
+			},
+			"getBlogById" : {
+				Type:              graphql.NewList(blogs2.GetBlogsType()),
+				Args:			   graphql.FieldConfigArgument{
+					"BlogId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+				},
+				Resolve:           blogResolvers.GetBlogById,
+				Description:       "Get Blog By Id",
+			},
+			"getAllBlogCategories" : {
+				Type:              graphql.NewList(blogs2.GetBlogCategoryType()),
+				Resolve:           blogResolvers.GetAllBlogCategories,
+				Description:       "Get All Blog Categories",
+			},
+			"getAllChatRoomsByAdminId" : {
+				Type:              graphql.NewList(chats.GetTypes()),
+				Args:			   graphql.FieldConfigArgument{
+					"AdminId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+				},
+				Resolve:           chatResolvers.GetAllChatRoomsByAdminId,
+				Description:       "Get All Admin Chat Rooms",
+			},
+			"getAllChatRoomsByUserId" : {
+				Type:              graphql.NewList(chats.GetTypes()),
+				Args:			   graphql.FieldConfigArgument{
+					"UserId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+				},
+				Resolve:           chatResolvers.GetAllChatRoomsByUserId,
+				Description:       "Get All User Chat Rooms",
+			},
+			"getAllChatsByRoomId" : {
+				Type:              graphql.NewList(chats.GetChatDetailTypes()),
+				Args:			   graphql.FieldConfigArgument{
+					"RoomId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+				},
+				Resolve:           chatResolvers.GetAllChatsByRoomId,
+				Description:       "Get All Chat Of Room Id",
+			},
+			"sendEmail" : {
+				Type:              graphql.String,
+				Resolve:           emailResolvers.SendEmail,
+				Description:       "Send Email",
+			},
+			"getUserByFacebookKey" : {
+				Type:              graphql.NewList(users.GetTypes()),
+				Args:              graphql.FieldConfigArgument{
+					"FacebookKey" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+				},
+				Resolve:           userResolvers.GetUserByFacebookKey,
+				Description:       "Insert Facebook Key",
+			},
+			"getUserByGoogleKey" : {
+				Type:              graphql.NewList(users.GetTypes()),
+				Args:              graphql.FieldConfigArgument{
+					"GoogleKey" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+				},
+				Resolve:           userResolvers.GetUserByGoogleKey,
+				Description:       "Insert Google Key",
+			},
+			"GetLastChatDetailByRoomId" : {
+				Type:              graphql.NewList(chats.GetChatDetailTypes()),
+				Args: graphql.FieldConfigArgument{
+					"RoomId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+				},
+				Resolve:           chatResolvers.GetLastChatDetailByRoomId,
+				Description:       "Get Last Chat",
+			},
+			"FilterHotels" : {
+				Type:              graphql.NewList(hotels.GetHotelFacilityListsType()),
+				Args:              graphql.FieldConfigArgument{
+					"HotelLocation" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"MinPrice" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+					"MaxPrice" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+					"HotelName" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"HotelRating" : &graphql.ArgumentConfig{
+						Type:         graphql.NewList(graphql.Boolean),
+					},
+					"HotelArea" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"HotelFacilities" : &graphql.ArgumentConfig{
+						Type:         graphql.NewList(graphql.Int),
+					},
+				},
+				Resolve:           hotelResolvers.Filters,
+				Description:       "Get Hotels Filters",
 			},
 		},
 		Description: "My Queries",

@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NaviBarComponent } from './components/navi-bar/navi-bar.component';
@@ -73,6 +72,17 @@ import { ManageEventUpdateComponent } from './admin-page/event/manage-event-upda
 import { ManageEventDeleteComponent } from './admin-page/event/manage-event-delete/manage-event-delete.component';
 import { ManageBlogUpdateComponent } from './admin-page/manage-blog-update/manage-blog-update.component';
 import { ManageBlogDeleteComponent } from './admin-page/manage-blog-delete/manage-blog-delete.component';
+import { ManageBlogPipe } from './pipes/manage-blog.pipe';
+import { ChatHeaderComponent } from './pages/chat-header/chat-header.component';
+import { ChatDetailComponent } from './pages/chat-detail/chat-detail.component';
+import { ChatPipePipe } from './pipes/chat-pipe.pipe';
+
+import { CommonModule } from '@angular/common';
+// import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { FlightCalendarComponent } from './flight/flight-calendar/flight-calendar.component';
+import { ZoomPageComponent } from './pages/zoom-page/zoom-page.component';
 
 @NgModule({
   declarations: [
@@ -132,7 +142,13 @@ import { ManageBlogDeleteComponent } from './admin-page/manage-blog-delete/manag
     ManageEventUpdateComponent,
     ManageEventDeleteComponent,
     ManageBlogUpdateComponent,
-    ManageBlogDeleteComponent
+    ManageBlogDeleteComponent,
+    ManageBlogPipe,
+    ChatHeaderComponent,
+    ChatDetailComponent,
+    ChatPipePipe,
+    FlightCalendarComponent,
+    ZoomPageComponent
   ],
   entryComponents: [
     LoginDialogComponent,
@@ -144,7 +160,8 @@ import { ManageBlogDeleteComponent } from './admin-page/manage-blog-delete/manag
     ManageEventDeleteComponent,
     ManageEventUpdateComponent,
     ManageBlogUpdateComponent,
-    ManageBlogDeleteComponent
+    ManageBlogDeleteComponent,
+    ZoomPageComponent
   ],
   imports: [
     BrowserModule,
@@ -159,7 +176,12 @@ import { ManageBlogDeleteComponent } from './admin-page/manage-blog-delete/manag
     MatSliderModule,
     MatInputModule,
     MatSelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+    CommonModule,
+    FormsModule,
+    // FlatpickrModule.forRoot(),
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [
     MapService,

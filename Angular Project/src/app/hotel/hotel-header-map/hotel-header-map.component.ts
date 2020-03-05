@@ -80,7 +80,7 @@ export class HotelHeaderMapComponent implements OnInit {
     reload() {
       setInterval(() => {
         
-        let piped = new HotelPipePipe().transform(this.hotelList,this.minValue,this.maxValue,this.hotelNameListByLocation,this.filterHotelName,this.filterRating,this.hotelAreaByPlace,this.filterHotelArea,this.hotelFacilities,this.filterHotelFacilities,this.filterPriceBasedOn,this.sortList,this.filterSort);
+        let piped = new HotelPipePipe(this.hotelService).transform(this.hotelList,this.minValue,this.maxValue,this.hotelNameListByLocation,this.filterHotelName,this.filterRating,this.hotelAreaByPlace,this.filterHotelArea,this.hotelFacilities,this.filterHotelFacilities,this.filterPriceBasedOn,this.sortList,this.filterSort);
         if(this.currPipe == undefined || piped.length != this.currPipe.length) {
           this.map.remove()
           this.initMap()

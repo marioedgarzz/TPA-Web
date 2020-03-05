@@ -1,6 +1,47 @@
-<div id="share">
-   
+<div class="blogs">
+    <div class="blog-detail">
+        <div class="image-blog">
+            <div class="image">
+                <img src="{{currBlog.BlogThumbnail}}" alt="">
+            </div>
+        </div>
+        <div class="category">
+            <div class="categ">
+                {{currBlog.BlogCategory.BlogCategoryName}}
+            </div>
+        </div>
+        <div class="header">
+            {{currBlog.BlogTitle}}
+        </div>
+        <div class="share-link">
+            <div id="share">
+       
+            </div>
+            <div>
+                <input type="text" value="{{url}}" id="myInput" readonly>
+            </div>
+            <div>
+                <button id="btnCopy" data-clipboard-target="#myInput"> Click </button>
+            </div>
+        </div>
+        <div class="content" *ngFor="let item of contents" style="margin-top: 10px; margin-bottom: 10px;">
+            {{item}}
+        </div>
+    </div>
+    <div class="right">
+        <div class="header"> Other Stories </div>
+        <div class="other" >
+            <div (click)="redirects(item)" class="other-container" *ngFor="let item of otherStories">
+                <div class="image-other">
+                    <img src="{{item.BlogThumbnail}}" alt="">
+                </div>
+                <div class="describe">
+                    {{item.BlogTitle}}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<input type="text" value="{{url}}" id="myInput" readonly>
-<button id="btnCopy" data-clipboard-target="#myInput"> Click </button>
+
+
 

@@ -52,6 +52,10 @@ func InsertNewEvent(EventName string,EventLocation string, EventCategory string,
 
 	defer db.Close()
 
+	if len(EventName) > 100 {
+		return nil, nil
+	}
+
 	var event = Events{
 		EventName:              EventName,
 		EventPicture:           EventPicture,

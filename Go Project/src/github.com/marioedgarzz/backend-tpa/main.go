@@ -9,6 +9,7 @@ import (
 	"github.com/marioedgarzz/backend-tpa/middleware"
 	"github.com/marioedgarzz/backend-tpa/models/blogs"
 	"github.com/marioedgarzz/backend-tpa/models/car_rental"
+	"github.com/marioedgarzz/backend-tpa/models/chats"
 	"github.com/marioedgarzz/backend-tpa/models/events"
 	"github.com/marioedgarzz/backend-tpa/models/hotels"
 	"github.com/marioedgarzz/backend-tpa/models/promo"
@@ -48,6 +49,8 @@ func initAllDatabase() {
 	events.InitEvents(db)
 
 	blogs.InitBlogs(db)
+
+	chats.InitChats(db)
 }
 
 func main() {

@@ -23,6 +23,8 @@ import { PromoPageComponent } from './pages/promo-page/promo-page.component';
 import { EventSearchComponent } from './events/event-search/event-search.component';
 import { EventDetailComponent } from './events/event-detail/event-detail.component';
 import { EventOrderComponent } from './events/event-order/event-order.component';
+import { FlightHeaderComponent } from './flight/flight-header/flight-header.component';
+import { CheckoutPageComponent } from './pages/checkout-page/checkout-page.component';
 
 const routes: Routes = [
   {
@@ -36,6 +38,10 @@ const routes: Routes = [
   {
     path: "flight",
     component: QuickCardComponent
+  },
+  {
+    path : "flight-header",
+    component : FlightHeaderComponent
   },
   {
     path: "car-rental",
@@ -132,6 +138,10 @@ const routes: Routes = [
   {
     path : "event-order/:id",
     component : EventOrderComponent
+  },
+  {
+    path: "checkout",
+    component : CheckoutPageComponent
   }
 ];
 

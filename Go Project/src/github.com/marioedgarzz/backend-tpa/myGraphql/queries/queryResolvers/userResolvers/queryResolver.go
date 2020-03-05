@@ -47,3 +47,16 @@ func GetAdminById(p graphql.ResolveParams) (i interface{}, e error) {
 	return user, err
 
 }
+
+
+func GetUserByFacebookKey(p graphql.ResolveParams) (interface{}, error) {
+	FacebookKey := p.Args["FacebookKey"].(string)
+
+	return user2.GetUserByFacebookKey(FacebookKey)
+}
+
+func GetUserByGoogleKey(p graphql.ResolveParams) (interface{}, error) {
+	GoogleKey := p.Args["GoogleKey"].(string)
+
+	return user2.GetUserByGoogleKey(GoogleKey)
+}

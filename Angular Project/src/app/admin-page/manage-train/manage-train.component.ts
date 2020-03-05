@@ -64,13 +64,22 @@ export class ManageTrainComponent implements OnInit {
       this.trainTransactionService.insertNewTransactionSchedule(this.slctTrainName,
         this.trainTimeFrom, this.trainTimeTo, this.slctTrainType).subscribe(
           async result => {
-            await (console.log(result),alert("Insert Success"), 
-            this.serverService.emit("train","New Train Has Occured"),
-            window.location.reload())
+            await this.check(result)
           }
         )
     }
     
+  }
+
+  check(result : any) {
+    if(result.data.insertNewTransactionSchedule == null) {
+      alert("Insert failed")
+    }
+    else {
+      console.log(result),alert("Insert Success"), 
+      this.serverService.emit("train","New Train Has Occured"),
+      window.location.reload()
+    }
   }
 
   update(item : TrainSchedule) {

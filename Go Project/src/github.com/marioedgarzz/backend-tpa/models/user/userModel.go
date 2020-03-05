@@ -22,6 +22,9 @@ type Users struct {
 	UserAddress		string
 	UserPostalCode	string
 	UserTitle		string
+	UserSubscription bool
+	UserGoogleKey	string
+	UserFacebookKey	string
 }
 
 type Admins struct {
@@ -38,6 +41,68 @@ func init() {
 	//db.DropTableIfExists(&Users{})
 	db.AutoMigrate(&Users{})
 	db.AutoMigrate(&Admins{})
+}
+
+func InsertUserGoogleKey(userId int,googleKey string) (interface{}, error) {
+	db, err := database.Connect()
+
+	if err != nil {
+		return nil, err
+	}
+	defer db.Close()
+
+	db.Where("user_id = ?",userId).UpdateColumns(
+		Users{
+			UserGoogleKey:    googleKey,
+		})
+
+	return nil, nil
+}
+
+func GetUserByGoogleKey(googleKey string) ([]Users, error){
+	db, err := database.Connect()
+
+	if err != nil {
+		return nil, err
+	}
+	defer db.Close()
+
+	var users []Users
+
+	db.Where("user_google_key = ?",googleKey).Find(&users)
+
+	return users, nil
+}
+
+func GetUserByFacebookKey(facebookKey string) ([]Users, error){
+	db, err := database.Connect()
+
+	if err != nil {
+		return nil, err
+	}
+	defer db.Close()
+
+	var users []Users
+
+	db.Where("user_facebook_key = ?",facebookKey).Find(&users)
+
+	return users, nil
+}
+
+func InsertFacebookGoogleKey(userId int,facebookKey string) (interface{}, error) {
+	db, err := database.Connect()
+
+	if err != nil {
+		return nil, err
+	}
+	defer db.Close()
+
+	db.Where("user_id = ?",userId).UpdateColumns(
+		Users{
+			UserFacebookKey:facebookKey,
+		})
+
+	return nil, nil
 }
 
 func GetAllUsers() ([]Users, error) {
@@ -70,7 +135,8 @@ func GetUserByPhoneOrEmail(phoneOrEmail string) ([]Users, error) {
 	return users, nil
 }
 
-func CreateNewUser(Username string, UserEmail string, UserPassword string, UserPhoneNumber string) (*Users, error) {
+func CreateNewUser(Username string, UserEmail string, UserPassword string, UserPhoneNumber string,
+	GoogleId string,FacebookId string) (*Users, error) {
 	db, err := database.Connect()
 
 	if err != nil {
@@ -80,12 +146,15 @@ func CreateNewUser(Username string, UserEmail string, UserPassword string, UserP
 	defer db.Close()
 
 	var user = Users{
-		Username:        Username,
-		UserEmail:       UserEmail,
-		UserPassword:    UserPassword,
-		UserPhoneNumber: UserPhoneNumber,
-		UserCurrency:    "IDR",
-		UserLanguage:    "Indonesia",
+		Username:         Username,
+		UserEmail:        UserEmail,
+		UserPassword:     UserPassword,
+		UserPhoneNumber:  UserPhoneNumber,
+		UserCurrency:     "IDR",
+		UserLanguage:     "Indonesia",
+		UserSubscription: false,
+		UserGoogleKey:    GoogleId,
+		UserFacebookKey:  FacebookId,
 	}
 
 	if db.NewRecord(user) {
@@ -200,4 +269,23 @@ func GetAdminById(adminId int) (interface{}, error) {
 	db.Where("admin_id = ?",adminId).Find(&admins)
 
 	return admins, nil
+}
+
+func SubscribeNewsletter(userId int) (interface{}, error) {
+	db, err := database.Connect()
+
+	if err != nil {
+		return nil, err
+	}
+
+	defer db.Close()
+
+	var users []Users
+
+	db.Model(&users).Where("user_id = ?",userId).UpdateColumns(
+		Users{
+			UserSubscription: true,
+		})
+
+	return nil, nil
 }

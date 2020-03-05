@@ -75,4 +75,12 @@ export class SettingsAccountComponent implements OnInit {
 
   }
 
+  subscribe() {
+    this.userService.subscribeNewsletter(UserStorageService.getCurrentUserId()).subscribe(
+      async result => {
+        await alert("Subscribed!")
+      }
+    )
+  }
+
 }

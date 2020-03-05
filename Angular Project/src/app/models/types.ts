@@ -1,5 +1,5 @@
 export class Users {
-    UserId: string
+    UserId: number
     Username: string
     UserEmail: string
     UserPassword: string
@@ -10,6 +10,9 @@ export class Users {
     UserAddress : string
     UserPostalCode : string
     UserTitle : string; //Mr. Mrs. Miss
+    UserSubscription : boolean;
+    UserGoogleKey : string;
+    UserFacebookKey : string;
 }
 
 export class Admins {

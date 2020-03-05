@@ -1,0 +1,42 @@
+<div class="header">
+    Chat Detail
+</div>
+
+<div class="chat-details">
+    <div class="chats">
+        <div class="each-chat" *ngFor="let item of chatList">
+            <div class="message-sender" *ngIf="checkSender(item)">
+                <div class="contents" *ngIf="item.ChatContent.length < 100">
+                    {{item.ChatContent}}
+                </div>
+                <div class="images" (click)="zoomImage(item)" *ngIf="item.ChatContent.length > 100">
+                    <img src="{{item.ChatContent}}" alt="">
+                    <a href="{{item.ChatContent}}" download=""> Download Image </a>
+                </div>
+                <div class="picture">
+                    {{senderInitial}}
+                </div>
+            </div>
+            <div class="message-receiver" *ngIf="checkReceiver(item)">
+                <div class="picture">
+                    {{receiverInitial}}
+                </div>
+                <div class="contents">
+                    {{item.ChatContent}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sendMsg-container">
+    <div class="sendMsg">
+        <div class="inputMsg">
+            <input type="text" [(ngModel)]="txtMsg">
+        </div>
+        <div class="buttonSend" style="display: flex;">
+            <input type="file" (change)="onFileChange($event)" [(ngModel)]="fileImg">
+            <!-- <button (click)="sendPict()"> Image </button> -->
+            <button (click)="sendMsg()" *ngIf="txtMsg.length != 0"> Send </button>
+        </div>
+    </div>
+</div>

@@ -37,7 +37,7 @@ export class HotelHeaderComponent implements OnInit {
   filterHotelArea : boolean[];
   filterHotelFacilities : boolean[];
   filterSort : string = "Recommended";
-  filterRating : boolean[] = Array(4);
+  filterRating : boolean[] = [false,false,false];
   filterPriceBasedOn : string = "";
   filterHotelName : boolean[];
 
@@ -45,6 +45,7 @@ export class HotelHeaderComponent implements OnInit {
 
   facilityFilter(idx : number) {
     this.filterHotelFacilities[idx] = !this.filterHotelFacilities[idx];
+    this.reload()
   }
 
   canShow = false;
@@ -55,27 +56,33 @@ export class HotelHeaderComponent implements OnInit {
 
   changeSort(sort : string) {
     this.filterSort = sort;
+    this.reload()
   }
 
   changePriceBasedOn(num : number) {
     if(num == 0) {
       this.filterPriceBasedOn = "Per Room Per Night";
+      this.reload()
     }
     else {
       this.filterPriceBasedOn = "Total Price";
+      this.reload()
     }
   }
 
   filterRate(num : number) {
     this.filterRating[num] = !this.filterRating[num];
+    this.reload()
   }
 
   changeArea(num : number) {
     this.filterHotelArea[num] = !this.filterHotelArea[num];
+    this.reload()
   }
 
   changeHotelNameFilter(num : number) {
     this.filterHotelName[num] = !this.filterHotelName[num];
+    this.reload()
   }
 
   constructor(private hotelService : HotelService, private router : Router,
@@ -95,17 +102,74 @@ export class HotelHeaderComponent implements OnInit {
       }
     }
 
+    this.reload()
+
 
   }
-  
-  ngOnInit() {
-    var ht : HotelTransfer = JSON.parse(window.localStorage.getItem("hotelTransfer"));
-    this.location = ht.HotelLocation;
 
-    this.hotelService.getAllAreasByPlaceName(ht.HotelLocation).subscribe(
+  reload() {
+
+    var hotels : Hotels[] = Array(this.hotelNameListByLocation.length);
+
+      let idx = 0;
+      for(let i = 0 ; i < this.hotelNameListByLocation.length ; i++) {
+          if(this.filterHotelArea[i] == true) {
+            hotels[idx++] = this.hotelNameListByLocation[i];
+          }
+      }
+
+      hotels.length = idx;
+
+      var newHotelFacilities : number[] = Array(this.hotelFacilities.length)
+      idx = 0;
+      for(let i = 0; i < this.hotelFacilities.length ; i++) {
+        if(this.filterHotelFacilities[i] == true) {
+          newHotelFacilities[idx++] = this.hotelFacilities[i].HotelFacilityId 
+        }
+      }
+
+      var currHotelArea : string = ""
+
+      for(let i = 0 ; i < HotelAreas.length ; i++) {
+        if(this.filterHotelArea[i] == true){
+          currHotelArea = HotelAreas[i];
+        }
+      }
+
+      var currHotelName : string = ""
+
+      for(let i = 0 ; i < this.hotelNameListByLocation.length ; i++) {
+        if(this.filterHotelArea[i] == true){
+          currHotelName = this.hotelNameListByLocation[i].HotelName;
+        }
+        else {
+          this.filterHotelArea[i] = false;
+        }
+      }
+
+      newHotelFacilities.length = idx;
+
+      console.log(this.hotelList)
+      this.hotelService.filterHotels(this.ht.HotelLocation,newHotelFacilities,this.minValue,this.maxValue,currHotelName,this.filterRating,currHotelArea).subscribe(
+        async result => {
+          await (this.assignHotelResult(result))
+        }
+      )
+  }
+  
+  ht : HotelTransfer;
+
+  ngOnInit() {
+    this.ht = JSON.parse(window.localStorage.getItem("hotelTransfer"));
+    this.location = this.ht.HotelLocation;
+
+    this.hotelService.getAllAreasByPlaceName(this.ht.HotelLocation).subscribe(
       async result => {
         await (this.hotelAreaByPlace = result,
           this.filterHotelArea = Array(result.length))
+          for(let i = 0 ; i < result.length ; i++) {
+            this.filterHotelArea[i] = false;
+          }
       }
     )
 
@@ -113,17 +177,23 @@ export class HotelHeaderComponent implements OnInit {
       async result => {
         await (this.hotelFacilities = result,
           this.filterHotelFacilities = Array(result.length + 1))
+          for(let i = 0 ; i < result.length ; i++) {
+            this.filterHotelFacilities[i] = false;
+          }
       }
     )
 
-    this.hotelService.getAllHotelByLocation(ht.HotelLocation).subscribe(
+    this.hotelService.getAllHotelByLocation(this.ht.HotelLocation).subscribe(
       async result => {
         await (this.hotelNameListByLocation = result,
-          this.filterHotelName = Array(result.length + 1));
+          this.filterHotelName = Array(result.length + 1))
+          for(let i = 0 ; i < result.length ; i++) {
+            this.filterHotelName[i] = false;
+          }
       }
     ) 
 
-    this.hotelService.getAllHotelsByPlaceName(ht.HotelLocation).subscribe(
+    this.hotelService.getAllHotelsByPlaceName(this.ht.HotelLocation).subscribe(
       async result => {
         await (this.assignHotelResult(result))
       }
@@ -141,6 +211,7 @@ export class HotelHeaderComponent implements OnInit {
   }
 
   assignHotelResult(result : HotelFacilitiesLists[]) {
+    result.sort((a,b) => (a.HotelId < b.HotelId)?-1:1)
     var newResult : HotelFacilitiesLists[] = Array(result.length);
     let idx = 0;
     let currId = result[0].Hotel.HotelId;

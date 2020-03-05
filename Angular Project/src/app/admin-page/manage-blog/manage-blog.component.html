@@ -25,7 +25,7 @@
                 <th> Update</th>
                 <th> Delete</th>
             </tr>
-            <tr *ngFor="let item of blogs; let i = index">
+            <tr *ngFor="let item of (blogs | manageBlog : filters); let i = index">
                 <td *ngIf="getCan(i)" > {{item.BlogTitle}} </td>
                 <td *ngIf="getCan(i)"> {{item.BlogCategory.BlogCategoryName}}</td>
                 <td *ngIf="getCan(i)"> {{item.BlogViewCount}}</td>

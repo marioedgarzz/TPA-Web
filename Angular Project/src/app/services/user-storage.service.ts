@@ -16,6 +16,30 @@ export class UserStorageService {
     return str;
   }
 
+  public static getCurrentGoogleKey() : string {
+    var str : string = sessionStorage.getItem("googleId")
+    if(str == undefined) return ""
+
+    return str
+  }
+
+  public static setCurrentGoogleKey(googleId : string) {
+    if(googleId == undefined) googleId = ""
+    sessionStorage.setItem("googleId",googleId)
+  }
+
+  public static getCurrentFacebookKey() : string {
+    var str : string = sessionStorage.getItem("facebookId")
+    if(str == undefined) return ""
+
+    return str
+  }
+
+  public static setCurrentFacebookKey(facebookId : string) {
+    if(facebookId == undefined) facebookId = ""
+    sessionStorage.setItem("facebookId",facebookId)
+  }
+
   public static setCurrentPreferredLanguage(str : string) {
     localStorage.setItem("UserLanguage",str);
   }
@@ -55,6 +79,17 @@ export class UserStorageService {
     localStorage.setItem("email",str);
   }
 
+  public static setCurrentEmailFbOrGoogle(str : string) {
+    sessionStorage.setItem("emailGorF",str)
+  }
+
+  public static getCurrentEmailFbOrGoogle() {
+    if(sessionStorage.getItem("emailGorF") == undefined) {
+      return ""
+    }
+    return sessionStorage.getItem("emailGorF")
+  }
+
   public static getCurrentUserEmail() {
     var str: string = localStorage.getItem("email");
     if(str == undefined) {
@@ -76,4 +111,15 @@ export class UserStorageService {
   public static logoutCurrentAdmin() {
     sessionStorage.setItem("AdminId","");
   }
+
+  public static getCurrentTransaction() {
+    if(sessionStorage.getItem("transaction") == undefined) return ""
+    return sessionStorage.getItem("transaction")
+  }
+
+  public static setCurrentTransaction(transaction : number) {
+    sessionStorage.setItem("transaction",transaction + "");
+  }
+
+
 }

@@ -78,6 +78,31 @@ export class BlogService {
     })
   }
 
+  getBlogById(BlogId : number) : Observable<Blogs[]> {
+    return this.apollo.watchQuery<any>({
+      query : gql `
+        query getBlogById($blogId : Int){
+          getBlogById (BlogId : $blogId){
+            BlogCategory {
+              BlogCategoryId
+              BlogCategoryName
+            }
+            BlogContent
+            BlogId
+            BlogThumbnail
+            BlogTitle
+            BlogViewCount
+          }
+        }
+      `,
+      variables : {
+        "blogId" : BlogId
+      }
+    }).valueChanges.pipe(
+      map(res => res.data.getBlogById)
+    )
+  }
+
   deleteBlog(blogId : number) : Observable<any>{
     return this.apollo.mutate({
       mutation : gql `

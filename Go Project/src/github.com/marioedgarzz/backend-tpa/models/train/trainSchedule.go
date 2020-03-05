@@ -89,7 +89,7 @@ func InsertNewTrainSchedule(TrainName string, TrainTimeFrom string, TrainTimeTo 
 
 	defer db.Close()
 
-	if len(TrainName) > 100 {
+	if len(TrainTimeFrom) > 10 {
 		return nil, nil
 	}
 
@@ -157,4 +157,27 @@ func DeleteTrainSchedule(TrainScheduleId int) (interface{}, error) {
 	db.Where("train_schedule_id = ?",TrainScheduleId).Delete(TrainSchedules{})
 
 	return TrainSchedules{}, nil
+}
+
+func GetTrainScheduleById(Id int) ([]TrainSchedules, error) {
+	db, err := database.Connect()
+
+	if err != nil {
+		return nil, err
+	}
+
+	defer db.Close()
+
+	var trainSchedules []TrainSchedules
+
+	db.Where("train_schedule_id = ?",Id).Find(&trainSchedules)
+
+	for i, _ := range trainSchedules {
+		db.Model(&trainSchedules[i]).Related(&trainSchedules[i].Train, "train_id").
+			Related(&trainSchedules[i].TrainClass, "train_class_id").
+			Related(&trainSchedules[i].TrainPlaceFrom, "train_place_from_id").
+			Related(&trainSchedules[i].TrainPlaceTo, "train_place_to_id")
+	}
+
+	return trainSchedules, nil
 }

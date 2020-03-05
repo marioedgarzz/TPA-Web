@@ -1,5 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { UserStorageService } from 'src/app/services/user-storage.service';
+import { GraphqlUsersService } from 'src/app/services/graphql-users.service';
 declare const gapi: any;
 
 @Component({
@@ -8,7 +9,10 @@ declare const gapi: any;
   styleUrls: ['./google-sign-in.component.scss']
 })
 export class GoogleSignInComponent implements OnInit {
-
+  
+  constructor(private element: ElementRef, private userService : GraphqlUsersService) {
+    console.log('ElementRef: ', this.element);
+  }
   private clientId:string = '207299003848-on9jppihjpgda8arrb5nmshbktn4an8g.apps.googleusercontent.com';
   
   private scope = [
@@ -43,7 +47,11 @@ export class GoogleSignInComponent implements OnInit {
         // console.log('Image URL: ' + profile.getImageUrl());
         // console.log('Email: ' + profile.getEmail());
 
-        sessionStorage.setItem("jwt_token",googleUser.getAuthResponse().id_token);
+        var id = googleUser.getAuthResponse().id_token;    
+
+        UserStorageService.setCurrentGoogleKey(id)
+
+
         // localStorage.setItem("UserId","");
         UserStorageService.setCurrentUserEmail(profile.getEmail());
         // console.log(sessionStorage.getItem("jwt_token"));
@@ -58,9 +66,6 @@ export class GoogleSignInComponent implements OnInit {
       });
   }
 
-  constructor(private element: ElementRef) {
-    console.log('ElementRef: ', this.element);
-  }
 
   ngAfterViewInit() {
     this.googleInit();

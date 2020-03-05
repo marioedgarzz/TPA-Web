@@ -28,7 +28,7 @@
                             Low : IDR {{minValue}}
                         </div>
                         <div class="mat-container">
-                            <mat-slider (input)="onInputChangeMin($event)" 
+                            <mat-slider (input)="onInputChangeMin($event)" (change)="reload()"
                                 min="0" max="15000000" step="10000" value="10000" class="mat-slide"></mat-slider>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                             High : IDR {{maxValue}}
                         </div>
                         <div class="mat-container">
-                            <mat-slider (input)="onInputChangeMax($event)" 
+                            <mat-slider (input)="onInputChangeMax($event)" (change)="reload()"
                                 min="0" max="15000000" step="10000" value="15000000" class="mat-slide"></mat-slider>
                         </div>
                     </div>
@@ -243,9 +243,7 @@
 
             <div class="notifyMessage"> {{notifyMessage}}</div>
 
-            <div class="hotel-detail" *ngFor="let item of (hotelList | hotelPipe : minValue :  maxValue : 
-            hotelNameListByLocation : filterHotelName :  filterRating :  hotelAreaByPlace :
-             filterHotelArea : hotelFacilities : filterHotelFacilities : filterPriceBasedOn : sortList : filterSort)">
+            <div class="hotel-detail" *ngFor="let item of hotelList">
                 <div class="image">
                     <img src="{{item.Hotel.HotelPicture}}" alt="">
                 </div>

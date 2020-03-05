@@ -24,18 +24,21 @@ export class GraphqlUsersService {
         variables :{
           "emailOrPhone": emailOrPhone
         },
+        fetchPolicy : "no-cache"
     }).valueChanges
       .pipe(
         map(result => result.data.searchByUserEmailOrPhone)
       );
   }
 
-  createUser(username : String, userPassword: String, userPhoneNumber : String, userEmail : String) : Observable<any> {
+  createUser(username : String, userPassword: String, userPhoneNumber : String, userEmail : String,
+    googleId : string, facebookId : string) : Observable<any> {
     return this.apollo.mutate<any>({
       mutation: gql `mutation createUser ($username: String, $userEmail : String, $userPassword: String,
-        $userPhoneNumber: String){
+        $userPhoneNumber: String, $googleId : String, $facebookId :String){
           createUser(Username : $username, UserEmail: $userEmail, 
-        UserPassword : $userPassword, UserPhoneNumber: $userPhoneNumber) {
+        UserPassword : $userPassword, UserPhoneNumber: $userPhoneNumber,
+        GoogleId : $googleId, FacebookId : $facebookId) {
           Username
         }
      }`,
@@ -43,7 +46,9 @@ export class GraphqlUsersService {
           "username" : username,
           "userEmail" : userEmail,
           "userPassword" : userPassword,
-          "userPhoneNumber" : userPhoneNumber
+          "userPhoneNumber" : userPhoneNumber,
+          "googleId" : googleId,
+          "facebookId" : facebookId
       }
     })
   }
@@ -62,6 +67,9 @@ export class GraphqlUsersService {
             UserPostalCode
             UserAddress
             UserTitle
+            UserSubscription
+            UserGoogleKey
+            UserFacebookKey
           }
         }`,
         variables : {
@@ -101,6 +109,112 @@ export class GraphqlUsersService {
         "userLanguage" : language,
       },
     })
+  }
+  insertGoogleKey(userId : number,googleKey : string) {
+    return this.apollo.mutate<any>({
+      mutation : gql `
+        mutation ($userId : Int, $googleKey : String){
+          insertGoogleKey(UserId: $userId, GoogleKey : $googleKey) {
+            UserAddress
+          }
+        }
+      `,
+      variables : {
+        "userId" : userId,
+        "googleKey" : googleKey
+      }
+    })
+  }
+
+  insertFacebookKey(userId : number,facebookKey : string) {
+    return this.apollo.mutate<any>({
+      mutation : gql `
+        mutation ($userId : Int, $facebookKey : String){
+          insertGoogleKey(UserId: $userId, FacebookKey : $facebookKey) {
+            UserAddress
+          }
+        }
+      `,
+      variables : {
+        "userId" : userId,
+        "facebookKey" : facebookKey
+      }
+    })
+  }
+
+  subscribeNewsletter(userId : number) {
+    return this.apollo.mutate<any>({
+      mutation : gql `
+        mutation ($userId : Int ){
+          subscribeNewsletter(UserId : $userId) {
+            UserSubscription
+          }
+        }
+      `,
+      variables : {
+        "userId" : userId
+      }
+    })
+  }
+
+  getUserByFacebookKey(facebookKey : string) : Observable<Users[]> {
+    return this.apollo.watchQuery<any>({
+      query : gql `
+        query getUserByFacebookKey($facebookKey : String){
+          getUserByFacebookKey(FacebookKey : $facebookKey) {
+            UserAddress
+            UserCity
+            UserCurrency
+            UserEmail
+            UserFacebookKey
+            UserGoogleKey
+            UserId
+            UserLanguage
+            UserPassword
+            UserPhoneNumber
+            UserPostalCode
+            UserSubscription
+            UserTitle
+            Username
+          }
+        }
+      `,
+      variables : {
+        "facebookKey" : facebookKey
+      }
+    }).valueChanges.pipe(
+      map(res => res.data.getUserByFacebookKey)
+    )
+  }
+  
+  getUserByGoogleKey(googleKey : string) : Observable<Users[]> {
+    return this.apollo.watchQuery<any>({
+      query : gql `
+        query getUserByGoogleKey($googleKey : String){
+          getUserByGoogleKey(GoogleKey : $googleKey) {
+            UserAddress
+            UserCity
+            UserCurrency
+            UserEmail
+            UserFacebookKey
+            UserGoogleKey
+            UserId
+            UserLanguage
+            UserPassword
+            UserPhoneNumber
+            UserPostalCode
+            UserSubscription
+            UserTitle
+            Username
+          }
+        }
+      `,
+      variables : {
+        "googleKey" : googleKey
+      }
+    }).valueChanges.pipe(
+      map(res => res.data.getUserByGoogleKey)
+    )
   }
 
   getAdminByUsernameAndPassword(Username : string, Password : string) : Observable<Admins[]> {

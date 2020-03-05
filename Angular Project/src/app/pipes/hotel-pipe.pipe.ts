@@ -143,29 +143,34 @@ export class HotelPipePipe implements PipeTransform {
     return hotelList.filter(res => res.Hotel.HotelPriceBasedOn == filterPriceBasedOn);
   }
 
+  constructor(private hotelService : HotelService) {
+    
+  }
+
   transform(hotelList: HotelFacilitiesLists[], minPrice : number, maxPrice : number, 
     hotelNameListByLocation : Hotels[], filterHotelName : boolean[], filterRating : boolean[], 
     hotelAreaByPlace : HotelAreas[], filterHotelArea : boolean[]
   ,hotelFacilities : HotelFacilities[], filterHotelFacilities : boolean[],
   filterPriceBasedOn : string, sortList : string[], filterSort : string): any {
 
-      hotelList = this.filterPrice(hotelList,minPrice, maxPrice);
+      // hotelList = this.filterPrice(hotelList,minPrice, maxPrice);
 
-      hotelList = this.filterLocation(hotelList,hotelNameListByLocation,filterHotelName);
-      hotelList = this.filterRate(hotelList,filterRating)
-      hotelList = this.filterByArea(hotelList, hotelAreaByPlace, filterHotelArea)
-      hotelList = this.filterByFacility(hotelList, hotelFacilities, filterHotelFacilities)
-      hotelList = this.doFilterPriceBasedOn(hotelList,filterPriceBasedOn);
-      for(let i = 0 ; i < hotelList.length ; i++) {
-        if(hotelList[i] == undefined) {
-          hotelList.length = i;
-          break;
-        }
-      }
+      // hotelList = this.filterLocation(hotelList,hotelNameListByLocation,filterHotelName);
+      // hotelList = this.filterRate(hotelList,filterRating)
+      // hotelList = this.filterByArea(hotelList, hotelAreaByPlace, filterHotelArea)
+      // hotelList = this.filterByFacility(hotelList, hotelFacilities, filterHotelFacilities)
+      // hotelList = this.doFilterPriceBasedOn(hotelList,filterPriceBasedOn);
+      // for(let i = 0 ; i < hotelList.length ; i++) {
+      //   if(hotelList[i] == undefined) {
+      //     hotelList.length = i;
+      //     break;
+      //   }
+      // }
 
-      this.sortHotel(hotelList,sortList, filterSort);
+      // this.sortHotel(hotelList,sortList, filterSort);
 
-      return hotelList;
+      // this.hotelService.filter()
+      
   }
 
 }

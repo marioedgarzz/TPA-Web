@@ -1,26 +1,104 @@
-<div class="user">
-    <div class="detail">
-        <div class="left">
-            Name :
+<div class="proxy" *ngIf="user == undefined">
+    <img src="../../../assets/utility/loadingScreen.gif" alt="">
+</div>
+
+<div class="countdown">
+    {{countDown}} seconds left
+</div>
+
+<div class="breadcrumbs">
+    <div id="step1">
+        1. Pesan
+    </div>
+    <div>
+        >
+    </div>
+    <div id="step2">
+        2. Bayar
+    </div>
+    <div>
+        >
+    </div>
+    <div id="step3">
+        3. Selesai
+    </div>
+</div>
+
+<div class="container" *ngIf="user != undefined">
+    <div class="user" *ngIf="step1">
+        <div class="detail">
+            <div class="left">
+                Name :
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="name">
+            </div>
         </div>
-        <div class="right">
-            {{user.Username}}
+        <div class="detail">
+            <div class="left">
+                Address :
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="address">
+            </div>
+        </div>
+        <div class="detail">
+            <div class="left">
+                Phone Number : 
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="phoneNumber">
+            </div>
+        </div>
+        <div class="detail">
+            <div class="left">
+                Email : 
+            </div>
+            <div class="right">
+                <input type="text" [(ngModel)]="email">
+            </div>
+        </div>
+        <div class="error-msg">
+            {{errorMsg}}
+        </div>
+        <div class="filter-nationality">
+            <mat-form-field>
+                <mat-label> Select Nationality </mat-label>
+                <mat-select [(value)]="nationality">
+                    <mat-option value="item.name" *ngFor="let item of regions"> 
+                        <img src="https://www.countryflags.io/{{item.code}}/flat/24.png">
+                        {{item.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button (click)="nextStep()"> Next Field </button>
         </div>
     </div>
-    <div class="detail">
-        <div class="left">
-            Address :
+    
+    <div class="payment" *ngIf="step2">
+        <div style="display: flex; justify-content: center; margin: 20px;">
+            <div style="margin: 20px"> Transaction Details </div>
+            <div class="inner">
+                <div> Transaction Name : {{currTransaction.Train.TrainName}}</div>
+                <div> Place : {{currTransaction.TrainPlaceFrom.TrainPlaceName}} - {{currTransaction.TrainPlaceTo.TrainPlaceName}}</div>
+                <div> Date : {{currTransaction.TrainDate}}</div>
+                <div> Time : {{currTransaction.TrainTimeFrom}} - {{currTransaction.TrainTimeTo}}</div>
+            </div>
         </div>
-        <div class="right">
-            {{user.UserAddress}}
+        <div>
+            <div>
+                Payment
+            </div>
+            <div>
+                <input type="text" [(ngModel)]="payments">
+            </div>
+        </div>
+        <div style="display: flex;justify-content: center;">
+            <button (click)="nextStep()"> Next </button>
         </div>
     </div>
-    <div class="detail">
-        <div class="left">
-            Phone Number : 
-        </div>
-        <div class="right">
-            {{user.PhoneNumber}}
-        </div>
+    <div class="">
+
     </div>
+    
 </div>

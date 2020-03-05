@@ -42,6 +42,15 @@ func GetTypes() *graphql.Object {
 				"UserTitle" : &graphql.Field{
 					Type: graphql.String,
 				},
+				"UserSubscription" : &graphql.Field{
+					Type: graphql.Boolean,
+				},
+				"UserGoogleKey" : &graphql.Field{
+					Type: graphql.String,
+				},
+				"UserFacebookKey" : &graphql.Field{
+					Type: graphql.String,
+				},
 			},
 			Description: "Get User Types",
 		})

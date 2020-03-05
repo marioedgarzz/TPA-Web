@@ -1,0 +1,71 @@
+.chat-header {
+    .header {
+        display:flex;
+        justify-content: center;
+        font-size: 24px;
+    }
+    .detail-container{
+        display: flex;
+        justify-content: center;
+        .detail {
+            margin: 20px;
+            width: 80%;
+            .loop {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border : 1px solid black;
+                align-items: center;
+                margin: 10px;
+                cursor: pointer;
+                &:hover {
+                    .right div button {
+                        display: block;
+                    }
+                }
+                .left {
+                    display: flex;
+                    align-items: center;
+                    .image {
+                        margin : 10px;
+                        padding : 10px;
+                        background-color: grey;
+                        border-radius: 20px;
+                    }
+                    .details {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        .chat-detail {
+                            margin: 10px;
+                        }
+                    }
+                }
+                .right {
+                    display: flex;
+                    align-items: center;
+                    div {
+                        margin: 10px;
+                        button {
+                            display: none;
+                        }
+                    }
+                }
+                &:hover {
+                    border: 2px solid black;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 650px) {
+    .chat-header .detail-container .detail .loop {
+        display: flex;
+        flex-direction: column;
+        .left, .right {
+            width: 100%;
+        }
+    }
+}

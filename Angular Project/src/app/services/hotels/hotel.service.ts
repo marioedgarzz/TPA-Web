@@ -244,6 +244,59 @@ export class HotelService {
       })
     }
 
+    filterHotels(hotelLocation : string, HotelFacilities : number[], minPrice : number, maxPrice : number, 
+      hotelName : string, hotelRating : boolean[], hotelArea : string) : Observable<HotelFacilitiesLists[]> {
+        
+      return this.apollo.watchQuery<any>({
+        query: gql `
+        query FilterHotels ($hotelLocation : String, $hotelFacilities : [Int], $minPrice : Int, $maxPrice : Int, $hotelName : String,
+          $hotelRating : [Boolean], $hotelArea : String){
+            FilterHotels(HotelLocation : $hotelLocation, HotelFacilities : $hotelFacilities, MinPrice : $minPrice, MaxPrice : $maxPrice,
+            HotelName : $hotelName, HotelRating : $hotelRating, HotelArea : $hotelArea) {
+              Hotel {
+                HotelAddress
+                HotelDiscountPrice
+                HotelId
+                HotelInformation
+                HotelLeft
+                HotelLocationLatitude
+                HotelLocationLongitude
+                HotelName
+                HotelPicture
+                HotelPrice
+                HotelPriceBasedOn
+                HotelRating
+                HotelArea {
+                  HotelAreaId
+                  HotelAreaName
+                  HotelPlace {
+                    HotelPlaceId
+                    HotelPlaceName
+                  }
+                }
+              }
+            HotelFacility{
+              HotelFacilityId
+              HotelFacilityName
+              HotelFacilityPicture
+            }
+            }
+          }
+        `, 
+        variables : {
+          "hotelLocation" : hotelLocation,
+          "hotelArea": hotelArea,
+          "hotelFacilities": HotelFacilities,
+          "hotelName": hotelName,
+          "hotelRating": hotelRating,
+          "maxPrice": maxPrice,
+          "minPrice": minPrice
+        }
+      }).valueChanges.pipe(
+        map(res => res.data.FilterHotels)
+      )
+    }
+
     getAllHotelCategories() : Observable<HotelCategories[]> {
       return this.apollo.watchQuery<any>({
         query : gql`

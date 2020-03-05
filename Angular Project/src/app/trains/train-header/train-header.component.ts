@@ -230,21 +230,8 @@ export class TrainHeaderComponent implements OnInit {
   }
 
   sendItem(schedule : TrainSchedule) {
-    var scheduleId = schedule.TrainScheduleId;
-    var userId = UserStorageService.getCurrentUserId();
-    if(userId == 0) {
-      alert("Please login to buy");
-      return;
-    }
-    var currDate = new Date().toLocaleDateString();
-
-    this.trainTransactionService.createNewTrainTransaction(scheduleId,userId,currDate).subscribe(
-      async result => {
-        await (alert("Train transaction success!"),
-        this.router.navigate(["/"])
-         )
-      }
-    )
+    UserStorageService.setCurrentTransaction(schedule.TrainScheduleId);
+    this.router.navigate(["/checkout"])
   }
 
   showTripDetail(i : number) {

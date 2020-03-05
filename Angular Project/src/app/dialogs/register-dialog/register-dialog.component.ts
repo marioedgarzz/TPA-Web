@@ -4,6 +4,7 @@ import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
 import { Users } from 'src/app/models/types';
 import { Subscription } from 'apollo-client/util/Observable';
 import { GraphqlUsersService } from 'src/app/services/graphql-users.service';
+import { UserStorageService } from 'src/app/services/user-storage.service';
 
 @Component({
   selector: 'app-register-dialog',
@@ -140,16 +141,45 @@ export class RegisterDialogComponent implements OnInit {
         await this.checkUser(name)
       }
     );
-  }
+    }
+
+    assignGoogleOrFacebook(result : Users[]) {
+      console.log(UserStorageService.getCurrentUserEmail())
+      console.log("aaa")
+      console.log(result)
+      if(result.length == 0) return
+      let id = result[0].UserId
+  
+      if(UserStorageService.getCurrentGoogleKey() != "") {
+        this.userService.insertGoogleKey(id,UserStorageService.getCurrentGoogleKey()).subscribe(
+          async result => {
+            await (alert("Successfully registered by Google!"),
+            UserStorageService.setCurrentGoogleKey(""))
+          }
+        )
+      }
+      else if(UserStorageService.getCurrentFacebookKey() != "") {
+        this.userService.insertFacebookKey(id,UserStorageService.getCurrentFacebookKey()).subscribe(
+          async result => {
+            await (alert("Successfully registered by Facebook!"),
+            UserStorageService.setCurrentFacebookKey(""))        }
+        )
+      }
+  
+    }
+
   checkUser(name : String) {
     if(this.users == undefined || this.users.length == 0) {
-       this.users2$ = this.userService.createUser(name,this.password,this.mobileNumber,this.email).subscribe(
-        async() => {
-          await alert("Successfully registered!");
-          this.dialogRefRegister.close();
-          window.location.reload();
+       this.users2$ = this.userService.createUser(name,this.password,this.mobileNumber,this.email,
+        UserStorageService.getCurrentGoogleKey(), UserStorageService.getCurrentFacebookKey()).subscribe(
+        async res => {
+          await (
+            alert("Success register!")
+            )
+          
         }
-       );
+       )
+      
     }
     else {
       this.myData = (this.header == "Email" ? this.email : this.mobileNumber);

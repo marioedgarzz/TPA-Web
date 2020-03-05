@@ -1,6 +1,8 @@
-<div>
-    <p *ngFor="let message of messageLists">{{ message }}</p>
+<div class="chats">
+  <div class="chat-header">
+    <app-chat-header></app-chat-header>
   </div>
-  <input type="text" [formControl]="messageControl">
-  <button (click)="sendMessage()">Send</button>
-  
+  <div class="chat-detail" *ngIf="roomId != undefined && roomId != 0">
+    <app-chat-detail></app-chat-detail>
+  </div>
+</div>

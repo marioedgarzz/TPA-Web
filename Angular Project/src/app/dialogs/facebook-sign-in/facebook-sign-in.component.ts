@@ -25,7 +25,8 @@ export class FacebookSignInComponent implements OnInit {
     FB.login((response) => {
       console.log('submitLogin', response);
       if (response.authResponse) {
-        console.log(response.authResponse.userID);
+        UserStorageService.setCurrentFacebookKey(response.authResponse.userID)
+        // console.log(response.authResponse.userID);
         FB.api(
           '/me',
           'GET',

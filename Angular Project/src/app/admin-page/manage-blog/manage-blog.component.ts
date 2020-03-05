@@ -41,20 +41,11 @@ export class ManageBlogComponent implements OnInit {
         await (this.blogCategories = result);
       }
     )
-
-    
-
-      
   }
 
   
   insert() {
-    var itemContent = document.getElementById("output").innerHTML;
-
-    if(itemContent == "" || itemContent == undefined) {
-      this.errorMsg = "Content must be filled!"
-    }
-    else if(this.blgTitle == "" || this.blgTitle == undefined) {
+    if(this.blgTitle == "" || this.blgTitle == undefined) {
       this.errorMsg = "Title must be filled!"
     }
     else if(this.blgThumbnail == "" || this.blgThumbnail == undefined) {
@@ -63,15 +54,28 @@ export class ManageBlogComponent implements OnInit {
     else if(this.slctBlogCategory == "" ||this.slctBlogCategory == undefined) {
       this.errorMsg = "Category must be choosed!"
     }
+    else if(this.blgDescription == "" ||this.blgDescription == undefined) {
+      this.errorMsg = "Content must be filled!"
+    }
     else {
-      this.blogService.insertNewBlog(this.blgTitle,this.blgThumbnail,itemContent, this.slctBlogCategory).subscribe(
+      this.blogService.insertNewBlog(this.blgTitle,this.blgThumbnail,this.blgDescription, this.slctBlogCategory).subscribe(
         async result => {
-          await (alert("Insert Success!"),
-          this.serverService.emit("blog","New Blog occured!"))
+          await this.check(result)
         }
       )
     }
 
+  }
+
+  check(result : any) {
+    if(result.data.insertNewBlog == null) {
+      alert("Insert Failed")
+    }
+    else {
+      alert("Insert Success!");
+      this.serverService.emit("blog","New Blog occured!");
+      location.reload()
+    }
   }
 
   update(item : Blogs) {

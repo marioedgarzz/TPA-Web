@@ -4,18 +4,6 @@ import "github.com/graphql-go/graphql"
 
 var eventType *graphql.Object
 
-type Events struct {
-	EventName string
-	EventPicture string
-	EventLocation string
-	EventPrice string
-	EventDateFrom string
-	EventDateTo string
-	EventType string
-	EventCity string
-	EventDescription string
-}
-
 func GetTypes() *graphql.Object {
 	if eventType == nil {
 		eventType = graphql.NewObject(graphql.ObjectConfig{

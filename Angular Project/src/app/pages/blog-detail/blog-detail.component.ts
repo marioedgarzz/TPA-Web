@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Blogs } from 'src/app/models/blogs';
+import { BlogService } from 'src/app/services/blogs/blog.service';
 
 @Component({
   selector: 'app-blog-detail',
@@ -8,13 +10,59 @@ import { Router } from '@angular/router';
 })
 export class BlogDetailComponent implements OnInit {
 
-  constructor(private router : Router) { }
+  constructor(private router : Router, private act : ActivatedRoute,
+    private blogService : BlogService) { }
+
+  private currBlog : Blogs;
+  private contents : string[];
+  private otherStories : Blogs[];
 
   ngOnInit() {
-    this.setShareUrl()
-    // this.copyText()
-    var btn = document.getElementById("btnCopy")
+    this.refresh();
+    
     // new Clipboard(btn)
+  }
+
+  refresh() {
+    var id =+ this.act.snapshot.paramMap.get("id")
+
+    this.blogService.getBlogById(id).subscribe(
+      async result => {
+        await (this.currBlog = result[0],
+          this.contents = this.currBlog.BlogContent.split("\n"),
+          this.blogService.getAllBlogs().subscribe(
+            async result => {
+              await this.assign(result);
+            }
+          )
+          )
+      }
+    )
+    this.setShareUrl()
+    var btn = document.getElementById("btnCopy")
+  }
+
+  redirects(item : Blogs) {
+    this.router.navigate(["/blog/" + item.BlogId])
+    setTimeout(() => {
+      
+      this.refresh();
+    }, 1);
+  }
+
+  assign(result : Blogs[]) {
+    this.otherStories = Array(5)
+    let currIdx = 0;
+    result.forEach(element => {
+      if(element.BlogId != this.currBlog.BlogId) {
+        if(currIdx != 5) {
+          this.otherStories[currIdx] = element;
+          currIdx++;
+        }
+      }
+    });
+
+    this.otherStories.length = 5;
   }
 
   private url : string;
@@ -28,7 +76,7 @@ export class BlogDetailComponent implements OnInit {
         `;src=sdkpreparse"class="fb-xfbml-parse-ignore">Share</a></div>` +
         `<div class="line-it-button" data-lang="en" data-type="share-b" data-ver="3" data-url="` + this.url +
         `" data-color="default"data-size="small" data-count="true" style="display: none;"></div>` +
-        `<a href="https://wa.me/?text=` + this.url + `">Bagikan ke WhatsApp</a>`;
+        `<a style="margin:10px" href="https://wa.me/?text=` + this.url + `">Bagikan ke WhatsApp</a>`;
   }
 
 }

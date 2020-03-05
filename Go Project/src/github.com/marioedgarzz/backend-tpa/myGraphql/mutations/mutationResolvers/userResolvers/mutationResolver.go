@@ -11,8 +11,10 @@ func CreateNewUser(p graphql.ResolveParams) (i interface{}, e error) {
 	UserEmail := p.Args["UserEmail"].(string)
 	UserPassword := p.Args["UserPassword"].(string)
 	UserPhoneNumber:= p.Args["UserPhoneNumber"].(string)
+	GoogleId := p.Args["GoogleId"].(string)
+	FacebookId := p.Args["FacebookId"].(string)
 
-	users, err := user.CreateNewUser(Username,UserEmail,UserPassword,UserPhoneNumber)
+	users, err := user.CreateNewUser(Username,UserEmail,UserPassword,UserPhoneNumber,GoogleId,FacebookId)
 
 	return users,err
 }
@@ -43,4 +45,24 @@ func UpdateAccountData(p graphql.ResolveParams) (i interface{}, e error) {
 	users, err := user.UpdateAccountData(UserId, UserTitle, Username, UserCity, UserAddress, UserPostalCode)
 
 	return users, err
+}
+
+func InsertFacebookKey(p graphql.ResolveParams) (interface{}, error) {
+	UserId := p.Args["UserId"].(int)
+	FacebookKey := p.Args["FacebookKey"].(string)
+
+	return user.InsertFacebookGoogleKey(UserId,FacebookKey)
+}
+
+func InsertGoogleKey(p graphql.ResolveParams) (interface{}, error) {
+	UserId := p.Args["UserId"].(int)
+	GoogleKey := p.Args["GoogleKey"].(string)
+
+	return user.InsertFacebookGoogleKey(UserId,GoogleKey)
+}
+
+func SubscribeNewsLetter(p graphql.ResolveParams) (interface{}, error) {
+	UserId := p.Args["UserId"].(int)
+
+	return user.SubscribeNewsletter(UserId)
 }

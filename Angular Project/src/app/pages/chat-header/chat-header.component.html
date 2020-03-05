@@ -1,0 +1,63 @@
+<div class="filters">
+    <select [(ngModel)]="filters">
+        <option value="All"> All </option>
+        <option value="Default">Default</option>
+        <option value="Starred">Starred</option>
+        <option value="Unread">Unread</option>
+    </select>
+</div>
+
+<div class="chat-header">
+    <div class="header">
+        Chat Page
+    </div>
+    <div class="detail-container">
+        <div class="detail">
+            <div class="loop" (click)="chatDetail(item)" *ngFor="let item of (chatRooms | chatPipe : filters : currentRole); let i = index">
+                <div class="left">
+                    <div class="image">
+                        {{userInitials[i]}}
+                    </div>
+                    <div style="width: 20%;">
+                        {{users[i]}}
+                        <div *ngIf="isUnread(item)" style="color: red;">
+                            Unread Message
+                        </div>
+                        <div *ngIf="isStarred(item)" style="color: yellow;">
+                            Starred
+                        </div>
+                        <div *ngIf="isArchieved(item)" style="color: yellow;">
+                            Archieved
+                        </div>
+                    </div>
+                    <div class="details">
+                        <div class="chat-detail">
+                            {{item.ChatLocation}}
+                        </div>
+                        <div class="chat-detail">
+                            {{item.ChatPaymentName}}
+                        </div>
+                        <div class="chat-detail">
+                            {{item.ChatPaymentPrice}}
+                        </div>
+                        <div class="chat-detail">
+                            {{item.ChatPaymentStatus}}
+                        </div>
+                    </div>
+                    <div class="details">
+                        <div class="chat-detail" *ngIf="lastOccurence != undefined">
+                            {{lastOccurence[i]}}
+                        </div>
+                        <div class="chat-detail" *ngIf="lastMsg != undefined">
+                            {{lastMsg[i]}}
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div> <button (click)="archieve(item)"> Archieve </button></div>
+                    <div> <button (click)="star(item)"> Starred </button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

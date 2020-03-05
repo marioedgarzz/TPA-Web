@@ -42,7 +42,15 @@ export class NaviBarComponent implements OnInit {
         }
       )
     }
+
+    // this.userService.getUserEmailAndPhone(UserStorageService.getCurrentUserEmail()).subscribe(
+    //   async result => {
+    //     await this.assignGoogleOrFacebook(result)
+    //   }
+    // )
   }
+
+  
   
   assignUserData(user : Users) {
     var str : string = user.Username;

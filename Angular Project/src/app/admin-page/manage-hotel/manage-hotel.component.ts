@@ -138,11 +138,20 @@ export class ManageHotelComponent implements OnInit {
       this.hotelService.insertNewHotel(this.htlName,this.htlImage,this.slctLocation,parseFloat(this.htlRating),
       this.htlAddress,facilities,this.slctRoomType,this.htlInfo).subscribe(
         async result => {
-          await (alert("Insert success!"), 
-          this.serverService.emit('hotel',"New Hotel Has Occured!")
-          ,location.reload())
+          await this.check(result)
         }
       )
+    }
+  }
+
+  check(result : any) {
+    if(result.data.insertNewHotel == null) {
+      alert("Insert Failed");
+    }
+    else {
+      alert("Insert success!");
+        this.serverService.emit('hotel',"New Hotel Has Occured!");
+        location.reload()
     }
   }
 

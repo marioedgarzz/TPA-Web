@@ -3,8 +3,11 @@ package mutations
 import (
 	"github.com/graphql-go/graphql"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/mutations/mutationResolvers/adminResolvers"
+	"github.com/marioedgarzz/backend-tpa/myGraphql/mutations/mutationResolvers/chatResolvers"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/mutations/mutationResolvers/transactionResolvers"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/mutations/mutationResolvers/userResolvers"
+	blogs2 "github.com/marioedgarzz/backend-tpa/myGraphql/types/blogs"
+	"github.com/marioedgarzz/backend-tpa/myGraphql/types/chats"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/types/events"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/types/hotels"
 	"github.com/marioedgarzz/backend-tpa/myGraphql/types/trains"
@@ -29,6 +32,12 @@ func GetRoot() *graphql.Object {
 						Type: graphql.String,
 					},
 					"UserPhoneNumber" : &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+					"GoogleId" : &graphql.ArgumentConfig{
+						Type: graphql.String,
+					},
+					"FacebookId" : &graphql.ArgumentConfig{
 						Type: graphql.String,
 					},
 				},
@@ -315,6 +324,167 @@ func GetRoot() *graphql.Object {
 				},
 				Resolve:           adminResolvers.DeleteEvent,
 				Description:       "Delete Event",
+			},
+			"insertNewBlog" : {
+				Type:              blogs2.GetBlogsType(),
+				Args:              graphql.FieldConfigArgument{
+					"BlogTitle" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"BlogThumbnail" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"BlogContent" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"BlogCategory" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+				},
+				Resolve:           adminResolvers.InsertNewBlog,
+				Description:       "Insert New Blog",
+			},
+			"UpdateBlog" : {
+				Type:              blogs2.GetBlogsType(),
+				Args:              graphql.FieldConfigArgument{
+					"BlogId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+					"BlogTitle" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"BlogThumbnail" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"BlogContent" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"BlogCategory" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+				},
+				Resolve:           adminResolvers.UpdateBlog,
+				Description:       "Update Blog",
+			},
+			"deleteBlog" : {
+				Type:              blogs2.GetBlogsType(),
+				Args:              graphql.FieldConfigArgument{
+					"BlogId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+				},
+				Resolve:           adminResolvers.DeleteBlog,
+				Description:       "Delete Blog",
+			},
+			"insertNewChatRoom" : {
+				Type:              chats.GetTypes(),
+				Args:              graphql.FieldConfigArgument{
+					"AdminId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+					"UserId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+					"ChatLocation" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"ChatPaymentName" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"ChatPaymentPrice" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+					"ChatPaymentStatus" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+
+				},
+				Resolve:           chatResolvers.InsertNewRooms,
+				Description:       "Insert New Chat Room",
+			},
+			"UpdateAdminStatus" : {
+				Type:              chats.GetTypes(),
+				Args:              graphql.FieldConfigArgument{
+					"RoomId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+					"Status" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+				},
+				Resolve:           chatResolvers.UpdateAdminStatus,
+				Description:       "Update Admin Status",
+			},
+			"UpdateUserStatus" : {
+				Type:              chats.GetTypes(),
+				Args:              graphql.FieldConfigArgument{
+					"RoomId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+					"Status" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+				},
+				Resolve:           chatResolvers.UpdateUserStatus,
+				Description:       "Update User Status",
+			},
+			"SendMessage" : {
+				Type:              chats.GetChatDetailTypes(),
+				Args:              graphql.FieldConfigArgument{
+					"RoomId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+					"SenderRole" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"ReceiverRole" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"ContentMessage" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+					"ChatDateTime" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+				},
+				Resolve:           chatResolvers.SendMessage,
+				Description:       "Send Chat Message",
+			},
+			"insertFacebookKey" : {
+				Type:              users.GetTypes(),
+				Args:              graphql.FieldConfigArgument{
+					"UserId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+					"FacebookKey" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+				},
+				Resolve:           userResolvers.InsertFacebookKey,
+				Description:       "Insert Facebook Key",
+			},
+			"insertGoogleKey" : {
+				Type:              users.GetTypes(),
+				Args:              graphql.FieldConfigArgument{
+					"UserId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+					"GoogleKey" : &graphql.ArgumentConfig{
+						Type:         graphql.String,
+					},
+				},
+				Resolve:           userResolvers.InsertGoogleKey,
+				Description:       "Insert Google Key",
+			},
+			"subscribeNewsletter" : {
+				Type:              users.GetTypes(),
+				Args:              graphql.FieldConfigArgument{
+					"UserId" : &graphql.ArgumentConfig{
+						Type:         graphql.Int,
+					},
+				},
+				Resolve:           userResolvers.SubscribeNewsLetter,
+				Description:       "Subscribe New Letter",
 			},
 		},
 

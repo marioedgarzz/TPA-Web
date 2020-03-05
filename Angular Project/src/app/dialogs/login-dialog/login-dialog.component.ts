@@ -46,7 +46,7 @@ constructor(private dialogRef: MatDialogRef<LoginDialogComponent>,
         console.log(this.txtPassword);
         if(this.users[0].UserPassword == this.txtPassword) {
           //session login
-          UserStorageService.setCurrentUserId(parseInt(this.users[0].UserId));
+          UserStorageService.setCurrentUserId(this.users[0].UserId);
           alert("Login Success!");
           window.location.reload();
         }
@@ -89,7 +89,7 @@ constructor(private dialogRef: MatDialogRef<LoginDialogComponent>,
   }
    
   ngOnInit() {
-    localStorage.setItem("Email","");
+    localStorage.setItem("email","");
     // console.log("uayy");
     this.idx = 0;
     this.currImg = this.passwordImg[0];
@@ -201,6 +201,15 @@ constructor(private dialogRef: MatDialogRef<LoginDialogComponent>,
     return new Promise( resolve => setTimeout(resolve, ms) );
   }
 
+  checkId(result : Users[]) {
+    if(result.length == 0) {
+      return;
+    }
+    UserStorageService.setCurrentUserId(result[0].UserId)
+    alert("Success login!")
+    location.reload()
+  }
+
   checkEmail() {
     (async () => { 
       while(true) {
@@ -212,11 +221,31 @@ constructor(private dialogRef: MatDialogRef<LoginDialogComponent>,
             UserStorageService.setCurrentUserEmail("");
             return;
           }
-          var email: string = UserStorageService.getCurrentUserEmail();
-          UserStorageService.setCurrentUserEmail("");
-          this.txtPhoneOrEmail = email;
+          else {
+            if(UserStorageService.getCurrentFacebookKey() != "") {
+              this.userService.getUserByFacebookKey(UserStorageService.getCurrentFacebookKey()).subscribe(
+                async result => {
+                  await(this.checkId(result))
+                }
+              )
+            }
+            else if(UserStorageService.getCurrentGoogleKey() != "") {
+              this.userService.getUserByGoogleKey(UserStorageService.getCurrentGoogleKey()).subscribe(
+                async result => {
+                  await(this.checkId(result))
+                }
+              )
+            }
+            var email: string = UserStorageService.getCurrentUserEmail();
+            UserStorageService.setCurrentUserEmail("");
+            this.txtPhoneOrEmail = email;
+            
+            this.validatedRedirect(email);
+            
+
+          }
           
-          this.validatedRedirect(email);
+
         }
       }
     })();
